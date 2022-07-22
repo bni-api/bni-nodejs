@@ -1,0 +1,28 @@
+{
+  "name": "bni-nodejs",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bni-api/bni-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bni-api/bni-nodejs/issues"
+  },
+  "homepage": "https://github.com/bni-api/bni-nodejs#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  }
+}
