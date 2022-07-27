@@ -1,0 +1,8 @@
+.git
+.eslintrc
+.mocharc
+.gitignore
+/examples
+/test
+/node_modules
+package-lock.json

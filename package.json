@@ -1,10 +1,11 @@
 {
   "name": "bni-nodejs",
   "version": "0.1.0",
-  "description": "BNI API Node.js SDK",
+  "description": "Official BNI API SDK for Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "./node_modules/.bin/eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "qs": "^6.11.0"
   },
   "devDependencies": {
+    "eslint": "^8.20.0",
     "mocha": "^10.0.0"
   },
   "engines": {
