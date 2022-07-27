@@ -1,6 +1,3 @@
-const Client = require('./lib/client');
-const bni = { 
-  Client
-}
-
-module.exports = bni;
+module.exports = { 
+  BNIClient: require('./lib/bniClient')
+};

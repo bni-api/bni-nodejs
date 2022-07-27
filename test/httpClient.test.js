@@ -1,4 +1,4 @@
-const HttpClient = require('../lib/httpClient');
+const HttpClient = require('../lib/net/httpClient');
 
 describe('httpClient', () => {
   describe('request', () => {
