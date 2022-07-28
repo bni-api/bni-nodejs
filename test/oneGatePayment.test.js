@@ -3,6 +3,49 @@ const OneGatePayment = require("../lib/api/oneGatePayment");
 const assert = require('assert');
 const { doesNotMatch } = require("assert");
 
+describe("oneGatePayment.js", () => {
+
+  describe("getBalance", () => {
+
+    it(`should return responseCode 0001`, () => {
+      return getBalance().then((res) => {
+        assert.strictEqual(res.getBalanceResponse.parameters.responseCode,"0001");
+      });
+    });
+    
+  });
+
+  describe("getInHouseInquiry", () => {
+
+    it(`should return responseCode 0001`, () => {
+      return getInHouseInquiry().then((res) => {
+        assert.strictEqual(res.getInHouseInquiryResponse.parameters.responseCode,"0001");
+      });
+    });
+    
+  });
+
+  describe("doPayment", () => {
+
+    it(`should return responseCode 0001`, () => {
+      return doPayment().then((res) => {
+        assert.strictEqual(res.doPaymentResponse.parameters.responseCode,"0001");
+      });
+    });
+    
+  });
+
+  describe("getPaymentStatus", () => {
+
+    it(`should return responseCode 0001`, () => {
+      return getPaymentStatus().then((res) => {
+        assert.strictEqual(res.getPaymentStatusResponse.parameters.responseCode,"0001");
+      });
+    });
+    
+  });
+});
+
 const client = new BNIClient({
   prod: false,
   clientId: "ff19bcb7-3a15-4d0b-97b1-f36f9cf9bdb2",
@@ -52,46 +95,3 @@ const getPaymentStatus = async () => {
   });
   return res;
 };
-
-describe("oneGatePayment.js", () => {
-
-  describe("getBalance", () => {
-
-    it(`should return responseCode 0001`, () => {
-      return getBalance().then((res) => {
-        assert.strictEqual(res.getBalanceResponse.parameters.responseCode,"0001");
-      });
-    });
-    
-  });
-
-  describe("getInHouseInquiry", () => {
-
-    it(`should return responseCode 0001`, () => {
-      return getInHouseInquiry().then((res) => {
-        assert.strictEqual(res.getInHouseInquiryResponse.parameters.responseCode,"0001");
-      });
-    });
-    
-  });
-
-  describe("doPayment", () => {
-
-    it(`should return responseCode 0001`, () => {
-      return doPayment().then((res) => {
-        assert.strictEqual(res.doPaymentResponse.parameters.responseCode,"0001");
-      });
-    });
-    
-  });
-
-  describe("getPaymentStatus", () => {
-
-    it(`should return responseCode 0001`, () => {
-      return getPaymentStatus().then((res) => {
-        assert.strictEqual(res.getPaymentStatusResponse.parameters.responseCode,"0001");
-      });
-    });
-    
-  });
-});
