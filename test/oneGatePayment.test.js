@@ -83,7 +83,7 @@ const client = new BNIClient({
   clientSecret: 'd227997a-3525-442d-b80e-2ab2e7d908f0',
   apiKey: '98c4277f-866d-46b0-ba83-d3e0e37e667e',
   apiSecret: 'b3b58219-8a88-401f-89c0-f2dc5bb7ce21',
-  appName: 'Test Wawat',
+  appName: 'Test Wawat'
 });
 
 const getBalance = async () => {
@@ -118,7 +118,7 @@ const doPayment = async () => {
     beneficiaryAddress1: 'Jakarta',
     beneficiaryAddress2: '',
     destinationBankCode: 'CENAIDJAXXX',
-    chargingModelId: 'OUR',
+    chargingModelId: 'OUR'
   });
   return res;
 };
@@ -126,7 +126,7 @@ const doPayment = async () => {
 const getPaymentStatus = async () => {
   const ogp = new OneGatePayment(client);
   const res = await ogp.getPaymentStatus({
-    customerReferenceNumber: '20170227000000000020',
+    customerReferenceNumber: '20170227000000000020'
   });
   return res;
 };
@@ -137,7 +137,7 @@ const getInterBankInquiry = async () => {
     customerReferenceNumber: '20180930112233003',
     accountNum: '0115476117',
     destinationBankCode: '014',
-    destinationAccountNum: '01400000',
+    destinationAccountNum: '01400000'
   });
   return res;
 };
@@ -152,7 +152,7 @@ const getInterBankPayment = async () => {
     destinationBankCode: '014',
     destinationBankName: 'BCA',
     accountNum: '0316031099',
-    retrievalReffNum: '100000000097',
+    retrievalReffNum: '100000000097'
   });
   return res;
 };
@@ -163,7 +163,7 @@ const holdAmount = async () => {
     customerReferenceNumber: '20181001112233009',
     amount: '12007',
     accountNo: '0115476151',
-    detail: 'testHold',
+    detail: 'testHold'
   });
   return res;
 };
@@ -175,7 +175,7 @@ const holdAmountRelease = async () => {
     'amount': '12007',
     'accountNo': '0115476151',
     'bankReference': '657364',
-    'holdTransactionDate': '31052010',
+    'holdTransactionDate': '31052010'
   });
   return res;
 };
