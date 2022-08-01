@@ -1,9 +1,6 @@
 const BNIClient = require('../lib/bniClient');
 const OneGatePayment = require('../lib/api/oneGatePayment');
 const assert = require('assert');
-const {
-  doesNotMatch
-} = require('assert');
 
 describe('oneGatePayment.js', () => {
 
@@ -63,7 +60,7 @@ describe('oneGatePayment.js', () => {
     });
   });
 
-  describe('holdAmount',()=>{
+  describe('holdAmount', ()=>{
     it('should return responseCode 0001', ()=>{
       return holdAmount().then((res)=>{
         assert.strictEqual(res.holdAmountResponse.parameters.responseCode, '0001');
@@ -71,7 +68,7 @@ describe('oneGatePayment.js', () => {
     });
   });
 
-  describe('holdAmountRelease',()=>{
+  describe('holdAmountRelease', ()=>{
     it('should return responseCode 0001', ()=>{
       return holdAmountRelease().then((res)=>{
         assert.strictEqual(res.holdAmountReleaseResponse.parameters.responseCode, '0001');
@@ -163,10 +160,10 @@ const getInterBankPayment = async () => {
 const holdAmount = async () => {
   const ogp = new OneGatePayment(client);
   const res = await ogp.holdAmount({
-    customerReferenceNumber: "20181001112233009",
-    amount: "12007",
-    accountNo: "0115476151",
-    detail: "testHold",
+    customerReferenceNumber: '20181001112233009',
+    amount: '12007',
+    accountNo: '0115476151',
+    detail: 'testHold',
   });
   return res;
 };
@@ -174,11 +171,11 @@ const holdAmount = async () => {
 const holdAmountRelease = async () => {
   const ogp = new OneGatePayment(client);
   const res = await ogp.holdAmountRelease({
-    "customerReferenceNumber": "20181001112233010",
-    "amount": "12007",
-    "accountNo": "0115476151",
-    "bankReference": "657364",
-    "holdTransactionDate": "31052010",
+    'customerReferenceNumber': '20181001112233010',
+    'amount': '12007',
+    'accountNo': '0115476151',
+    'bankReference': '657364',
+    'holdTransactionDate': '31052010',
   });
   return res;
 };
