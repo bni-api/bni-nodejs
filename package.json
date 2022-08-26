@@ -4,7 +4,7 @@
   "description": "Official BNI API SDK for Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --timeout 10000",
     "lint": "eslint . --fix"
   },
   "repository": {
