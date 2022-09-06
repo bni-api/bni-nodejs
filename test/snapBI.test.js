@@ -4,96 +4,96 @@ const assert = require('assert');
 
 describe('snapBI.js', () => {
 
-  // describe('getBalanceInquiry', () => {
+  describe('getBalanceInquiry', () => {
 
-  //   it('should return responseCode 2000000', () => {
-  //     return getBalanceInquiry().then((res) => {
-  //       assert.strictEqual(res.responseCode, '2000000');
-  //     });
-  //   });
-
-  // });
-
-  // describe('getBankStatement', () => {
-
-  //   it('should return responseCode 2001400', () => {
-  //     return getBankStatement().then((res) => {
-  //       console.log(res);
-  //       assert.strictEqual(res.responseCode, '2001400');
-  //     });
-  //   });
-
-  // });
-
-  // describe('getInternalAccountInquiry', () => {
-
-  //   it('should return responseCode 2001500', () => {
-  //     return getInternalAccountInquiry().then((res) => {
-  //       assert.strictEqual(res.responseCode, '2001500');
-  //     });
-  //   });
-
-  // });
-
-  // describe('getTransactionStatusInquiry', () => {
-
-  //   it('should return responseCode 2003600', () => {
-  //     return getTransactionStatusInquiry().then((res) => {
-  //       assert.strictEqual(res.responseCode, '2003600');
-  //     });
-  //   });
-
-  // });
-
-//   describe('getTransferIntraBank', () => {
-
-//     it('should return responseCode 2001700', () => {
-//       return getTransferIntraBank().then((res) => {
-//         assert.strictEqual(res.responseCode, '2001700');
-//       });
-//     });
-
-//   });
-
-//   describe('getTransferRTGS', () => {
-
-//     it('should return responseCode 2002200', () => {
-//       return getTransferRTGS().then((res) => {
-//         assert.strictEqual(res.responseCode, '2002200');
-//       });
-//     });
-
-//   });
-
-//   describe('getTransferSKNBI', () => {
-
-//     it('should return responseCode 2002300', () => {
-//       return getTransferSKNBI().then((res) => {
-//         assert.strictEqual(res.responseCode, '2002300');
-//       });
-//     });
-
-//   });
-
-    describe('getExternalAccountInquiry', () => {
-
-        it('should return responseCode 2001600', () => {
-        return getExternalAccountInquiry().then((res) => {
-            assert.strictEqual(res.responseCode, '2001600');
-        });
-        });
-
+    it('should return responseCode 2000000', () => {
+      return getBalanceInquiry().then((res) => {
+        assert.strictEqual(res.responseCode, '2000000');
+      });
     });
 
-    // describe('getTransferInterBank', () => {
+  });
 
-    //     it('should return responseCode 2001800', () => {
-    //     return getTransferInterBank().then((res) => {
-    //         assert.strictEqual(res.responseCode, '2001800');
-    //     });
-    //     });
+  describe('getBankStatement', () => {
 
-    // });
+    it('should return responseCode 2001400', () => {
+      return getBankStatement().then((res) => {
+        console.log(res);
+        assert.strictEqual(res.responseCode, '2001400');
+      });
+    });
+
+  });
+
+  describe('getInternalAccountInquiry', () => {
+
+    it('should return responseCode 2001500', () => {
+      return getInternalAccountInquiry().then((res) => {
+        assert.strictEqual(res.responseCode, '2001500');
+      });
+    });
+
+  });
+
+  describe('getTransactionStatusInquiry', () => {
+
+    it('should return responseCode 2003600', () => {
+      return getTransactionStatusInquiry().then((res) => {
+        assert.strictEqual(res.responseCode, '2003600');
+      });
+    });
+
+  });
+
+  describe('getTransferIntraBank', () => {
+
+    it('should return responseCode 2001700', () => {
+      return getTransferIntraBank().then((res) => {
+        assert.strictEqual(res.responseCode, '2001700');
+      });
+    });
+
+  });
+
+  describe('getTransferRTGS', () => {
+
+    it('should return responseCode 2002200', () => {
+      return getTransferRTGS().then((res) => {
+        assert.strictEqual(res.responseCode, '2002200');
+      });
+    });
+
+  });
+
+  describe('getTransferSKNBI', () => {
+
+    it('should return responseCode 2002300', () => {
+      return getTransferSKNBI().then((res) => {
+        assert.strictEqual(res.responseCode, '2002300');
+      });
+    });
+
+  });
+
+  describe('getExternalAccountInquiry', () => {
+
+      it('should return responseCode 2001600', () => {
+      return getExternalAccountInquiry().then((res) => {
+          assert.strictEqual(res.responseCode, '2001600');
+      });
+    });
+
+  });
+
+  describe('getTransferInterBank', () => {
+
+      it('should return responseCode 2001800', () => {
+      return getTransferInterBank().then((res) => {
+          assert.strictEqual(res.responseCode, '2001800');
+      });
+      });
+
+  });
 
 });
 
@@ -159,19 +159,19 @@ const getTransactionStatusInquiry = async () => {
 const getTransferIntraBank = async () => {
   const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
   const res = await snap.transferIntraBank({
-    partnerReferenceNo: '20220902170737356700',
+    partnerReferenceNo: '207113OO00842662',
     amount: {
-      value: '55000.00',
+      value: '500000.00',
       currency: 'IDR'
     },
-    beneficiaryAccountNo: '0115476151',
+    beneficiaryAccountNo: '1000161562',
     beneficiaryEmail: '',
     currency: 'IDR',
-    customerReference: '20220902170737356700',
+    customerReference: '207113OO00842662',
     feeType: 'OUR',
     remark: 'DANA20220426170737356898YuliantoSariputra',
-    sourceAccountNo: '0115476117',
-    transactionDate: '2022-09-02T11:43:36+07:00',
+    sourceAccountNo: '1000164314',
+    transactionDate: '2022-09-05T10:29:57+07:00',
     additionalInfo: {
       deviceId: '123456',
       channel: 'mobilephone'
