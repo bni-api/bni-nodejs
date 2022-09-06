@@ -118,16 +118,31 @@ const client = new BNIClient({
 const snap = new SnapBI(client, { privateKeyPath: '[your-path-private-key]', channelId: '{your-channel-id}' });
 
 // return as Promise of Object
-const getBalanceInquiry = await snap.getBalanceInquiry(parameters);
+const getBalanceInquiry = await snap.balanceInquiry(parameters);
 
 // return as Promise of Object
-const getBankStatement = await snap.getBankStatement(parameters);
+const getBankStatement = await snap.bankStatement(parameters);
 
 // return as Promise of Object
-const getInternalAccountInquiry = await snap.getInternalAccountInquiry(parameters);
+const getInternalAccountInquiry = await snap.internalAccountInquiry(parameters);
 
 // return as Promise of Object
-const getTransactionStatusInquiry = await snap.getTransactionStatusInquiry(parameters);
+const getTransactionStatusInquiry = await snap.transactionStatusInquiry(parameters);
+
+// return as Promise of Object
+const getTransactionStatusInquiry = await snap.transferIntraBank(parameters);
+
+// return as Promise of Object
+const getTransactionStatusInquiry = await snap.transferRTGS(parameters);
+
+// return as Promise of Object
+const getTransactionStatusInquiry = await snap.transferSKNBI(parameters);
+
+// return as Promise of Object
+const getTransactionStatusInquiry = await snap.externalAccountInquiry(parameters);
+
+// return as Promise of Object
+const getTransactionStatusInquiry = await snap.transferInterBank(parameters);
 
 ```
 `parameter` is Object or String of JSON
