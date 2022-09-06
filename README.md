@@ -23,7 +23,7 @@ If you are not using NPM, you can clone or [download](https://github.com/bni-api
 Then require from `index.js` file.
 
 ```javascript
-const BNIClient = require('../bni-nodejs/lib/bniClient');
+const { BNIClient } = require('bni-nodejs');
 ```
 
 ## 2. Usage
@@ -91,8 +91,8 @@ const doPayment = await ogp.doPayment({
     creditAccountNo: '{your-credit-account-no}',
     valueDate: '{your-value-date}',
     valueCurrency: '{your-value-currency}',
-    valueAmount: YOUR_VALUE_AMOUNT,
-    remark: 'your-remark',
+    valueAmount: '{your-value-amount}',
+    remark: '{your-remark}',
     beneficiaryEmailAddress: '{your-beneficiary-email-address}',
     beneficiaryName: '{your-beneficiary-name}',
     beneficiaryAddress1: '{your-beneficiary-address-1}',
@@ -195,12 +195,12 @@ const getTransactionStatusInquiry = await snap.transactionStatusInquiry({
     serviceCode: '{your-service-code}',
     transactionDate: '{your-transaction-date}',
     amount: {
-      value: '15000.00',
-      currency: 'IDR'
+      value: '{your-amount-value}',
+      currency: '{your-amount-currency}'
     },
     additionalInfo: {
-      deviceId: '123456',
-      channel: 'mobilephone'
+      deviceId: '{your-additional-info-device-id}',
+      channel: '{your-additional-info-channel}'
     }
 });
 
@@ -245,15 +245,15 @@ const getTransactionStatusInquiry = await snap.transferRTGS({
     feeType: '{your-}',
     kodePos: '-',
     recieverPhone: '-',
-    remark: 'DANA20220513095840015788857PTZomatoMediaIndonesia',
-    senderCustomerResidence: '-',
-    senderCustomerType: '-',
-    senderPhone: '',
-    sourceAccountNo: '0115476151',
-    transactionDate: '2020-06-17T01:03:04+07:00',
+    remark: '{your-remark}',
+    senderCustomerResidence: '{your-sender-customer-residence}',
+    senderCustomerType: '{your-sender-customer-type}',
+    senderPhone: '{your-sender-phone}',
+    sourceAccountNo: '{your-source-account-no}',
+    transactionDate: '{your-transaction-date}',
     additionalInfo: {
-      deviceId: '',
-      channel: ''
+      deviceId: '{your-additional-info-device-id}',
+      channel: '{your-additional-info-channel}'
     }
 });
 
@@ -331,4 +331,4 @@ const getTransactionStatusInquiry = await snap.transferInterBank({
 * [Digital Services](https://digitalservices.bni.co.id/en/)
 * [API documentation](https://digitalservices.bni.co.id/documentation/public/en)
 * [Stackoverflow](https://stackoverflow.com/users/19817167/bni-api-management)
-* Can't find answer you looking for? email to [ryan.hidayat@bni.co.id](mailto:ryan.hidayat@bni.co.id)
+* Can't find answer you looking for? email to [apisupport@bni.co.id](mailto:apisupport@bni.co.id)
