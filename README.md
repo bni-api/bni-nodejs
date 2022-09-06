@@ -60,6 +60,8 @@ Available methods for `One Gate Payment` class
 ```javascript
 
 const BNIClient = require('../bni-nodejs/lib/bniClient');
+const OneGatePayment = require('../bni-nodejs/lib/api/oneGatePayment');
+
 // Create Client instance
 const client = new BNIClient({
   prod: false,
@@ -105,6 +107,8 @@ Available methods for `Snap BI` class
 ```javascript
 
 const BNIClient = require('../bni-nodejs/lib/bniClient');
+const SnapBI = require('../bni-nodejs/lib/api/snapBI');
+
 // Create Client instance
 const client = new BNIClient({
   prod: false,
