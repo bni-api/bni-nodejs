@@ -92,7 +92,7 @@ const doPayment = await ogp.doPayment({
   paymentMethod: '0', // 0: In-house (intra BNI), 1: RTGS transfer, 2: Kliring transfer
   debitAccountNo: '113183203',
   creditAccountNo: '115471119',
-  valueDate: '{your-value-date}',
+  valueDate: '20170227000000000',
   valueCurrency: 'IDR',
   valueAmount: '100500',
   remark: '', // optional
