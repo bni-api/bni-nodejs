@@ -31,7 +31,6 @@ We have 2 API products you can use:
 ### 2.2 Client Initialization and Configuration
 
 Get your client key and server key from [Menu - Applications](https://digitalservices.bni.co.id/en/profile-menu/apps)
-
 Create API client object
 
 ```javascript
@@ -49,7 +48,7 @@ const client = new BNIClient({
 
 ### 2.2.A One Gate Payment
 
-Available methods for `One Gate Payment` class
+Create `One Gate Payment` class object
 ```javascript
 
 const { BNIClient, OneGatePayment } = require('bni-nodejs');
@@ -65,17 +64,27 @@ const client = new BNIClient({
 });
 
 const ogp = new OneGatePayment(client);
+```
 
+Available methods for `One Gate Payment` class
+#### Get Balance
+```javascript
 // return as Promise of Object
 const getBalance = await ogp.getBalance({
   accountNo: '113183203'
 });
+```
 
+#### Get In House Inquiry
+```javascript
 // return as Promise of Object
 const getInHouseInquiry = await ogp.getInHouseInquiry({
   accountNo: '113183203'
 });
+```
 
+#### Do Payment
+```javascript
 // return as Promise of Object
 const doPayment = await ogp.doPayment({
   customerReferenceNumber: '20170227000000000020', // max 20 char client defined reference number
@@ -93,12 +102,18 @@ const doPayment = await ogp.doPayment({
   destinationBankCode: '', // optional (mandatory if paymentMethod 1 / 2)
   chargingModelId: 'OUR' // OUR: fee will be paid by sender (default), BEN: fee will be paid by beneficary, SHA: fee divided
 });
+```
 
+#### Get Payment Status
+```javascript
 // return as Promise of Object
 const getPaymentStatus = await ogp.getPaymentStatus({
   customerReferenceNumber: '20170227000000000020' // max 20 char client defined reference number
 });
+```
 
+#### Get Inter Bank Inquiry
+```javascript
 // return as Promise of Object
 const getInterBankInquiry = await ogp.getInterBankInquiry({
   customerReferenceNumber: '20170227000000000021', // max 20 char client defined reference number
@@ -106,7 +121,10 @@ const getInterBankInquiry = await ogp.getInterBankInquiry({
   destinationBankCode: '014',
   destinationAccountNum: '3333333333'
 });
+```
 
+#### Get Inter Bank Payment
+```javascript
 // return as Promise of Object
 const getInterBankPayment = await ogp.getInterBankPayment({
   customerReferenceNumber: '20170227000000000021', // max 20 char client defined reference number
@@ -118,7 +136,10 @@ const getInterBankPayment = await ogp.getInterBankPayment({
   accountNum: '115471119',
   retrievalReffNum: '100000000024' // refference number for Interbank Transaction
 });
+```
 
+#### Hold Amount
+```javascript
 // return as Promise of Object
 const holdAmount = await ogp.holdAmount({
   customerReferenceNumber: '20170504153218296', // max 20 char client defined reference number
@@ -126,7 +147,10 @@ const holdAmount = await ogp.holdAmount({
   accountNo: '0115476151',
   detail: '' // optional
 });
+```
 
+#### Hold Amount Release
+```javascript
 // return as Promise of Object
 const holdAmountRelease = await ogp.holdAmountRelease({
   customerReferenceNumber: '20170504153218296', // max 20 char client defined reference number
@@ -135,12 +159,11 @@ const holdAmountRelease = await ogp.holdAmountRelease({
   bankReference: '513668', // journal number. you can get this value from hold amount response
   holdTransactionDate: '31052010' // the date when you do the hold transaction
 });
-
 ```
 
 ### 2.2.B Snap BI
 
-Available methods for `Snap BI` class
+Create `One Gate Payment` class object
 ```javascript
 
 const { BNIClient, SnapBI } = require('bni-nodejs');
@@ -159,13 +182,20 @@ const snap = new SnapBI(client, {
   privateKeyPath: '{your-rsa-private-key-path}', 
   channelId: '{your-channel-id}' 
 });
+```
 
+Available methods for `Snap BI` class
+#### Balance Inquiry
+```javascript
 // return as Promise of Object
 const balanceInquiry = await snap.balanceInquiry({
   partnerReferenceNo: '202010290000000000002', // optional
   accountNo: '0115476117'
 });
+```
 
+#### Bank Statement
+```javascript
 // return as Promise of Object
 const bankStatement = await snap.bankStatement({
   partnerReferenceNo: '202010290000000000002', // optional
@@ -173,13 +203,19 @@ const bankStatement = await snap.bankStatement({
   fromDateTime: '2010-01-01T12:08:56+07:00', // optional
   toDateTime: '2011-01-01T12:08:56+07:00' // optional
 });
+```
 
+#### Internal Account Inquiry
+```javascript
 // return as Promise of Object
 const internalAccountInquiry = await snap.internalAccountInquiry({
   partnerReferenceNo: '2020102900000000000001', // optional
   beneficiaryAccountNo: '0115476151'
 });
+```
 
+#### Transaction Status Inquiry
+```javascript
 // return as Promise of Object
 const transactionStatusInquiry = await snap.transactionStatusInquiry({
   originalPartnerReferenceNo: '20211213100434', // optional
@@ -196,7 +232,10 @@ const transactionStatusInquiry = await snap.transactionStatusInquiry({
     channel: 'mobilephone' // optinal
   }
 });
+```
 
+#### Transfer Intra Bank
+```javascript
 // return as Promise of Object
 const transferIntraBank = await snap.transferIntraBank({
   partnerReferenceNo: '202201911020300006', // transaction reference number
@@ -217,7 +256,10 @@ const transferIntraBank = await snap.transferIntraBank({
     channel: 'mobilephone' // optinal
   }
 });
+```
 
+#### Transfer RTGS
+```javascript
 // return as Promise of Object
 const transferRTGS = await snap.transferRTGS({
   partnerReferenceNo: '202201911020300011', // transaction reference number
@@ -249,7 +291,10 @@ const transferRTGS = await snap.transferRTGS({
     channel: 'mobilephone' // optinal
   }
 });
+```
 
+#### Transfer SKNBI
+```javascript
 // return as Promise of Object
 const transferSKNBI = await snap.transferSKNBI({
   partnerReferenceNo: '202201911020300012', // transaction reference number
@@ -281,7 +326,10 @@ const transferSKNBI = await snap.transferSKNBI({
     channel: 'mobilephone' // optinal
   }
 });
+```
 
+#### External Account Inquiry
+```javascript
 // return as Promise of Object
 const externalAccountInquiry = await snap.externalAccountInquiry({
   beneficiaryBankCode: '002',
@@ -292,7 +340,10 @@ const externalAccountInquiry = await snap.externalAccountInquiry({
     channel: 'mobilephone' // optinal
   }
 });
+```
 
+#### Transfer Inter Bank
+```javascript
 // return as Promise of Object
 const transferInterBank = await snap.transferInterBank({
   partnerReferenceNo: '2020102900000000000001', // transaction reference number
