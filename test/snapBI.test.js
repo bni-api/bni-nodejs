@@ -18,7 +18,6 @@ describe('snapBI.js', () => {
 
     it('should return responseCode 2001400', () => {
       return getBankStatement().then((res) => {
-        console.log(res);
         assert.strictEqual(res.responseCode, '2001400');
       });
     });
