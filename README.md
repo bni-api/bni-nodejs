@@ -1,6 +1,7 @@
 BNI API SDK - Node.js
 ===============
-This is the Official Node JS API client/library for BNI API. Visit [Digital Services](https://digitalservices.bni.co.id/en/). More information about the product and see documentation at [API Documentation](https://digitalservices.bni.co.id/documentation/public/en) for more technical details.
+This is the Official Node JS API client / library for BNI API. 
+Please visit [Digital Services](https://digitalservices.bni.co.id/en/) for more information about our product and visit our documentation page at [API Documentation](https://digitalservices.bni.co.id/documentation/public/en) for more technical details.
 
 ## 1. Installation
 
