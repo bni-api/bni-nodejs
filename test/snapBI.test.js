@@ -1,6 +1,7 @@
 const BNIClient = require('../lib/bniClient');
 const SnapBI = require('../lib/api/snapBI');
 const assert = require('assert');
+const credential = require('./constant.json');
 
 describe('snapBI.js', () => {
 
@@ -98,15 +99,15 @@ describe('snapBI.js', () => {
 
 const client = new BNIClient({
   prod: false,
-  clientId: '0bed55cb-c25d-4f07-9c5f-78f7c8aac9da',
-  clientSecret: '46987047-6d56-410d-b43c-abdd247abac2',
-  apiKey: '91ea86f6-387a-49f9-bc55-670e4d2ef67b',
-  apiSecret: 'cc914c89-6b65-475d-a450-58ee4199a1b2',
-  appName: 'Test Wawat'
+  clientId: credential.snap_bi.clientId,
+  clientSecret: credential.snap_bi.clientSecret,
+  apiKey: credential.snap_bi.apiKey,
+  apiSecret: credential.snap_bi.apiSecret,
+  appName: credential.snap_bi.appName
 });
 
 const getBalanceInquiry = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
+  const snap = new SnapBI(client, { privateKeyPath: credential.snap_bi.privateKey, channelId: credential.snap_bi.channelId });
   const res = await snap.balanceInquiry({
     partnerReferenceNo: '202010290000000000002',
     accountNo: '0115476117'
