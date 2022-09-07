@@ -111,7 +111,7 @@ const doPayment = async () => {
     creditAccountNo: '115471119',
     valueDate: '20170227000000000',
     valueCurrency: 'IDR',
-    valueAmount: 100500,
+    valueAmount: '100500',
     remark: '?',
     beneficiaryEmailAddress: '',
     beneficiaryName: 'Mr.X',
