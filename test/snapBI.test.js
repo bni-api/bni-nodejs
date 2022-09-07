@@ -76,9 +76,9 @@ describe('snapBI.js', () => {
 
   describe('getExternalAccountInquiry', () => {
 
-      it('should return responseCode 2001600', () => {
+    it('should return responseCode 2001600', () => {
       return getExternalAccountInquiry().then((res) => {
-          assert.strictEqual(res.responseCode, '2001600');
+        assert.strictEqual(res.responseCode, '2001600');
       });
     });
 
@@ -86,11 +86,11 @@ describe('snapBI.js', () => {
 
   describe('getTransferInterBank', () => {
 
-      it('should return responseCode 2001800', () => {
+    it('should return responseCode 2001800', () => {
       return getTransferInterBank().then((res) => {
-          assert.strictEqual(res.responseCode, '2001800');
+        assert.strictEqual(res.responseCode, '2001800');
       });
-      });
+    });
 
   });
 
