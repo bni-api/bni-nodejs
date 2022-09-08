@@ -9,7 +9,7 @@ describe('snapBI.js', () => {
 
     it('should return responseCode 2000000', () => {
       return getBalanceInquiry().then((res) => {
-        assert.strictEqual(res.responseCode, '2000000');
+        assert.strictEqual(res.responseCode, '2001100');
       });
     });
 
