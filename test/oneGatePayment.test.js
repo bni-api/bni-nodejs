@@ -1,6 +1,7 @@
 const BNIClient = require('../lib/bniClient');
 const OneGatePayment = require('../lib/api/oneGatePayment');
 const assert = require('assert');
+const credential = require('./constant.json');
 
 describe('oneGatePayment.js', () => {
 
@@ -79,11 +80,11 @@ describe('oneGatePayment.js', () => {
 
 const client = new BNIClient({
   prod: false,
-  clientId: 'ff19bcb7-3a15-4d0b-97b1-f36f9cf9bdb2',
-  clientSecret: 'd227997a-3525-442d-b80e-2ab2e7d908f0',
-  apiKey: '98c4277f-866d-46b0-ba83-d3e0e37e667e',
-  apiSecret: 'b3b58219-8a88-401f-89c0-f2dc5bb7ce21',
-  appName: 'Test Wawat'
+  clientId: credential.one_gate_payment.clientId,
+  clientSecret: credential.one_gate_payment.clientSecret,
+  apiKey: credential.one_gate_payment.apiKey,
+  apiSecret: credential.one_gate_payment.apiSecret,
+  appName: credential.one_gate_payment.appName
 });
 
 const getBalance = async () => {
@@ -111,7 +112,7 @@ const doPayment = async () => {
     creditAccountNo: '115471119',
     valueDate: '20170227000000000',
     valueCurrency: 'IDR',
-    valueAmount: 100500,
+    valueAmount: '100500',
     remark: '?',
     beneficiaryEmailAddress: '',
     beneficiaryName: 'Mr.X',
