@@ -164,7 +164,7 @@ const holdAmountRelease = await ogp.holdAmountRelease({
 
 ### 2.2.B Snap BI
 
-Create `One Gate Payment` class object
+Create `Snap BI` class object
 ```javascript
 
 const { BNIClient, SnapBI } = require('bni-nodejs');
