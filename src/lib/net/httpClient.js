@@ -19,7 +19,7 @@ class HttpClient {
   tokenRequest(options = { url, username, password }) {
     const headers = {
       'content-type': 'application/x-www-form-urlencoded',
-      'user-agent': 'bni-nodejs/0.1.4'
+      'user-agent': 'bni-nodejs/0.1.5'
     };
 
     return new Promise(async (resolve, reject) => {
@@ -99,7 +99,7 @@ class HttpClient {
   request(options = { method, apiKey, accessToken, url, data }) {
     const headers = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.4',
+      'user-agent': 'bni-nodejs/0.1.5',
       'x-api-key': options.apiKey
     };
 
@@ -123,7 +123,7 @@ class HttpClient {
   requestSnapBI(options = { method, apiKey, accessToken, url, data, additionalHeader: {} }) {
     const header = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.4',
+      'user-agent': 'bni-nodejs/0.1.5',
       'Authorization': `Bearer ${options.accessToken}`
     };
 

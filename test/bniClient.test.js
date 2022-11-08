@@ -1,4 +1,4 @@
-import { BNIClient } from '../index.js';
+import { BNIClient } from '../src/index.js';
 import { strictEqual, deepEqual } from 'assert';
 
 describe('bniClient.js', () => {

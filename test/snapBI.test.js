@@ -1,4 +1,4 @@
-import { BNIClient, SnapBI } from '../index.js';
+import { BNIClient, SnapBI } from '../src/index.js';
 import { strictEqual } from 'assert';
 import { cred_snap } from './constant.js';
 

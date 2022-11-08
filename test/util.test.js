@@ -1,4 +1,4 @@
-import { generateSignature, generateClientId } from '../lib/util/util.js';
+import { generateSignature, generateClientId } from '../src/lib/util/util.js';
 import { strictEqual } from 'assert';
 
 describe('util.js', () => {

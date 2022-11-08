@@ -1,4 +1,4 @@
-import { BNIClient, OneGatePayment } from '../index.js';
+import { BNIClient, OneGatePayment } from '../src/index.js';
 import { strictEqual } from 'assert';
 import { cred_ogp } from './constant.js';
 

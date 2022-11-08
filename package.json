@@ -1,12 +1,20 @@
 {
   "name": "bni-nodejs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Official BNI API SDK for Node.js",
-  "main": "index.js",
   "type": "module",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
   "scripts": {
     "test": "mocha --timeout 10000",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "build": "rm -fr dist/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && ./afterbuild.sh"
   },
   "repository": {
     "type": "git",
@@ -24,7 +32,8 @@
   },
   "devDependencies": {
     "eslint": "^8.27.0",
-    "mocha": "^10.1.0"
+    "mocha": "^10.1.0",
+    "typescript": "^4.8.4"
   },
   "engines": {
     "node": ">=8.0.0"
