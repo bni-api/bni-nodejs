@@ -1,96 +1,86 @@
-const BNIClient = require('../lib/bniClient');
-const SnapBI = require('../lib/api/snapBI');
-const assert = require('assert');
-const credential = require('./constant.json');
+import { BNIClient, SnapBI } from '../index.js';
+import { strictEqual } from 'assert';
+import { cred_snap } from './constant.js';
 
 describe('snapBI.js', () => {
 
   describe('getBalanceInquiry', () => {
 
-    it('should return responseCode 2000000', () => {
-      return getBalanceInquiry().then((res) => {
-        assert.strictEqual(res.responseCode, '2001100');
-      });
+    it('should return responseCode 2000000', async () => {
+      const res = await getBalanceInquiry();
+      strictEqual(res.responseCode, '2001100');
     });
 
   });
 
   describe('getBankStatement', () => {
 
-    it('should return responseCode 2001400', () => {
-      return getBankStatement().then((res) => {
-        assert.strictEqual(res.responseCode, '2001400');
-      });
+    it('should return responseCode 2001400', async () => {
+      const res = await getBankStatement();
+      strictEqual(res.responseCode, '2001400');
     });
 
   });
 
   describe('getInternalAccountInquiry', () => {
 
-    it('should return responseCode 2001500', () => {
-      return getInternalAccountInquiry().then((res) => {
-        assert.strictEqual(res.responseCode, '2001500');
-      });
+    it('should return responseCode 2001500', async () => {
+      const res = await getInternalAccountInquiry();
+      strictEqual(res.responseCode, '2001500');
     });
 
   });
 
   describe('getTransactionStatusInquiry', () => {
 
-    it('should return responseCode 2003600', () => {
-      return getTransactionStatusInquiry().then((res) => {
-        assert.strictEqual(res.responseCode, '2003600');
-      });
+    it('should return responseCode 2003600', async () => {
+      const res = await getTransactionStatusInquiry();
+      strictEqual(res.responseCode, '2003600');
     });
 
   });
 
   describe('getTransferIntraBank', () => {
 
-    it('should return responseCode 2001700', () => {
-      return getTransferIntraBank().then((res) => {
-        assert.strictEqual(res.responseCode, '2001700');
-      });
+    it('should return responseCode 2001700', async () => {
+      const res = await getTransferIntraBank();
+      strictEqual(res.responseCode, '2001700');
     });
 
   });
 
   describe('getTransferRTGS', () => {
 
-    it('should return responseCode 2002200', () => {
-      return getTransferRTGS().then((res) => {
-        assert.strictEqual(res.responseCode, '2002200');
-      });
+    it('should return responseCode 2002200', async () => {
+      const res = await getTransferRTGS();
+      strictEqual(res.responseCode, '2002200');
     });
 
   });
 
   describe('getTransferSKNBI', () => {
 
-    it('should return responseCode 2002300', () => {
-      return getTransferSKNBI().then((res) => {
-        assert.strictEqual(res.responseCode, '2002300');
-      });
+    it('should return responseCode 2002300', async () => {
+      const res = await getTransferSKNBI();
+      strictEqual(res.responseCode, '2002300');
     });
 
   });
 
   describe('getExternalAccountInquiry', () => {
 
-    it('should return responseCode 2001600', () => {
-      return getExternalAccountInquiry().then((res) => {
-        assert.strictEqual(res.responseCode, '2001600');
-      });
+    it('should return responseCode 2001600', async () => {
+      const res = await getExternalAccountInquiry();
+      strictEqual(res.responseCode, '2001600');
     });
 
   });
 
   describe('getTransferInterBank', () => {
 
-    it('should return responseCode 2001800', () => {
-      return getTransferInterBank().then((res) => {
-        assert.strictEqual(res.responseCode, '2001800');
-      });
+    it('should return responseCode 2001800', async () => {
+      const res = await getTransferInterBank();
+      strictEqual(res.responseCode, '2001800');
     });
 
   });
@@ -99,13 +89,13 @@ describe('snapBI.js', () => {
 
 const client = new BNIClient({
   env: 'dev',
-  clientId: credential.snap_bi.clientId,
-  clientSecret: credential.snap_bi.clientSecret,
-  apiKey: credential.snap_bi.apiKey,
-  apiSecret: credential.snap_bi.apiSecret,
-  appName: credential.snap_bi.appName
+  clientId: cred_snap.clientId,
+  clientSecret: cred_snap.clientSecret,
+  apiKey: cred_snap.apiKey,
+  apiSecret: cred_snap.apiSecret,
+  appName: cred_snap.appName
 });
-const snap = new SnapBI(client, { privateKeyPath: credential.snap_bi.privateKey, channelId: credential.snap_bi.channelId });
+const snap = new SnapBI(client, { privateKeyPath: cred_snap.privateKey, channelId: cred_snap.channelId });
 
 const getBalanceInquiry = async () => {
   const res = await snap.balanceInquiry({
@@ -125,7 +115,7 @@ const getBankStatement = async () => {
   return res;
 };
 
-  
+
 const getInternalAccountInquiry = async () => {
   const res = await snap.internalAccountInquiry({
     partnerReferenceNo: '202010290000000000002',

@@ -1,5 +1,7 @@
-module.exports = { 
-  BNIClient: require('./lib/bniClient'),
-  OneGatePayment: require('./lib/api/oneGatePayment'),
-  SnapBI: require('./lib/api//snapBI')
-};
+import bniClient from './lib/bniClient.js';
+import oneGatePayment from './lib/api/oneGatePayment.js';
+import snapBI from './lib/api//snapBI.js';
+
+export const BNIClient = bniClient;
+export const OneGatePayment = oneGatePayment;
+export const SnapBI = snapBI;

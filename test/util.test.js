@@ -1,18 +1,18 @@
-const { generateSignature, generateClientId } = require('../lib/util/util');
-const assert = require('assert');
+import { generateSignature, generateClientId } from '../lib/util/util.js';
+import { strictEqual } from 'assert';
 
 describe('util.js', () => {
   const clientId = generateClientId('Test APP');
   describe('generateClientId', () => {
     it('should return IDBNIVGVzdCBBUFA=', () => {
-      assert.strictEqual(clientId, 'IDBNIVGVzdCBBUFA=');
+      strictEqual(clientId, 'IDBNIVGVzdCBBUFA=');
     });
   });
 
   describe('generateSignature', () => {
     it('should return eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IklEQk5JVkdWemRDQkJVRkE9IiwiYWNjb3VudE5vIjoiMDExNTQ3NjExNyJ9.ljWtFHL0dHhLPw97U8SVWsFV3fRIJItHlQ-HPqCRUwc', () => {
       const token = generateSignature({ body: { clientId: clientId, accountNo: '0115476117' }, apiSecret: 'test-secret' });
-      assert.strictEqual(token, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IklEQk5JVkdWemRDQkJVRkE9IiwiYWNjb3VudE5vIjoiMDExNTQ3NjExNyJ9.ljWtFHL0dHhLPw97U8SVWsFV3fRIJItHlQ-HPqCRUwc');
+      strictEqual(token, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IklEQk5JVkdWemRDQkJVRkE9IiwiYWNjb3VudE5vIjoiMDExNTQ3NjExNyJ9.ljWtFHL0dHhLPw97U8SVWsFV3fRIJItHlQ-HPqCRUwc');
     });
   });
 });

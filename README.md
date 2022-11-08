@@ -14,10 +14,11 @@ npm install --save bni-nodejs
 ### 1.2 Manual Installation
 
 If you are not using NPM, you can clone or [download](https://github.com/bni-api/bni-nodejs/archive/refs/heads/main.zip) this repository.
-Then require from `index.js` file.
+Then import from `index.js` file.
 
 ```javascript
-const { BNIClient } = require('bni-nodejs');
+import { BNIClient } from 'bni-nodejs';
+// const { BNIClient } = require('bni-nodejs'); // legacy way
 ```
 
 ## 2. Usage
@@ -35,7 +36,9 @@ Get your client key and server key from [Menu - Applications](https://digitalser
 Create API client object
 
 ```javascript
-const { BNIClient } = require('bni-nodejs');
+import { BNIClient } from 'bni-nodejs';
+// const { BNIClient } = require('bni-nodejs'); // legacy way
+
 // Create Core API instance
 const client = new BNIClient({
   env: 'sandbox', // dev, sandbox or prod
@@ -52,7 +55,8 @@ const client = new BNIClient({
 Create `One Gate Payment` class object
 ```javascript
 
-const { BNIClient, OneGatePayment } = require('bni-nodejs');
+import { BNIClient, OneGatePayment } from 'bni-nodejs';
+// const { BNIClient, OneGatePayment } = require('bni-nodejs'); // legacy way
 
 // Create Client instance
 const client = new BNIClient({
@@ -167,7 +171,8 @@ const holdAmountRelease = await ogp.holdAmountRelease({
 Create `Snap BI` class object
 ```javascript
 
-const { BNIClient, SnapBI } = require('bni-nodejs');
+import { BNIClient, SnapBI } from 'bni-nodejs';
+// const { BNIClient, SnapBI } = require('bni-nodejs'); // legacy way
 
 // Create Client instance
 const client = new BNIClient({

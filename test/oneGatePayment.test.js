@@ -1,90 +1,81 @@
-const BNIClient = require('../lib/bniClient');
-const OneGatePayment = require('../lib/api/oneGatePayment');
-const assert = require('assert');
-const credential = require('./constant.json');
+import { BNIClient, OneGatePayment } from '../index.js';
+import { strictEqual } from 'assert';
+import { cred_ogp } from './constant.js';
 
 describe('oneGatePayment.js', () => {
 
   describe('getBalance', () => {
 
-    it('should return responseCode 0001', () => {
-      return getBalance().then((res) => {
-        assert.strictEqual(res.getBalanceResponse.parameters.responseCode, '0001');
-      });
+    it('should return responseCode 0001', async () => {
+      const res = await getBalance();
+      strictEqual(res.getBalanceResponse.parameters.responseCode, '0001');
     });
 
   });
 
   describe('getInHouseInquiry', () => {
 
-    it('should return responseCode 0001', () => {
-      return getInHouseInquiry().then((res) => {
-        assert.strictEqual(res.getInHouseInquiryResponse.parameters.responseCode, '0001');
-      });
+    it('should return responseCode 0001', async () => {
+      const res = await getInHouseInquiry();
+      strictEqual(res.getInHouseInquiryResponse.parameters.responseCode, '0001');
     });
 
   });
 
   describe('doPayment', () => {
 
-    it('should return responseCode 0001', () => {
-      return doPayment().then((res) => {
-        assert.strictEqual(res.doPaymentResponse.parameters.responseCode, '0001');
-      });
+    it('should return responseCode 0001', async () => {
+      const res = await doPayment();
+      strictEqual(res.doPaymentResponse.parameters.responseCode, '0001');
     });
 
   });
 
   describe('getPaymentStatus', () => {
 
-    it('should return responseCode 0001', () => {
-      return getPaymentStatus().then((res) => {
-        assert.strictEqual(res.getPaymentStatusResponse.parameters.responseCode, '0001');
-      });
+    it('should return responseCode 0001', async () => {
+      const res = await getPaymentStatus();
+      strictEqual(res.getPaymentStatusResponse.parameters.responseCode, '0001');
     });
 
   });
 
   describe('getInterBankInquiry', () => {
-    it('should return responseCode 0001', () => {
-      return getInterBankInquiry().then((res) => {
-        assert.strictEqual(res.getInterbankInquiryResponse.parameters.responseCode, '0001');
-      });
+    it('should return responseCode 0001', async () => {
+      const res = await getInterBankInquiry();
+      strictEqual(res.getInterbankInquiryResponse.parameters.responseCode, '0001');
     });
   });
 
   describe('getInterBankPayment', () => {
-    it('should return responseCode 0001', () => {
-      return getInterBankPayment().then((res) => {
-        assert.strictEqual(res.getInterbankPaymentResponse.parameters.responseCode, '0001');
-      });
+    it('should return responseCode 0001', async () => {
+      const res = await getInterBankPayment();
+      strictEqual(res.getInterbankPaymentResponse.parameters.responseCode, '0001');
     });
   });
 
-  describe('holdAmount', ()=>{
-    it('should return responseCode 0001', ()=>{
-      return holdAmount().then((res)=>{
-        assert.strictEqual(res.holdAmountResponse.parameters.responseCode, '0001');
-      });
+  describe('holdAmount', () => {
+    it('should return responseCode 0001', async () => {
+      const res = await holdAmount();
+      strictEqual(res.holdAmountResponse.parameters.responseCode, '0001');
     });
   });
 
-  describe('holdAmountRelease', ()=>{
-    it('should return responseCode 0001', ()=>{
-      return holdAmountRelease().then((res)=>{
-        assert.strictEqual(res.holdAmountReleaseResponse.parameters.responseCode, '0001');
-      });
+  describe('holdAmountRelease', () => {
+    it('should return responseCode 0001', async () => {
+      const res = await holdAmountRelease();
+      strictEqual(res.holdAmountReleaseResponse.parameters.responseCode, '0001');
     });
   });
 });
 
 const client = new BNIClient({
   env: 'sandbox',
-  clientId: credential.one_gate_payment.clientId,
-  clientSecret: credential.one_gate_payment.clientSecret,
-  apiKey: credential.one_gate_payment.apiKey,
-  apiSecret: credential.one_gate_payment.apiSecret,
-  appName: credential.one_gate_payment.appName
+  clientId: cred_ogp.clientId,
+  clientSecret: cred_ogp.clientSecret,
+  apiKey: cred_ogp.apiKey,
+  apiSecret: cred_ogp.apiSecret,
+  appName: cred_ogp.appName
 });
 const ogp = new OneGatePayment(client);
 
