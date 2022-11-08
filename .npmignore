@@ -1,8 +1,9 @@
 .git
 .eslintrc
-.mocharc
+.mocharc.json
 .gitignore
-/examples
 /test
 /node_modules
 package-lock.json
+test/constant.json
+*.key

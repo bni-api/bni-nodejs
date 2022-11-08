@@ -79,16 +79,16 @@ describe('oneGatePayment.js', () => {
 });
 
 const client = new BNIClient({
-  prod: false,
+  env: 'sandbox',
   clientId: credential.one_gate_payment.clientId,
   clientSecret: credential.one_gate_payment.clientSecret,
   apiKey: credential.one_gate_payment.apiKey,
   apiSecret: credential.one_gate_payment.apiSecret,
   appName: credential.one_gate_payment.appName
 });
+const ogp = new OneGatePayment(client);
 
 const getBalance = async () => {
-  const ogp = new OneGatePayment(client);
   const res = await ogp.getBalance({
     accountNo: '115471119'
   });
@@ -96,7 +96,6 @@ const getBalance = async () => {
 };
 
 const getInHouseInquiry = async () => {
-  const ogp = new OneGatePayment(client);
   const res = await ogp.getInHouseInquiry({
     accountNo: '115471119'
   });
@@ -104,7 +103,6 @@ const getInHouseInquiry = async () => {
 };
 
 const doPayment = async () => {
-  const ogp = new OneGatePayment(client);
   const res = await ogp.doPayment({
     customerReferenceNumber: '20170227000000000020',
     paymentMethod: '0',
@@ -125,7 +123,6 @@ const doPayment = async () => {
 };
 
 const getPaymentStatus = async () => {
-  const ogp = new OneGatePayment(client);
   const res = await ogp.getPaymentStatus({
     customerReferenceNumber: '20170227000000000020'
   });
@@ -133,7 +130,6 @@ const getPaymentStatus = async () => {
 };
 
 const getInterBankInquiry = async () => {
-  const ogp = new OneGatePayment(client);
   const res = await ogp.getInterBankInquiry({
     customerReferenceNumber: '20180930112233003',
     accountNum: '0115476117',
@@ -144,7 +140,6 @@ const getInterBankInquiry = async () => {
 };
 
 const getInterBankPayment = async () => {
-  const ogp = new OneGatePayment(client);
   const res = await ogp.getInterBankPayment({
     customerReferenceNumber: '20180930112233005',
     amount: '12007',
@@ -159,7 +154,6 @@ const getInterBankPayment = async () => {
 };
 
 const holdAmount = async () => {
-  const ogp = new OneGatePayment(client);
   const res = await ogp.holdAmount({
     customerReferenceNumber: '20181001112233009',
     amount: '12007',
@@ -170,7 +164,6 @@ const holdAmount = async () => {
 };
 
 const holdAmountRelease = async () => {
-  const ogp = new OneGatePayment(client);
   const res = await ogp.holdAmountRelease({
     'customerReferenceNumber': '20181001112233010',
     'amount': '12007',

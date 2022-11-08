@@ -98,16 +98,16 @@ describe('snapBI.js', () => {
 });
 
 const client = new BNIClient({
-  prod: false,
+  env: 'dev',
   clientId: credential.snap_bi.clientId,
   clientSecret: credential.snap_bi.clientSecret,
   apiKey: credential.snap_bi.apiKey,
   apiSecret: credential.snap_bi.apiSecret,
   appName: credential.snap_bi.appName
 });
+const snap = new SnapBI(client, { privateKeyPath: credential.snap_bi.privateKey, channelId: credential.snap_bi.channelId });
 
 const getBalanceInquiry = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: credential.snap_bi.privateKey, channelId: credential.snap_bi.channelId });
   const res = await snap.balanceInquiry({
     partnerReferenceNo: '202010290000000000002',
     accountNo: '0115476117'
@@ -116,7 +116,6 @@ const getBalanceInquiry = async () => {
 };
 
 const getBankStatement = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
   const res = await snap.bankStatement({
     partnerReferenceNo: '202102102021',
     accountNo: '115233527',
@@ -128,7 +127,6 @@ const getBankStatement = async () => {
 
   
 const getInternalAccountInquiry = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
   const res = await snap.internalAccountInquiry({
     partnerReferenceNo: '202010290000000000002',
     beneficiaryAccountNo: '0115476151'
@@ -137,7 +135,6 @@ const getInternalAccountInquiry = async () => {
 };
 
 const getTransactionStatusInquiry = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
   const res = await snap.transactionStatusInquiry({
     originalPartnerReferenceNo: '202201911020000121',
     originalReferenceNo: '220531103343739748',
@@ -157,7 +154,6 @@ const getTransactionStatusInquiry = async () => {
 };
 
 const getTransferIntraBank = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
   const res = await snap.transferIntraBank({
     partnerReferenceNo: '207113OO00842662',
     amount: {
@@ -181,7 +177,6 @@ const getTransferIntraBank = async () => {
 };
 
 const getTransferRTGS = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
   const res = await snap.transferRTGS({
     partnerReferenceNo: '20220513095840015788857',
     amount: {
@@ -216,7 +211,6 @@ const getTransferRTGS = async () => {
 };
 
 const getTransferSKNBI = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
   const res = await snap.transferSKNBI({
     partnerReferenceNo: '20220523150428586179325',
     amount: {
@@ -251,7 +245,6 @@ const getTransferSKNBI = async () => {
 };
 
 const getExternalAccountInquiry = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
   const res = await snap.externalAccountInquiry({
     beneficiaryBankCode: '002',
     beneficiaryAccountNo: '888801000157508',
@@ -265,7 +258,6 @@ const getExternalAccountInquiry = async () => {
 };
 
 const getTransferInterBank = async () => {
-  const snap = new SnapBI(client, { privateKeyPath: './private.key', channelId: '95221' });
   const res = await snap.transferInterBank({
     partnerReferenceNo: '2022090254000000000021',
     amount: {

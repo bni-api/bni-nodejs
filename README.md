@@ -38,7 +38,7 @@ Create API client object
 const { BNIClient } = require('bni-nodejs');
 // Create Core API instance
 const client = new BNIClient({
-  prod: false,
+  env: 'sandbox', // dev, sandbox or prod
   clientId: '{your-client-id}',
   clientSecret: '{your-client-secret}',
   apiKey: '{your-api-key}',
@@ -56,7 +56,7 @@ const { BNIClient, OneGatePayment } = require('bni-nodejs');
 
 // Create Client instance
 const client = new BNIClient({
-  prod: false,
+  env: 'sandbox', // dev, sandbox or prod
   clientId: '{your-client-id}',
   clientSecret: '{your-client-secret}',
   apiKey: '{your-api-key}',
@@ -171,7 +171,7 @@ const { BNIClient, SnapBI } = require('bni-nodejs');
 
 // Create Client instance
 const client = new BNIClient({
-  prod: false,
+  env: 'dev', // dev, sandbox or prod
   clientId: '{your-client-id}',
   clientSecret: '{your-client-secret}',
   apiKey: '{your-api-key}',
