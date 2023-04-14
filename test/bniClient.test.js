@@ -17,6 +17,11 @@ describe('bniClient.js', () => {
       const client = new BNIClient({ env: 'prod', clientId: '', clientSecret: '', apiKey: '' });
       strictEqual(client.getBaseUrl(), 'https://api.bni.co.id');
     });
+
+    it('should return http://192.168.152.220:58066', () => {
+      const client = new BNIClient({ env: 'sandbox-dev', clientId: '', clientSecret: '', apiKey: '' });
+      strictEqual(client.getBaseUrl(), 'http://192.168.152.220:58066');
+    });
   });
 
   describe('getConfig', () => {
