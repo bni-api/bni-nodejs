@@ -18,9 +18,9 @@ describe('bniClient.js', () => {
       strictEqual(client.getBaseUrl(), 'https://api.bni.co.id');
     });
 
-    it('should return http://192.168.152.220:58066', () => {
+    it('should return http://localhost:8080', () => {
       const client = new BNIClient({ env: 'sandbox-dev', clientId: '', clientSecret: '', apiKey: '' });
-      strictEqual(client.getBaseUrl(), 'http://192.168.152.220:58066');
+      strictEqual(client.getBaseUrl(), 'http://localhost:8080');
     });
   });
 
