@@ -18,3 +18,4 @@ export function generateSignatureServiceSnapBI(params?: {
     apiSecret: any;
 }): any;
 export function randomNumber(): string;
+export function generateUUID(): string;
