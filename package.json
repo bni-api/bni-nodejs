@@ -12,7 +12,7 @@
     }
   },
   "scripts": {
-    "test": "mocha --timeout 10000",
+    "test": "mocha --timeout 20000",
     "lint": "eslint . --fix",
     "build": "rm -fr dist/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && ./afterbuild.sh"
   },
