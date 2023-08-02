@@ -95,7 +95,7 @@ declare class RDL {
     accountNumber: string;
     beneficiaryAccountNumber: string;
     currency: string;
-    amount: string;
+    amount: Number;
     remark: string;
   }): Promise<any>;
 
@@ -110,7 +110,7 @@ declare class RDL {
     beneficiaryBankCode: string;
     beneficiaryName: string;
     currency: string;
-    amount: string;
+    amount: Number;
     remark: string;
     chargingType: string;
   }): Promise<any>;
@@ -126,7 +126,7 @@ declare class RDL {
     beneficiaryBankCode: string;
     beneficiaryName: string;
     currency: string;
-    amount: string;
+    amount: Number;
     remark: string;
     chargingType: string;
   }): Promise<any>;
@@ -157,6 +157,27 @@ declare class RDL {
     beneficiaryBankCode: string;
     beneficiaryBankName: string;
     amount: Number;
+  }): Promise<any>;
+
+  faceRecognition(params?: {
+    companyId: string;
+    parentCompanyId: string;
+    requestUuid: string;
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    idNumber: string;
+    birthDate: string;
+    birthPlace: string;
+    gender: string;
+    cityAddress: string;
+    stateProvAddress: string;
+    addressCountry: string;
+    streetAddress1: string;
+    streetAddress2: string;
+    postCodeAddress: string;
+    country: string;
+    selfiePhoto: string;
   }): Promise<any>;
 }
 import HttpClient from "../net/httpClient.js";

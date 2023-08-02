@@ -80,6 +80,13 @@ describe('rdl.js', () => {
         });
     });
 
+    describe('faceRecognition', () => {
+        it('should return responseCode 0001', async () => {
+            const res = await faceRecognition();
+            strictEqual(res.response.responseCode, '0001');
+        });
+    });
+
 });
 
 
@@ -269,6 +276,30 @@ const paymentUsingInterbank = async () => {
         beneficiaryBankCode: "014",
         beneficiaryBankName: "BANK BCA",
         amount: "15000"
+    });
+    return res;
+};
+
+const faceRecognition = async () => {
+    const res = await rdl.faceRecognition({
+        companyId: "SANDBOX",
+        parentCompanyId: "STI_CHS",
+        requestUuid: "91Y001111XQ6CCX0",
+        firstName: "MOHAMMAD",
+        middleName: "BAQER",
+        lastName: "ZALQAD",
+        idNumber: "0141111121260118",
+        birthDate: "29-09-2021",
+        birthPlace: "BANDUNG",
+        gender: "M",
+        cityAddress: "Bandung",
+        stateProvAddress: "Jawa Barat",
+        addressCountry: "ID",
+        streetAddress1: "bandung",
+        streetAddress2: "bandung",
+        postCodeAddress: "40914",
+        country: "ID",
+        selfiePhoto: "(BASE64)"
     });
     return res;
 };
