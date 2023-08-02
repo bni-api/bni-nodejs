@@ -13,7 +13,6 @@ describe('rdl.js', () => {
     describe('RegisterInvestorAccount', () => {
         it('should return responseCode 0001', async () => {
             const res = await registerInvestorAccount();
-            //         strictEqual(res.RegisterInvestorAccountResponse.parameters.responseCode, '0001');
             strictEqual(res.response.responseCode, '0001');
         });
     });
@@ -63,7 +62,6 @@ describe('rdl.js', () => {
     describe('InquiryPaymentStatus', () => {
         it('should return responseCode 0001', async () => {
             const res = await inquiryPaymentStatus();
-            // strictEqual(res.InquiryPaymentStatusResponse.parameters.responseCode, '0001');
             strictEqual(res.response.responseCode, '0001');
         });
     });
@@ -71,7 +69,6 @@ describe('rdl.js', () => {
     describe('inquiryInterbankAccount', () => {
         it('should return responseCode 0001', async () => {
             const res = await inquiryInterbankAccount();
-            // strictEqual(res.InquiryPaymentStatusResponse.parameters.responseCode, '0001');
             strictEqual(res.response.responseCode, '0001');
         });
     });
@@ -79,7 +76,6 @@ describe('rdl.js', () => {
     describe('paymentUsingInterbank', () => {
         it('should return responseCode 0001', async () => {
             const res = await paymentUsingInterbank();
-            // strictEqual(res.InquiryPaymentStatusResponse.parameters.responseCode, '0001');
             strictEqual(res.response.responseCode, '0001');
         });
     });

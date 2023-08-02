@@ -64,7 +64,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid
+                requestUuid: generateUUID()
             },
             uuidFaceRecog: params.uuidFaceRecog,
             title: params.title,
@@ -134,7 +134,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid,
+                requestUuid: generateUUID()
             },
             cifNumber: params.cifNumber,
             currency: params.currency,
@@ -150,7 +150,6 @@ class RDL {
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
             url: `${this.client.getBaseUrl()}/p2pl/v2/register/investor/account`,
-            // signature: signature.split('.').pop(),
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -171,7 +170,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid,
+                requestUuid: generateUUID(),
             },
             accountNumber: params.accountNumber
         };
@@ -203,7 +202,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid,
+                requestUuid: generateUUID(),
             },
             accountNumber: params.accountNumber
         };
@@ -231,44 +230,23 @@ class RDL {
         }
     ) {
 
-        const header = {
-            companyId: params.companyId,
-            parentCompanyId: params.parentCompanyId,
-            requestUuid: params.requestUuid,
-
-        }
         const body = {
+            header: {
+                companyId: params.companyId,
+                parentCompanyId: params.parentCompanyId,
+                requestUuid: generateUUID(),
+            },
             accountNumber: params.accountNumber
         };
 
-        const signature = {
-            signature: generateSignature({ body: body, apiSecret: this.config.apiSecret }).split('.').pop(),
-        };
-
-
-        // const res = await this.httpClient.request({
-        //     method: 'POST',
-        //     apiKey: this.config.apiKey,
-        //     accessToken: await this.client.getToken(),
-        //     url: `${this.client.getBaseUrl()}/p2pl/v2/inquiry/account/history`,
-        //     signature: signature,
-        //     data: {
-        //         ...header,
-        //         ...body,
-        //     }
-        // });
+        const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
         const res = await this.httpClient.request({
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
             url: `${this.client.getBaseUrl()}/p2pl/v2/inquiry/account/history`,
-            headers: {
-                signature: signature, // Set the signature in the request headers
-            },
-            data: {
-                ...header,
-                ...body,
-            }
+            signature: signature.split('.')[2],
+            data: { request: { ...body } }
         });
 
         return responseRDL({ res: res, resObj: 'InquiryAccountHistoryResponse' });
@@ -291,7 +269,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid,
+                requestUuid: generateUUID(),
             },
             accountNumber: params.accountNumber,
             beneficiaryAccountNumber: params.beneficiaryAccountNumber,
@@ -336,7 +314,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid,
+                requestUuid: generateUUID(),
             },
             accountNumber: params.accountNumber,
             beneficiaryAccountNumber: params.beneficiaryAccountNumber,
@@ -386,7 +364,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid,
+                requestUuid: generateUUID(),
             },
             accountNumber: params.accountNumber,
             beneficiaryAccountNumber: params.beneficiaryAccountNumber,
@@ -427,7 +405,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid,
+                requestUuid: generateUUID(),
             },
             requestedUuid: params.requestedUuid,
         };
@@ -438,7 +416,6 @@ class RDL {
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
             url: `${this.client.getBaseUrl()}/p2pl/v2/inquiry/payment/status`,
-            // signature: signature.split('.').pop(),
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -462,7 +439,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid,
+                requestUuid: generateUUID(),
             },
             accountNumber: params.accountNumber,
             beneficiaryBankCode: params.beneficiaryBankCode,
@@ -475,7 +452,6 @@ class RDL {
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
             url: `${this.client.getBaseUrl()}/p2pl/v2/inquiry/interbank/account`,
-            // signature: signature.split('.').pop(),
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -502,7 +478,7 @@ class RDL {
             header: {
                 companyId: params.companyId,
                 parentCompanyId: params.parentCompanyId,
-                requestUuid: params.requestUuid,
+                requestUuid: generateUUID(),
             },
             accountNumber: params.accountNumber,
             beneficiaryAccountNumber: params.beneficiaryAccountNumber,
