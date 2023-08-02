@@ -37,8 +37,8 @@ class RDL {
             isMarried,
             motherMaidenName,
             jobCode,
-            jobDesc,
             education,
+            idType,
             idNumber,
             idIssuingCity,
             idExpiryDate,
@@ -49,18 +49,23 @@ class RDL {
             zipCode,
             homePhone1,
             homePhone2,
-            employerName,
             officePhone1,
             officePhone2,
             mobilePhone1,
             mobilePhone2,
-            employerAddDet,
-            employerAddCity,
             faxNum1,
             faxNum2,
             email,
             monthlyIncome,
             branchOpening,
+            institutionName,
+            sid,
+            employerName,
+            employerAddDet,
+            employerAddCity,
+            jobDesc,
+            ownedBankAccNo,
+            idIssuingDate,
         }
     ) {
 
@@ -86,8 +91,8 @@ class RDL {
             isMarried: params.isMarried,
             motherMaidenName: params.motherMaidenName,
             jobCode: params.jobCode,
-            jobDesc: params.jobDesc,
             education: params.education,
+            idType: params.idType,
             idNumber: params.idNumber,
             idIssuingCity: params.idIssuingCity,
             idExpiryDate: params.idExpiryDate,
@@ -98,18 +103,23 @@ class RDL {
             zipCode: params.zipCode,
             homePhone1: params.homePhone1,
             homePhone2: params.homePhone2,
-            employerName: params.employerName,
             officePhone1: params.officePhone1,
             officePhone2: params.officePhone2,
             mobilePhone1: params.mobilePhone1,
             mobilePhone2: params.mobilePhone2,
-            employerAddDet: params.employerAddDet,
-            employerAddCity: params.employerAddCity,
             faxNum1: params.faxNum1,
             faxNum2: params.faxNum2,
             email: params.email,
             monthlyIncome: params.monthlyIncome,
             branchOpening: params.branchOpening,
+            institutionName: params.institutionName,
+            sid: params.sid,
+            employerName: params.employerName,
+            employerAddDet: params.employerAddDet,
+            employerAddCity: params.employerAddCity,
+            jobDesc: params.jobDesc,
+            ownedBankAccNo: params.ownedBankAccNo,
+            idIssuingDate: params.idIssuingDate,
         };
 
         const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
@@ -234,7 +244,7 @@ class RDL {
             companyId,
             parentCompanyId,
             requestUuid,
-            accountNumber
+            accountNumber,
         }
     ) {
 
@@ -244,16 +254,17 @@ class RDL {
                 parentCompanyId: params.parentCompanyId,
                 requestUuid: generateUUID(),
             },
-            accountNumber: params.accountNumber
+            accountNumber: params.accountNumber,
         };
 
         const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
-        const res = await this.httpClient.request({
+        const res = await this.httpClient.requestV2({
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
             url: `${this.client.getBaseUrl()}/p2pl/v2.1/inquiry/account/history`,
             signature: signature.split('.')[2],
+            timestamp: this.timeStamp,
             data: { request: { ...body } }
         });
 
@@ -510,65 +521,65 @@ class RDL {
         return responseRDL({ res: res });
     }
 
-    async faceRecognition(
-        params = {
-            companyId,
-            parentCompanyId,
-            requestUuid,
-            firstName,
-            middleName,
-            lastName,
-            idNumber,
-            birthDate,
-            birthPlace,
-            gender,
-            cityAddress,
-            stateProvAddress,
-            addressCountry,
-            streetAddress1,
-            streetAddress2,
-            postCodeAddress,
-            country,
-            selfiePhoto,
-        }
-    ) {
+    // async faceRecognition(
+    //     params = {
+    //         companyId,
+    //         parentCompanyId,
+    //         requestUuid,
+    //         firstName,
+    //         middleName,
+    //         lastName,
+    //         idNumber,
+    //         birthDate,
+    //         birthPlace,
+    //         gender,
+    //         cityAddress,
+    //         stateProvAddress,
+    //         addressCountry,
+    //         streetAddress1,
+    //         streetAddress2,
+    //         postCodeAddress,
+    //         country,
+    //         selfiePhoto,
+    //     }
+    // ) {
 
-        const body = {
-            header: {
-                companyId: params.companyId,
-                parentCompanyId: params.parentCompanyId,
-                requestUuid: generateUUID(),
-            },
-            firstName: params.firstName,
-            middleName: params.middleName,
-            lastName: params.lastName,
-            idNumber: params.idNumber,
-            birthDate: params.birthDate,
-            birthPlace: params.birthPlace,
-            gender: params.gender,
-            cityAddress: params.cityAddress,
-            stateProvAddress: params.stateProvAddress,
-            addressCountry: params.addressCountry,
-            streetAddress1: params.streetAddress1,
-            streetAddress2: params.streetAddress2,
-            postCodeAddress: params.postCodeAddress,
-            country: params.country,
-            selfiePhoto: params.selfiePhoto,
-        };
+    //     const body = {
+    //         header: {
+    //             companyId: params.companyId,
+    //             parentCompanyId: params.parentCompanyId,
+    //             requestUuid: generateUUID(),
+    //         },
+    //         firstName: params.firstName,
+    //         middleName: params.middleName,
+    //         lastName: params.lastName,
+    //         idNumber: params.idNumber,
+    //         birthDate: params.birthDate,
+    //         birthPlace: params.birthPlace,
+    //         gender: params.gender,
+    //         cityAddress: params.cityAddress,
+    //         stateProvAddress: params.stateProvAddress,
+    //         addressCountry: params.addressCountry,
+    //         streetAddress1: params.streetAddress1,
+    //         streetAddress2: params.streetAddress2,
+    //         postCodeAddress: params.postCodeAddress,
+    //         country: params.country,
+    //         selfiePhoto: params.selfiePhoto,
+    //     };
 
-        const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
-        const res = await this.httpClient.requestV2({
-            method: 'POST',
-            apiKey: this.config.apiKey,
-            accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/rekdana/v1.1/face/recog`,
-            signature: signature.split('.')[2],
-            timestamp: this.timeStamp,
-            data: { request: { ...body } }
-        });
+    //     const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
+    //     const res = await this.httpClient.requestV2({
+    //         method: 'POST',
+    //         apiKey: this.config.apiKey,
+    //         accessToken: await this.client.getToken(),
+    //         url: `${this.client.getBaseUrl()}/rekdana/v1.1/face/recog`,
+    //         signature: signature.split('.')[2],
+    //         timestamp: this.timeStamp,
+    //         data: { request: { ...body } }
+    //     });
 
-        return responseRDL({ res: res });
-    }
+    //     return responseRDL({ res: res });
+    // }
 
 }
 export default RDL;

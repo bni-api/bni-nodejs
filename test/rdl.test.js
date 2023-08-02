@@ -80,12 +80,12 @@ describe('rdl.js', () => {
         });
     });
 
-    describe('faceRecognition', () => {
-        it('should return responseCode 0001', async () => {
-            const res = await faceRecognition();
-            strictEqual(res.response.responseCode, '0001');
-        });
-    });
+    // describe('faceRecognition', () => {
+    //     it('should return responseCode 0001', async () => {
+    //         const res = await faceRecognition();
+    //         strictEqual(res.response.responseCode, '0001');
+    //     });
+    // });
 
 });
 
@@ -105,25 +105,26 @@ const registerInvestor = async () => {
     const res = await rdl.registerInvestor({
         companyId: "SANDBOX",
         parentCompanyId: "STI_CHS",
-        requestUuid: " A2E6973518F34BB8",
-        uuidFaceRecog: "29FCB72E71D34C48",
-        title: "04",
-        firstName: "",
+        requestUuid: "40FCB72E71D35C81",
+        uuidFaceRecog: "492F33851D634CFB",
+        title: "01",
+        firstName: "Agus",
         middleName: "",
-        lastName: "JELITA",
+        lastName: "Saputra",
         optNPWP: "1",
-        NPWPNum: "999999999999999",
+        NPWPNum: "001058893408123",
         nationality: "ID",
         domicileCountry: "ID",
         religion: "2",
-        birthPlace: "Jakarta",
-        birthDate: "01091989",
-        gender: "F",
-        isMarried: "L",
+        birthPlace: "Semarang",
+        birthDate: "14081982",
+        gender: "M",
+        isMarried: "S",
         motherMaidenName: "Dina Maryati",
         jobCode: "01",
         education: "07",
-        idNumber: "3175044109890002",
+        idType: "01",
+        idNumber: "4147016201959998",
         idIssuingCity: "Jakarta Barat",
         idExpiryDate: "26102099",
         addressStreet: "Jalan Mawar Melati",
@@ -131,17 +132,25 @@ const registerInvestor = async () => {
         addressKel: "Cengkareng Barat",
         addressKec: "Cengkareng/Jakarta Barat",
         zipCode: "11730",
-        homePhone1: "021",
-        homePhone2: "745454545",
+        homePhone1: "0214",
+        homePhone2: "7459",
         officePhone1: "",
         officePhone2: "",
         mobilePhone1: "0812",
-        mobilePhone2: "323238",
+        mobilePhone2: "12348331",
         faxNum1: "",
         faxNum2: "",
-        email: "jelita@gmail.com",
+        email: "agus.saputra@gmail.com",
         monthlyIncome: "8000000",
-        branchOpening: "0259"
+        branchOpening: "0259",
+        institutionName: "PT. BNI SECURITIES",
+        sid: "IDD280436215354",
+        employerName: "Salman",
+        employerAddDet: "St Baker",
+        employerAddCity: "Arrandelle",
+        jobDesc: "Pedagang",
+        ownedBankAccNo: "0337109074",
+        idIssuingDate: "10122008"
     });
     return res;
 };
@@ -182,8 +191,8 @@ const inquiryAccountBalance = async () => {
 
 const inquiryAccountHistory = async () => {
     const res = await rdl.inquiryAccountHistory({
-        companyId: 'SANDBOX',
-        parentCompanyId: 'STI_CHS',
+        companyId: 'NI001',
+        parentCompanyId: 'KSEI',
         requestUuid: '413DDF336A174F81',
         accountNumber: '0115476117'
     });
@@ -280,27 +289,27 @@ const paymentUsingInterbank = async () => {
     return res;
 };
 
-const faceRecognition = async () => {
-    const res = await rdl.faceRecognition({
-        companyId: "SANDBOX",
-        parentCompanyId: "STI_CHS",
-        requestUuid: "91Y001111XQ6CCX0",
-        firstName: "MOHAMMAD",
-        middleName: "BAQER",
-        lastName: "ZALQAD",
-        idNumber: "0141111121260118",
-        birthDate: "29-09-2021",
-        birthPlace: "BANDUNG",
-        gender: "M",
-        cityAddress: "Bandung",
-        stateProvAddress: "Jawa Barat",
-        addressCountry: "ID",
-        streetAddress1: "bandung",
-        streetAddress2: "bandung",
-        postCodeAddress: "40914",
-        country: "ID",
-        selfiePhoto: "(BASE64)"
-    });
-    return res;
-};
+// const faceRecognition = async () => {
+//     const res = await rdl.faceRecognition({
+//         companyId: "SANDBOX",
+//         parentCompanyId: "STI_CHS",
+//         requestUuid: "91Y001111XQ6CCX0",
+//         firstName: "MOHAMMAD",
+//         middleName: "BAQER",
+//         lastName: "ZALQAD",
+//         idNumber: "0141111121260118",
+//         birthDate: "29-09-2021",
+//         birthPlace: "BANDUNG",
+//         gender: "M",
+//         cityAddress: "Bandung",
+//         stateProvAddress: "Jawa Barat",
+//         addressCountry: "ID",
+//         streetAddress1: "bandung",
+//         streetAddress2: "bandung",
+//         postCodeAddress: "40914",
+//         country: "ID",
+//         selfiePhoto: "(BASE64)"
+//     });
+//     return res;
+// };
 
