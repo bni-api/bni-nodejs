@@ -30,6 +30,7 @@ declare class RDL {
     isMarried: string;
     motherMaidenName: string;
     jobCode: string;
+    jobDesc: string;
     education: string;
     idNumber: string;
     idIssuingCity: string;
@@ -41,10 +42,13 @@ declare class RDL {
     zipCode: string;
     homePhone1: string;
     homePhone2: string;
+    employerName: string;
     officePhone1: string;
     officePhone2: string;
     mobilePhone1: string;
     mobilePhone2: string;
+    employerAddDet: string;
+    employerAddCity: string;
     faxNum1: string;
     faxNum2: string;
     email: string;
@@ -152,7 +156,7 @@ declare class RDL {
     beneficiaryAccountName: string;
     beneficiaryBankCode: string;
     beneficiaryBankName: string;
-    amount: string;
+    amount: Number;
   }): Promise<any>;
 }
 import HttpClient from "../net/httpClient.js";

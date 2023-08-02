@@ -10,7 +10,7 @@ describe('rdl.js', () => {
         });
     });
 
-    describe('RegisterInvestorAccount', () => {
+    describe('registerInvestorAccount', () => {
         it('should return responseCode 0001', async () => {
             const res = await registerInvestorAccount();
             strictEqual(res.response.responseCode, '0001');
@@ -24,14 +24,14 @@ describe('rdl.js', () => {
         });
     });
 
-    describe('InquiryAccountBalance', () => {
+    describe('inquiryAccountBalance', () => {
         it('should return responseCode 0001', async () => {
             const res = await inquiryAccountBalance();
             strictEqual(res.response.responseCode, '0001');
         });
     });
 
-    describe('InquiryAccountHistory', () => {
+    describe('inquiryAccountHistory', () => {
         it('should return responseCode 0001', async () => {
             const res = await inquiryAccountHistory();
             strictEqual(res.response.responseCode, '0001');
@@ -59,7 +59,7 @@ describe('rdl.js', () => {
         });
     });
 
-    describe('InquiryPaymentStatus', () => {
+    describe('inquiryPaymentStatus', () => {
         it('should return responseCode 0001', async () => {
             const res = await inquiryPaymentStatus();
             strictEqual(res.response.responseCode, '0001');

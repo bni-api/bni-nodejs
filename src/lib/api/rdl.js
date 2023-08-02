@@ -37,6 +37,7 @@ class RDL {
             isMarried,
             motherMaidenName,
             jobCode,
+            jobDesc,
             education,
             idNumber,
             idIssuingCity,
@@ -48,10 +49,13 @@ class RDL {
             zipCode,
             homePhone1,
             homePhone2,
+            employerName,
             officePhone1,
             officePhone2,
             mobilePhone1,
             mobilePhone2,
+            employerAddDet,
+            employerAddCity,
             faxNum1,
             faxNum2,
             email,
@@ -76,12 +80,13 @@ class RDL {
             nationality: params.nationality,
             domicileCountry: params.domicileCountry,
             religion: params.religion,
-            birthPlace: params.birthDate,
+            birthPlace: params.birthPlace,
             birthDate: params.birthDate,
             gender: params.gender,
             isMarried: params.isMarried,
             motherMaidenName: params.motherMaidenName,
             jobCode: params.jobCode,
+            jobDesc: params.jobDesc,
             education: params.education,
             idNumber: params.idNumber,
             idIssuingCity: params.idIssuingCity,
@@ -89,14 +94,17 @@ class RDL {
             addressStreet: params.addressStreet,
             addressRtRwPerum: params.addressRtRwPerum,
             addressKel: params.addressKel,
-            addressKec: params.addressKec,
+            addressKec: params.addressKel,
             zipCode: params.zipCode,
             homePhone1: params.homePhone1,
             homePhone2: params.homePhone2,
+            employerName: params.employerName,
             officePhone1: params.officePhone1,
             officePhone2: params.officePhone2,
             mobilePhone1: params.mobilePhone1,
             mobilePhone2: params.mobilePhone2,
+            employerAddDet: params.employerAddDet,
+            employerAddCity: params.employerAddCity,
             faxNum1: params.faxNum1,
             faxNum2: params.faxNum2,
             email: params.email,
@@ -109,7 +117,7 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/register/investor`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/register/investor`,
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -149,7 +157,7 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/register/investor/account`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/register/investor/account`,
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -180,7 +188,7 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/inquiry/account/info`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/inquiry/account/info`,
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -211,7 +219,7 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/inquiry/account/balance`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/inquiry/account/balance`,
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -244,12 +252,12 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/inquiry/account/history`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/inquiry/account/history`,
             signature: signature.split('.')[2],
             data: { request: { ...body } }
         });
 
-        return responseRDL({ res: res, resObj: 'InquiryAccountHistoryResponse' });
+        return responseRDL({ res: res });
     }
 
     async paymentUsingTransfer(
@@ -283,7 +291,39 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/payment/transfer`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/payment/transfer`,
+            signature: signature.split('.')[2],
+            timestamp: this.timeStamp,
+            data: { request: { ...body } }
+        });
+
+        return responseRDL({ res: res });
+    }
+
+    async inquiryPaymentStatus(
+        params = {
+            requestedUuid,
+            companyId,
+            parentCompanyId,
+            requestUuid,
+        }
+    ) {
+
+        const body = {
+            header: {
+                companyId: params.companyId,
+                parentCompanyId: params.parentCompanyId,
+                requestUuid: generateUUID(),
+            },
+            requestedUuid: params.requestedUuid,
+        };
+
+        const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
+        const res = await this.httpClient.requestV2({
+            method: 'POST',
+            apiKey: this.config.apiKey,
+            accessToken: await this.client.getToken(),
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/inquiry/payment/status`,
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -333,7 +373,7 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/payment/clearing`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/payment/clearing`,
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -383,39 +423,7 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/payment/rtgs`,
-            signature: signature.split('.')[2],
-            timestamp: this.timeStamp,
-            data: { request: { ...body } }
-        });
-
-        return responseRDL({ res: res });
-    }
-
-    async inquiryPaymentStatus(
-        params = {
-            requestedUuid,
-            companyId,
-            parentCompanyId,
-            requestUuid,
-        }
-    ) {
-
-        const body = {
-            header: {
-                companyId: params.companyId,
-                parentCompanyId: params.parentCompanyId,
-                requestUuid: generateUUID(),
-            },
-            requestedUuid: params.requestedUuid,
-        };
-
-        const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
-        const res = await this.httpClient.requestV2({
-            method: 'POST',
-            apiKey: this.config.apiKey,
-            accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/inquiry/payment/status`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/payment/rtgs`,
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -451,7 +459,7 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/inquiry/interbank/account`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/inquiry/interbank/account`,
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
@@ -493,7 +501,7 @@ class RDL {
             method: 'POST',
             apiKey: this.config.apiKey,
             accessToken: await this.client.getToken(),
-            url: `${this.client.getBaseUrl()}/p2pl/v2/payment/interbank`,
+            url: `${this.client.getBaseUrl()}/p2pl/v2.1/payment/interbank`,
             signature: signature.split('.')[2],
             timestamp: this.timeStamp,
             data: { request: { ...body } }
