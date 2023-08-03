@@ -264,12 +264,12 @@ const inquiryPaymentStatus = async () => {
 
 const inquiryInterbankAccount = async () => {
     const res = await rdl.inquiryInterbankAccount({
-        companyId: "SANDBOX",
-        parentCompanyId: "STI_CHS",
+        companyId: "NI001",
+        parentCompanyId: "KSEI",
         requestUuid: "C202946D99844E59",
         accountNumber: "0115476117",
-        beneficiaryBankCode: "014",
-        beneficiaryAccountNumber: "3333333333"
+        beneficiaryBankCode: "013",
+        beneficiaryAccountNumber: "01300000"
     });
     return res;
 };
