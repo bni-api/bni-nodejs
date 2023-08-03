@@ -2,7 +2,6 @@ import axios from 'axios';
 import { stringify } from 'qs';
 import { getTimeStamp, generateTokenSignature } from '../util/util.js';
 class HttpClient {
-
   constructor() {
     this.httpClient = axios.create();
   }
@@ -11,9 +10,9 @@ class HttpClient {
    * Initiate with options
    * @param  {Object} options - should have these props:
    * url, username, password
-   * 
+   *
    * @return {Object} promse with resolve or reject
-   * 
+   *
    */
 
   tokenRequest(options = { url, username, password }) {
@@ -50,9 +49,9 @@ class HttpClient {
    * Initiate with options
    * @param  {Object} options - should have these props:
    * url, username, password
-   * 
+   *
    * @return {Object} promse with resolve or reject
-   * 
+   *
    */
 
   tokenRequestSnapBI(options = { url, clientId, privateKeyPath }) {
@@ -91,9 +90,9 @@ class HttpClient {
    * Initiate with options
    * @param  {Object} options - should have these props:
    * method, apiKey, accessToken, url, data
-   * 
+   *
    * @return {Object} promse with resolve or reject
-   * 
+   *
    */
 
   request(options = { method, apiKey, accessToken, url, data }) {
@@ -120,11 +119,13 @@ class HttpClient {
     });
   }
 
-  requestSnapBI(options = { method, apiKey, accessToken, url, data, additionalHeader: {} }) {
+  requestSnapBI(
+    options = { method, apiKey, accessToken, url, data, additionalHeader: {} }
+  ) {
     const header = {
       'content-type': 'application/json',
       'user-agent': 'bni-nodejs/0.1.5',
-      'Authorization': `Bearer ${options.accessToken}`
+      Authorization: `Bearer ${options.accessToken}`
     };
 
     const headers = {
@@ -143,6 +144,34 @@ class HttpClient {
 
         resolve(res.data);
       } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  requestV2(
+    options = { method, apiKey, accessToken, url, data, signature, timestamp }
+  ) {
+    const headers = {
+      'content-type': 'application/json',
+      'user-agent': 'bni-nodejs/0.1.5',
+      'x-api-key': options.apiKey,
+      'x-signature': options.signature,
+      'x-timestamp': options.timestamp
+    };
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await this.httpClient({
+          method: options.method,
+          headers: headers,
+          url: options.url,
+          params: { access_token: options.accessToken },
+          data: options.data
+        });
+        resolve(res.data);
+      } catch (err) {
+        // buat ngetest errornya apa
+        console.log(err.response.data);
         reject(err);
       }
     });
