@@ -203,7 +203,6 @@ class RDL {
             timestamp: this.timeStamp,
             data: { request: { ...body } }
         });
-
         return responseRDL({ res: res });
     }
 
@@ -521,65 +520,65 @@ class RDL {
         return responseRDL({ res: res });
     }
 
-    // async faceRecognition(
-    //     params = {
-    //         companyId,
-    //         parentCompanyId,
-    //         requestUuid,
-    //         firstName,
-    //         middleName,
-    //         lastName,
-    //         idNumber,
-    //         birthDate,
-    //         birthPlace,
-    //         gender,
-    //         cityAddress,
-    //         stateProvAddress,
-    //         addressCountry,
-    //         streetAddress1,
-    //         streetAddress2,
-    //         postCodeAddress,
-    //         country,
-    //         selfiePhoto,
-    //     }
-    // ) {
+    async faceRecognition(
+        params = {
+            companyId,
+            parentCompanyId,
+            requestUuid,
+            firstName,
+            middleName,
+            lastName,
+            idNumber,
+            birthDate,
+            birthPlace,
+            gender,
+            cityAddress,
+            stateProvAddress,
+            addressCountry,
+            streetAddress1,
+            streetAddress2,
+            postCodeAddress,
+            country,
+            selfiePhoto,
+        }
+    ) {
 
-    //     const body = {
-    //         header: {
-    //             companyId: params.companyId,
-    //             parentCompanyId: params.parentCompanyId,
-    //             requestUuid: generateUUID(),
-    //         },
-    //         firstName: params.firstName,
-    //         middleName: params.middleName,
-    //         lastName: params.lastName,
-    //         idNumber: params.idNumber,
-    //         birthDate: params.birthDate,
-    //         birthPlace: params.birthPlace,
-    //         gender: params.gender,
-    //         cityAddress: params.cityAddress,
-    //         stateProvAddress: params.stateProvAddress,
-    //         addressCountry: params.addressCountry,
-    //         streetAddress1: params.streetAddress1,
-    //         streetAddress2: params.streetAddress2,
-    //         postCodeAddress: params.postCodeAddress,
-    //         country: params.country,
-    //         selfiePhoto: params.selfiePhoto,
-    //     };
+        const body = {
+            header: {
+                companyId: params.companyId,
+                parentCompanyId: params.parentCompanyId,
+                requestUuid: generateUUID(),
+            },
+            firstName: params.firstName,
+            middleName: params.middleName,
+            lastName: params.lastName,
+            idNumber: params.idNumber,
+            birthDate: params.birthDate,
+            birthPlace: params.birthPlace,
+            gender: params.gender,
+            cityAddress: params.cityAddress,
+            stateProvAddress: params.stateProvAddress,
+            addressCountry: params.addressCountry,
+            streetAddress1: params.streetAddress1,
+            streetAddress2: params.streetAddress2,
+            postCodeAddress: params.postCodeAddress,
+            country: params.country,
+            selfiePhoto: params.selfiePhoto,
+        };
 
-    //     const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
-    //     const res = await this.httpClient.requestV2({
-    //         method: 'POST',
-    //         apiKey: this.config.apiKey,
-    //         accessToken: await this.client.getToken(),
-    //         url: `${this.client.getBaseUrl()}/rekdana/v1.1/face/recog`,
-    //         signature: signature.split('.')[2],
-    //         timestamp: this.timeStamp,
-    //         data: { request: { ...body } }
-    //     });
+        const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
+        const res = await this.httpClient.requestV2({
+            method: 'POST',
+            apiKey: this.config.apiKey,
+            accessToken: await this.client.getToken(),
+            url: `${this.client.getBaseUrl()}/rekdana/v1.1/face/recog`,
+            signature: signature.split('.')[2],
+            timestamp: this.timeStamp,
+            data: { request: { ...body } }
+        });
 
-    //     return responseRDL({ res: res });
-    // }
+        return responseRDL({ res: res });
+    }
 
 }
 export default RDL;
