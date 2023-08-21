@@ -16,3 +16,5 @@ export function generateSignatureServiceSnapBI(params?: {
 }): any;
 export function randomNumber(): string;
 export function generateUUID(): string;
+export function encrypt(json_data, cid, sck): string;
+export function decrypt(hashed_string, cid, sck): string;

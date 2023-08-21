@@ -1,6 +1,6 @@
 import HttpClient from '../net/httpClient.js';
 import { responseRDL } from '../util/response.js';
-import { generateSignature, generateClientId, generateUUID } from '../util/util.js';
+import { generateSignature, generateClientId, generateUUID, encrypt } from '../util/util.js';
 
 class RDL {
     constructor(client) {
@@ -121,6 +121,7 @@ class RDL {
             ownedBankAccNo: params.ownedBankAccNo,
             idIssuingDate: params.idIssuingDate,
         };
+
 
         const signature = generateSignature({ body: { request: { ...body }, timestamp: this.timeStamp }, apiSecret: this.config.apiSecret });
         const res = await this.httpClient.requestV2({
