@@ -11,16 +11,6 @@
 //     });
 // });
 
-
-
-// // const client = new BNIClient({
-// //     env: 'dev',
-// //     clientId: cred_rdl.clientId,
-// //     clientSecret: cred_rdl.clientSecret,
-// //     apiKey: cred_rdl.apiKey,
-// //     apiSecret: cred_rdl.apiSecret,
-// //     appName: cred_rdl.appName
-// // });
 // const ecollection = new Ecollection(client);
 
 // const inquiryAccountInfo = async () => {

@@ -429,7 +429,6 @@ const registerInvestor = async () => {
   const res = await rdl.registerInvestor({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS",
-    requestUuid: "40FCB72E71D35C81",
     uuidFaceRecog: "492F33851D634CFB", //RequestUuid successed value from Face Recognition API (KYC valid)
     title: "01",
     firstName: "Agus", //optional
@@ -488,7 +487,6 @@ const registerInvestorAccount = async () => {
   const res = await rdl.registerInvestorAccount({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS", //optional
-    requestUuid: "106323AEB63D4FF0",
     cifNumber: "9100749959",
     currency: "IDR", //“IDR” or “USD”
     openAccountReason: "2",
@@ -507,7 +505,6 @@ const inquiryAccountInfo = async () => {
   const res = await rdl.inquiryAccountInfo({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS", //optional
-    requestUuid: "E26DB4C8F6484E72",
     accountNumber: "0115476117",
   });
   return res;
@@ -522,7 +519,6 @@ const inquiryAccountBalance = async () => {
   const res = await rdl.inquiryAccountBalance({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS", //optional
-    requestUuid: "E26DB4C8F6484E72",
     accountNumber: "0115476117",
   });
   return res;
@@ -537,7 +533,6 @@ const inquiryAccountHistory = async () => {
   const res = await rdl.inquiryAccountHistory({
     companyId: "NI001",
     parentCompanyId: "KSEI", //optional
-    requestUuid: "413DDF336A174F81",
     accountNumber: "0115476117",
   });
   return res;
@@ -552,7 +547,6 @@ const paymentUsingTransfer = async () => {
   const res = await rdl.paymentUsingTransfer({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS", //optional
-    requestUuid: "E8C6E0027F6E429F",
     accountNumber: "0115476117",
     beneficiaryAccountNumber: "0115471119",
     currency: "IDR", //e.g., “IDR”
@@ -571,7 +565,6 @@ const paymentUsingClearing = async () => {
   const res = await rdl.paymentUsingClearing({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS", //optional
-    requestUuid: "F980D79CB0EB41D7",
     accountNumber: "0115476117",
     beneficiaryAccountNumber: "3333333333",
     beneficiaryAddress1: "Jakarta",
@@ -595,7 +588,6 @@ const paymentUsingRTGS = async () => {
   const res = await rdl.paymentUsingRTGS({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS",
-    requestUuid: "871BFD631BBB4798",
     accountNumber: "0115476117",
     beneficiaryAccountNumber: "3333333333",
     beneficiaryAddress1: "Jakarta",
@@ -619,7 +611,6 @@ const inquiryPaymentStatus = async () => {
   const res = await rdl.inquiryPaymentStatus({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS", //optional
-    requestUuid: "106323AEB63D4FF0",
     requestedUuid: "E8C6E0027F6E429F",
   });
   return res;
@@ -634,7 +625,6 @@ const inquiryInterbankAccount = async () => {
   const res = await rdl.inquiryInterbankAccount({
     companyId: "NI001",
     parentCompanyId: "KSEI", //optional
-    requestUuid: "C202946D99844E59",
     accountNumber: "0115476117",
     beneficiaryBankCode: "013",
     beneficiaryAccountNumber: "01300000",
@@ -651,7 +641,6 @@ const paymentUsingInterbank = async () => {
   const res = await rdl.paymentUsingInterbank({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS", //optional
-    requestUuid: "C202946D99844E59",
     accountNumber: "0115476117",
     beneficiaryAccountNumber: "3333333333", //Get from Inquiry Interbank Account
     beneficiaryAccountName: "KEN AROK",
@@ -671,7 +660,6 @@ const faceRecognition = async () => {
   const res = await rdl.faceRecognition({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS", //optional
-    requestUuid: "2HMKB2LFKR1CF61Y",
     firstName: "MOHAMMAD", //optional
     middleName: "BAQER", //optional
     lastName: "ZALQAD",
