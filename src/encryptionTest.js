@@ -16,8 +16,8 @@ function testEncryptionDecryption() {
 
     };
 
-    const cid = "001";
-    const sck = "ea0c88921fb033387e66ef7d1e82ab83";
+    const cid = "14789";
+    const sck = "dfa40df95c9b4730c2bd6199aafc2f73";
 
     // Encrypt data
     const encryptedData = encrypt(json_data, cid, sck);
