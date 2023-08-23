@@ -939,6 +939,300 @@ const paymentUsingInterbank = async () => {
 };
 ```
 
+### 2.2.E RDN
+
+Create `RDN` class object
+```javascript
+
+import { BNIClient, Rdn } from 'bni-nodejs';
+// const { BNIClient, Rdf } = require('bni-nodejs'); // legacy way
+
+// Create Client instance
+const client = new BNIClient({
+  env: 'sandbox', // dev, sandbox or prod
+  clientId: '{your-client-id}',
+  clientSecret: '{your-client-secret}',
+  apiKey: '{your-api-key}',
+  apiSecret: '{your-api-secret}',
+  appName: '{your-app-name}'
+});
+
+const rdn = new Rdn(client);
+```
+Available methods for `RDN` class
+
+#### Face Recognition
+```javascript
+// return as Promise of Object
+const faceRecognition = async () => {
+  const res = await rdn.faceRecognition({
+    companyId: "SANDBOX",
+    parentCompanyId: "STI_CHS", //optional
+    firstName: "MOHAMMAD", //optional
+    middleName: "BAQER", //optional
+    lastName: "ZALQAD",
+    idNumber: "0141111121260118", //Identity Number (KTP only)
+    birthDate: "29-09-2021",
+    birthPlace: "BANDUNG",
+    gender: "M", //“M” or “F”
+    cityAddress: "Bandung",
+    stateProvAddress: "Jawa Barat",
+    addressCountry: "ID", //e.g.: “ID”
+    streetAddress1: "bandung",
+    streetAddress2: "bandung",
+    postCodeAddress: "40914",
+    country: "ID", //e.g.: “ID”
+    selfiePhoto: "29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuP", //Base64 encoded selfie photo
+  });
+  return res;
+};
+```
+#### Register Investor
+```javascript
+// return as Promise of Object
+const registerInvestor = async () => {
+  const res = await rdn.registerInvestor({
+    companyId: "SANDBOX",
+    parentCompanyId: "STI_CHS",
+    uuidFaceRecog: "492F33851D634CFB", //RequestUuid successed value from Face Recognition API (KYC valid)
+    title: "01",
+    firstName: "Agus", //optional
+    middleName: "", //optional
+    lastName: "Saputra",
+    optNPWP: "1", //“1” or “0” (Default “1”)
+    NPWPNum: "001058893408123",
+    nationality: "ID", //e.g.: “ID”
+    domicileCountry: "ID", //e.g.: “ID”
+    religion: "2",
+    birthPlace: "Semarang",
+    birthDate: "14081982",
+    gender: "M", //“M” or “F”
+    isMarried: "S",
+    motherMaidenName: "Dina Maryati",
+    jobCode: "01",
+    education: "7",
+    idType: "01",
+    idNumber: "4147016201959998", //Identity Number (KTP only)
+    idIssuingCity: "Jakarta Barat",
+    idExpiryDate: "26102099", //ddMMyyyy
+    addressStreet: "Jalan Mawar Melati",
+    addressRtRwPerum: "003009Sentosa",
+    addressKel: "Cengkareng Barat",
+    addressKec: "Cengkareng/Jakarta Barat",
+    zipCode: "11730",
+    homePhone1: "0214", //Area code, e.g. 021 (3 - 4 digit) If not exist, fill with “9999”
+    homePhone2: "7459", //Number after area code (min 4 digit) If not exist, fill with “99999999”
+    officePhone1: "", //(Optional) Area code, e.g. 021
+    officePhone2: "", //(Optional)  Number after area code
+    mobilePhone1: "0812", //Operator code, e.g. 0812 (4 digit) If not exist, fill with “0899”
+    mobilePhone2: "12348331", //Number after operator code (min 6 digit) If not exist, fill with “999999”
+    faxNum1: "", //(Optional) Area code, e.g. 021
+    faxNum2: "", //(Optional) Number after area code
+    email: "agus.saputra@gmail.com",
+    monthlyIncome: "8000000",
+    branchOpening: "0259",
+    institutionName: "PT. BNI SECURITIES",
+    sid: "IDD280436215354",
+    employerName: "Salman", //Employer Name / Company Name
+    employerAddDet: "St Baker", //Employer street address / home street address
+    employerAddCity: "Arrandelle", //Employer city address / home city address
+    jobDesc: "Pedagang",
+    ownedBankAccNo: "0337109074",
+    idIssuingDate: "10122008",
+  });
+  return res;
+};
+```
+#### Check SID
+```javascript
+// return as Promise of Object
+const checkSID = async () => {
+  const res = await rdn.checkSID({
+  companyId: 'SANDBOX', // Registered participan id from KSEI
+  parentCompanyId: 'STI_CHS',
+  participantId: 'NI001', // Institution code, e.g.: "NI001"
+  sidNumber: 'IDD1206M9527805', // SID number, e.g.: "IDD12345002"
+  accountNumberOnKsei: 'NI001CRKG00146', 
+  branchCode: '0259',
+  ack: 'Y' // N = send data to KSEI & Y = check previous checkSID status
+  });
+  return res;
+};
+```
+#### Register Investor Account
+```javascript
+// return as Promise of Object
+const registerInvestorAccount = async () => {
+  const res = await rdn.registerInvestorAccount({
+    companyId: ' NI001',
+    parentCompanyId: 'KSEI', // optional
+    cifNumber: '9100749959',
+    currency: 'IDR', // “IDR” or “USD”
+    openAccountReason: '2',
+    sourceOfFund: '1',
+    branchId: '0259',
+    bnisId: '19050813401', // Value = requestUuid.
+    sre: 'NI001CX5U00109' // No. Sub rekening efek, e.g: “NI001CX5U00109”
+  });
+  return res;
+};
+```
+#### Send Data Static
+```javascript
+// return as Promise of Object
+const sendDataStatic = async () => {
+  const res = await rdn.sendDataStatic({
+    companyId: 'SPS App', // Registered participan id from KSEI
+    parentCompanyId: 'KSEI', // optional
+    participantCode: 'NI001', // Institution code, e.g: “NI001”
+    participantName: 'PT. BNI SECURITIES', // Institution name, e.g.: “PT. BNI SECURITIES”
+    investorName: 'SUMARNO', // Investor name
+    investorCode: 'IDD250436742277', // Investor code, e.g.: "IDD250436742277"
+    investorAccountNumber: 'NI001042300155', // Investor account number, e.g.: "NI001042300155"
+    bankAccountNumber: '242345393', // e.g.: "242345393"
+    activityDate: '20180511', // e.g: "yyyyMMdd"
+    activity: 'O' // (O)pening / (C)lose / (B)lock Account / (U)nblock Account
+  });
+  return res;
+};
+```
+#### Inquiry Account Info
+```javascript
+// return as Promise of Object
+const inquiryAccountInfo = async () => {
+  const res = rdn.inquiryAccountInfo({
+    companyId: 'NI001',
+    parentCompanyId: 'KSEI', // optional
+    accountNumber: '0115476117'
+  });
+  return res;
+};
+```
+#### Inquiry Account Balance
+```javascript
+// return as Promise of Object
+const inquiryAccountBalance = async () => {
+  const res = rdn.inquiryAccountBalance({
+    companyId: 'NI001',
+    parentCompanyId: 'KSEI', // optional
+    accountNumber: '0115476117'
+  });
+  return res;
+};
+```
+#### Inquiry Account History
+```javascript
+// return as Promise of Object
+const inquiryAccountHistory = async () => {
+  const res = rdn.inquiryAccountHistory({
+    companyId: 'NI001',
+    parentCompanyId: 'KSEI', // optional
+    accountNumber: '0115476117'
+  });
+  return res;
+};
+```
+#### Payment Using Transfer
+```javascript
+// return as Promise of Object
+const paymentUsingTransfer = async () => {
+  const res = rdn.paymentUsingTransfer({
+    companyId: 'NI001',
+    parentCompanyId: 'KSEI', // optional
+    accountNumber: '0115476117',
+    beneficiaryAccountNumber: '0115471119',
+    currency: 'IDR', // e.g., “IDR”
+    amount: '11500',
+    remark: 'Test RDN' // Recommended for the reconciliation purpose
+  });
+  return res;
+};
+```
+#### Inquiry Payment Status
+```javascript
+// return as Promise of Object
+const inquiryPaymentStatus = async () => {
+  const res = rdn.inquiryPaymentStatus({
+    companyId: 'NI001',
+    parentCompanyId: 'KSEI', // optional
+    requestedUuid: 'E8C6E0027F6E429F'
+  });
+  return res;
+};
+```
+#### Payment Using Clearing
+```javascript
+// return as Promise of Object
+const paymentUsingClearing = async () => {
+  const res = rdn.paymentUsingClearing({
+    companyId: 'SANDBOX',
+    parentCompanyId: 'STI_CHS', // optional
+    accountNumber: '0115476117', // Transfer/payment provider account number
+    beneficiaryAccountNumber: '3333333333', // Transfer/payment receiver account number
+    beneficiaryAddress1: 'Jakarta', // Receiver address, e.g.: "Jakarta"
+    beneficiaryAddress2: '', // optional
+    beneficiaryBankCode: '140397',
+    beneficiaryName: 'Panji Samudra', // Receiver name
+    currency: 'IDR', // e.g., “IDR”
+    amount: '15000', // Total payment/transfer
+    remark: 'Test kliring', // //(optional)Recommended for the reconciliation purpose
+    chargingType: 'OUR'
+  });
+  return res;
+};
+```
+#### Payment Using RTGS
+```javascript
+// return as Promise of Object
+const paymentUsingRTGS = async () => {
+  const res = rdn.paymentUsingRTGS({
+    companyId: 'NI001',
+    parentCompanyId: 'KSEI', // optional
+    accountNumber: '0115476117',
+    beneficiaryAccountNumber: '3333333333',
+    beneficiaryAddress1: 'Jakarta',
+    beneficiaryAddress2: '',
+    beneficiaryBankCode: 'CENAIDJA',
+    beneficiaryName: 'Panji Samudra',
+    currency: 'IDR', // e.g., “IDR” 
+    amount: '150000000',
+    remark: 'Test rtgs', // Recommended for the reconciliation purpose
+    chargingType: 'OUR'
+  });
+  return res;
+};
+```
+#### Inquiry Interbank Account
+```javascript
+// return as Promise of Object
+const inquiryInterbankAccount = async () => {
+  const res = rdn.inquiryInterbankAccount({
+    companyId: 'NI001',
+    parentCompanyId: 'KSEI', // optional
+    accountNumber: '0115476117',
+    beneficiaryBankCode: '013',
+    beneficiaryAccountNumber: '01300000'
+  });
+  return res;
+};
+```
+#### Payment Using Interbank
+```javascript
+// return as Promise of Object
+const paymentUsingInterbank = async () => {
+  const res = rdn.paymentUsingInterbank({
+    companyId: 'NI001',
+    parentCompanyId: 'KSEI', // optional
+    accountNumber: '0115476117',
+    beneficiaryAccountNumber: '3333333333',
+    beneficiaryAccountName: 'KEN AROK', // Get from Inquiry Interbank Account
+    beneficiaryBankCode: '014',
+    beneficiaryBankName: 'BANK BCA', // Get from Inquiry Interbank Account
+    amount: '15000'
+  });
+  return res;
+};
+```
 ## Get help
 
 - [Digital Services](https://digitalservices.bni.co.id/en/)
