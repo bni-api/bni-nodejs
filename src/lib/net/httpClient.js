@@ -168,6 +168,7 @@ class HttpClient {
           data: options.data
         });
         resolve(res.data);
+        console.log(res.data)
       } catch (err) {
         // buat ngetest errornya apa
         console.log(err.response.data);

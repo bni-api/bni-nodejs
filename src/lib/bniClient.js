@@ -2,6 +2,7 @@ import HttpClient from './net/httpClient.js';
 
 // BNI API HOSTNAME
 // const DEV_BASE_URL = 'https://newapidev.bni.co.id:8066';
+// const UAT_BASE_URL = 'https://newapidev.bni.co.id:8065';
 // const DEV_BASE_URL = 'https://sandbox.dglapm.id';
 const DEV_BASE_URL = 'https://sb-dev-in.dglapm.id';
 const SANDBOX_BASE_URL = 'https://sandbox.bni.co.id';
