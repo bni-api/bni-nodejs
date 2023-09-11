@@ -84,5 +84,3 @@ export const generateUUID = () => {
   }
   return uuid;
 };
-
-// 

@@ -148,11 +148,10 @@ class HttpClient {
     });
   }
 
-
   requestV2(options = { method, apiKey, accessToken, url, data, signature, timestamp }) {
     const headers = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.5',
+      'user-agent': 'bni-nodejs/0.1.6',
       'x-api-key': options.apiKey,
       'x-signature': options.signature,
       'x-timestamp': options.timestamp
@@ -168,10 +167,7 @@ class HttpClient {
           data: options.data
         });
         resolve(res.data);
-        console.log(res.data)
       } catch (err) {
-        // buat ngetest errornya apa
-        console.log(err.response.data);
         reject(err);
       }
     });
