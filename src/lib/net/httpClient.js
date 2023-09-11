@@ -18,7 +18,7 @@ class HttpClient {
   tokenRequest(options = { url, username, password }) {
     const headers = {
       'content-type': 'application/x-www-form-urlencoded',
-      'user-agent': 'bni-nodejs/0.1.5'
+      'user-agent': 'bni-nodejs/0.1.6'
     };
 
     return new Promise(async (resolve, reject) => {
@@ -98,7 +98,7 @@ class HttpClient {
   request(options = { method, apiKey, accessToken, url, data }) {
     const headers = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.5',
+      'user-agent': 'bni-nodejs/0.1.6',
       'x-api-key': options.apiKey
     };
 
@@ -124,7 +124,7 @@ class HttpClient {
   ) {
     const header = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.5',
+      'user-agent': 'bni-nodejs/0.1.6',
       Authorization: `Bearer ${options.accessToken}`
     };
 
@@ -149,12 +149,10 @@ class HttpClient {
     });
   }
 
-  requestV2(
-    options = { method, apiKey, accessToken, url, data, signature, timestamp }
-  ) {
+  requestV2(options = { method, apiKey, accessToken, url, data, signature, timestamp }) {
     const headers = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.5',
+      'user-agent': 'bni-nodejs/0.1.6',
       'x-api-key': options.apiKey,
       'x-signature': options.signature,
       'x-timestamp': options.timestamp
@@ -170,11 +168,9 @@ class HttpClient {
         });
         resolve(res.data);
       } catch (err) {
-        // buat ngetest errornya apa
-        console.log(err.response.data);
         reject(err);
       }
-    });
+    });   
   }
 }
 

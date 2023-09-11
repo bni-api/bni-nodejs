@@ -3,6 +3,7 @@ import HttpClient from './net/httpClient.js';
 // BNI API HOSTNAME
 const DEV_BASE_URL = 'https://sb-dev-in.dglapm.id/';
 const SANDBOX_BASE_URL = 'https://sandbox.bni.co.id';
+// const SANDBOX_BASE_URL = 'https://sb-dev-in.dglapm.id';
 const PRODUCTION_BASE_URL = 'https://api.bni.co.id';
 const SANDBOX_DEV_BASE_URL = 'http://localhost:8080';
 
