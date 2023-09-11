@@ -75,3 +75,12 @@ export const randomNumber = () => {
   const unixTimeStamp = Math.floor(Date.now() / 1000);
   return `${randomNumber}${unixTimeStamp}`;
 };
+export const generateUUID = () => {
+  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let uuid = '';
+  for (let i = 0; i < 16; i++) {
+    const randIndex = Math.floor(Math.random() * chars.length);
+    uuid += chars[randIndex];
+  }
+  return uuid;
+};

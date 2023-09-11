@@ -147,6 +147,31 @@ class HttpClient {
       }
     });
   }
+
+  requestV2(options = { method, apiKey, accessToken, url, data, signature, timestamp }) {
+    const headers = {
+      'content-type': 'application/json',
+      'user-agent': 'bni-nodejs/0.1.6',
+      'x-api-key': options.apiKey,
+      'x-signature': options.signature,
+      'x-timestamp': options.timestamp
+    };
+
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await this.httpClient({
+          method: options.method,
+          headers: headers,
+          url: options.url,
+          params: { access_token: options.accessToken },
+          data: options.data
+        });
+        resolve(res.data);
+      } catch (err) {
+        reject(err);
+      }
+    });   
+  }
 }
 
 export default HttpClient;
