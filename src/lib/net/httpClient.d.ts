@@ -37,4 +37,5 @@ declare class HttpClient {
         data: any;
         additionalHeader: {};
     }): Promise<any>;
+    requestV2(options?: Object): Object;
 }

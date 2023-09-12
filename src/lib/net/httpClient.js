@@ -2,7 +2,6 @@ import axios from 'axios';
 import { stringify } from 'qs';
 import { getTimeStamp, generateTokenSignature } from '../util/util.js';
 class HttpClient {
-
   constructor() {
     this.httpClient = axios.create();
   }
@@ -11,15 +10,15 @@ class HttpClient {
    * Initiate with options
    * @param  {Object} options - should have these props:
    * url, username, password
-   * 
+   *
    * @return {Object} promse with resolve or reject
-   * 
+   *
    */
 
   tokenRequest(options = { url, username, password }) {
     const headers = {
       'content-type': 'application/x-www-form-urlencoded',
-      'user-agent': 'bni-nodejs/0.1.5'
+      'user-agent': 'bni-nodejs/0.1.6'
     };
 
     return new Promise(async (resolve, reject) => {
@@ -50,9 +49,9 @@ class HttpClient {
    * Initiate with options
    * @param  {Object} options - should have these props:
    * url, username, password
-   * 
+   *
    * @return {Object} promse with resolve or reject
-   * 
+   *
    */
 
   tokenRequestSnapBI(options = { url, clientId, privateKeyPath }) {
@@ -91,15 +90,15 @@ class HttpClient {
    * Initiate with options
    * @param  {Object} options - should have these props:
    * method, apiKey, accessToken, url, data
-   * 
+   *
    * @return {Object} promse with resolve or reject
-   * 
+   *
    */
 
   request(options = { method, apiKey, accessToken, url, data }) {
     const headers = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.5',
+      'user-agent': 'bni-nodejs/0.1.6',
       'x-api-key': options.apiKey
     };
 
@@ -120,11 +119,13 @@ class HttpClient {
     });
   }
 
-  requestSnapBI(options = { method, apiKey, accessToken, url, data, additionalHeader: {} }) {
+  requestSnapBI(
+    options = { method, apiKey, accessToken, url, data, additionalHeader: {} }
+  ) {
     const header = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.5',
-      'Authorization': `Bearer ${options.accessToken}`
+      'user-agent': 'bni-nodejs/0.1.6',
+      Authorization: `Bearer ${options.accessToken}`
     };
 
     const headers = {
@@ -156,7 +157,6 @@ class HttpClient {
       'x-signature': options.signature,
       'x-timestamp': options.timestamp
     };
-
     return new Promise(async (resolve, reject) => {
       try {
         const res = await this.httpClient({
