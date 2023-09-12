@@ -7,24 +7,31 @@ const escape = (string) => {
 };
 
 const changeTimezone = (date, timeZone) => {
-  const invdate = new Date(date.toLocaleString('en-US', {
-    timeZone: timeZone
-  }));
+  const invdate = new Date(
+    date.toLocaleString('en-US', {
+      timeZone: timeZone
+    })
+  );
 
   const diff = date.getTime() - invdate.getTime();
   return new Date(date.getTime() - diff); // needs to substract
 };
 
 export const generateSignature = (params = { body, apiSecret }) => {
-
   // generate JWT header
-  const header = escape(Buffer.from('{"alg":"HS256","typ":"JWT"}').toString('base64'));
+  const header = escape(
+    Buffer.from('{"alg":"HS256","typ":"JWT"}').toString('base64')
+  );
 
   // generate JWT payload
-  const payload = escape(Buffer.from(JSON.stringify(params.body)).toString('base64'));
+  const payload = escape(
+    Buffer.from(JSON.stringify(params.body)).toString('base64')
+  );
 
   // generate JWT signature
-  const jwtSignature = createHmac('SHA256', params.apiSecret).update(`${header}.${payload}`).digest('base64');
+  const jwtSignature = createHmac('SHA256', params.apiSecret)
+    .update(`${header}.${payload}`)
+    .digest('base64');
 
   // return generated JWT token
   return escape(`${header}.${payload}.${jwtSignature}`);
@@ -47,16 +54,18 @@ export const getTimeStamp = () => {
 
   return `${map.yyyy}-${map.mm}-${map.dd}T${map.hh}:${map.ii}:${map.ss}${map.timezone}`;
 };
-export const generateTokenSignature = (params = { privateKeyPath, clientId, timeStamp }) => {
-
+export const generateTokenSignature = (
+  params = { privateKeyPath, clientId, timeStamp }
+) => {
   const privateKey = readFileSync(params.privateKeyPath);
 
   const data = Buffer.from(params.clientId + '|' + params.timeStamp);
   const signature = sign('RSA-SHA256', data, privateKey).toString('base64');
   return signature;
 };
-export const generateSignatureServiceSnapBI = (params = { body, method, url, accessToken, timeStamp, apiSecret }) => {
-
+export const generateSignatureServiceSnapBI = (
+  params = { body, method, url, accessToken, timeStamp, apiSecret }
+) => {
   const minify = JSON.stringify(params.body);
   const sha = createHash('sha256').update(minify).digest('');
   const bufferText = Buffer.from(sha, 'utf8');

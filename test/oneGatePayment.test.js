@@ -1,7 +1,6 @@
-import { BNIClient, OneGatePayment } from '../src/index.js';
-import { strictEqual } from 'assert';
-import { constants } from './constant.js';
-
+// import { BNIClient, OneGatePayment } from '../src/index.js';
+// import { strictEqual } from 'assert';
+// import { constants } from './constant.js';
 
 // describe('oneGatePayment.js', () => {
 
@@ -69,23 +68,14 @@ import { constants } from './constant.js';
 //     });
 //   });
 // });
-const client = new BNIClient({
-  env: 'sandbox',
-  clientId: constants.clientId,
-  clientSecret: constants.clientSecret,
-  apiKey: constants.apiKey,
-  apiSecret: constants.apiSecret,
-  appName: constants.appName
-});
-const ogp = new OneGatePayment(client);
 
 // const client = new BNIClient({
 //   env: 'sandbox',
-//   clientId: cred_ogp.clientId,
-//   clientSecret: cred_ogp.clientSecret,
-//   apiKey: cred_ogp.apiKey,
-//   apiSecret: cred_ogp.apiSecret,
-//   appName: cred_ogp.appName
+//   clientId: constants.clientId,
+//   clientSecret: constants.clientSecret,
+//   apiKey: constants.apiKey,
+//   apiSecret: constants.apiSecret,
+//   appName: constants.appName
 // });
 // const ogp = new OneGatePayment(client);
 
