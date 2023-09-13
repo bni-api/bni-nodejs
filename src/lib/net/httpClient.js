@@ -170,8 +170,13 @@ class HttpClient {
       } catch (err) {
         reject(err);
       }
-    });   
+    });
   }
 }
 
+<<<<<<< HEAD
+
 export default HttpClient;
+=======
+export default HttpClient;
+>>>>>>> 430c9b0b4080bed344aca86b696030e1cdb462d4

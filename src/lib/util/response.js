@@ -1,8 +1,7 @@
 export const responseOGP = (params = { res, resObj }) => {
   if (params.res[params.resObj].parameters.responseCode != '0001') {
     throw new Error(
-      `${params.res[params.resObj].parameters.responseCode} : ${
-        params.res[params.objApi].parameters.responseMessage
+      `${params.res[params.resObj].parameters.responseCode} : ${params.res[params.objApi].parameters.responseMessage
       }`
     );
   }
@@ -31,19 +30,27 @@ export const responseSnapBI = (params = { res }) => {
   return params.res;
 };
 
-export const responseRDF = (params = { res }) => {
+export const responseRDL = (params = { res }) => {
   const haveResponseCode = params.res.response.responseCode;
-  if (haveResponseCode && params.res.response.responseCode !== '0001'){
+  if (haveResponseCode && params.res.response.responseCode !== '0001') {
     throw new Error(
       `${params.res.responseCode} : ${params.res.responseMessage}, ${params.res.errorMessage}`
     );
   }
   return params.res;
 };
-
+export const responseRDF = (params = { res }) => {
+  const haveResponseCode = params.res.response.responseCode;
+  if (haveResponseCode && params.res.response.responseCode !== '0001') {
+    throw new Error(
+      `${params.res.responseCode} : ${params.res.responseMessage}, ${params.res.errorMessage}`
+    );
+  }
+  return params.res;
+};
 export const responseRDN = (params = { res }) => {
   const haveResponseCode = params.res.response && params.res.response.responseCode;
-  if (haveResponseCode && params.res.response.responseCode !== '0001'){
+  if (haveResponseCode && params.res.response.responseCode !== '0001') {
     throw new Error(
       `${params.res.responseCode} : ${params.res.responseMessage}, ${params.res.errorMessage}`
     );
