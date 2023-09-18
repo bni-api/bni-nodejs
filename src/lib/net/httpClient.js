@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { stringify } from 'qs';
 import { getTimeStamp, generateTokenSignature } from '../util/util.js';
+
+const CURRENT_VERSION = '0.1.12';
+const HEADER_USER_AGENT = `bni-nodejs/${CURRENT_VERSION}`;
+
 class HttpClient {
   constructor() {
     this.httpClient = axios.create();
@@ -18,7 +22,7 @@ class HttpClient {
   tokenRequest(options = { url, username, password }) {
     const headers = {
       'content-type': 'application/x-www-form-urlencoded',
-      'user-agent': 'bni-nodejs/0.1.6'
+      'user-agent': HEADER_USER_AGENT
     };
 
     return new Promise(async (resolve, reject) => {
@@ -98,7 +102,7 @@ class HttpClient {
   request(options = { method, apiKey, accessToken, url, data }) {
     const headers = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.6',
+      'user-agent': HEADER_USER_AGENT,
       'x-api-key': options.apiKey
     };
 
@@ -124,7 +128,7 @@ class HttpClient {
   ) {
     const header = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.6',
+      'user-agent': HEADER_USER_AGENT,
       Authorization: `Bearer ${options.accessToken}`
     };
 
@@ -152,7 +156,7 @@ class HttpClient {
   requestV2(options = { method, apiKey, accessToken, url, data, signature, timestamp }) {
     const headers = {
       'content-type': 'application/json',
-      'user-agent': 'bni-nodejs/0.1.6',
+      'user-agent': HEADER_USER_AGENT,
       'x-api-key': options.apiKey,
       'x-signature': options.signature,
       'x-timestamp': options.timestamp
