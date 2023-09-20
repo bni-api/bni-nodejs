@@ -1,6 +1,6 @@
 import HttpClient from '../net/httpClient.js';
 import { responseRDL } from '../util/response.js';
-import { generateSignature, generateClientId, generateUUID, encrypt } from '../util/util.js';
+import { generateSignature, generateUUID } from '../util/util.js';
 
 class RDL {
     constructor(client) {
