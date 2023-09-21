@@ -1,8 +1,13 @@
 .git
 .eslintrc
-.mocharc
+.mocharc.json
 .gitignore
-/examples
 /test
 /node_modules
 package-lock.json
+test/constant.js
+*.key
+tsconfig.base.json
+tsconfig-cjs.json
+tsconfig.json
+afterbuild.sh
