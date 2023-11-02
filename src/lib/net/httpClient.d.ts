@@ -1,6 +1,6 @@
 export default HttpClient;
 declare class HttpClient {
-  httpClient: import("axios").AxiosInstance;
+  httpClient: import('axios').AxiosInstance;
   /**
    * Initiate with options
    * @param  {Object} options - should have these props:
@@ -37,5 +37,14 @@ declare class HttpClient {
     data: any;
     additionalHeader: {};
   }): Promise<any>;
-  requestV2(options?: Object): Object;
+  requestBniDirectV2(options?: {
+    method: string;
+    apiKey: string;
+    accessToken: string;
+    url: string;
+    data: any;
+    signature: string;
+    timestamp: any;
+    bniDirectKey: string;
+  }): Promise<any>;
 }

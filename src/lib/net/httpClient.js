@@ -153,13 +153,51 @@ class HttpClient {
     });
   }
 
-  requestV2(options = { method, apiKey, accessToken, url, data, signature, timestamp }) {
+  requestV2(
+    options = { method, apiKey, accessToken, url, data, signature, timestamp }
+  ) {
     const headers = {
       'content-type': 'application/json',
       'user-agent': HEADER_USER_AGENT,
       'x-api-key': options.apiKey,
       'x-signature': options.signature,
       'x-timestamp': options.timestamp
+    };
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await this.httpClient({
+          method: options.method,
+          headers: headers,
+          url: options.url,
+          params: { access_token: options.accessToken },
+          data: options.data
+        });
+        resolve(res.data);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  requestBniDirectV2(
+    options = {
+      method,
+      apiKey,
+      accessToken,
+      url,
+      data,
+      signature,
+      timestamp,
+      bniDirectKey
+    }
+  ) {
+    const headers = {
+      'content-type': 'application/json',
+      'user-agent': HEADER_USER_AGENT,
+      'x-api-key': options.apiKey,
+      'x-signature': options.signature,
+      'x-timestamp': options.timestamp,
+      'bnidirect-api-key': options.bniDirectKey
     };
     return new Promise(async (resolve, reject) => {
       try {
