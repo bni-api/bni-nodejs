@@ -93,3 +93,8 @@ export const generateUUID = () => {
   }
   return uuid;
 };
+export const generateBniDirectKey = ({ corpId, userId, bniDirectKey }) => {
+  const data = corpId + userId + bniDirectKey;
+  const sha256string = createHash('sha256').update(data).digest('hex');
+  return sha256string.toLowerCase();
+};

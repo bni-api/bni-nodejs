@@ -57,3 +57,10 @@ export const responseRDN = (params = { res }) => {
   }
   return params.res;
 };
+export const responseBNIDirect = (params = { res }) => {
+  const haveResponseCode = params.res.requestStatus;
+  if (haveResponseCode && params.res.requestStatus !== '0') {
+    throw new Error(`${params.res.errorReason}`);
+  }
+  return params.res;
+};
