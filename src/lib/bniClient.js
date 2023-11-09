@@ -2,6 +2,8 @@ import HttpClient from './net/httpClient.js';
 
 // BNI API HOSTNAME
 const SANDBOX_BASE_URL = 'https://sandbox.bni.co.id';
+// const DEV_BASE_URL = 'http://localhost:1235';
+// const DEV_BASE_URL = 'http://localhost:1313';
 const DEV_BASE_URL = 'https://newapidev.bni.co.id:8066';
 const UAT_BASE_URL = 'https://newapidev.bni.co.id:8065';
 const PRODUCTION_BASE_URL = 'https://api.bni.co.id';

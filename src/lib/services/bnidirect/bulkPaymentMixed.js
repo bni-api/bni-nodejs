@@ -1,11 +1,25 @@
 import { responseBNIDirect } from '../../util/response.js';
 import HttpClient from '../../net/httpClient.js';
 import { generateSignature, generateBniDirectKey } from '../../util/util.js';
-export async function balanceInquiry(params = { body, config }) {
+export async function bulkPaymentMixed(params = { body, config }) {
   const body = {
     corporateId: params.body.corporateId,
     userId: params.body.userId,
-    accountList: params.body.accountList
+    apiRefNo: params.body.apiRefNo,
+    instructionDate: params.body.instructionDate,
+    session: params.body.session,
+    serviceType: params.body.serviceType,
+    debitAcctNo: params.body.debitAcctNo,
+    amount: params.body.amount,
+    currency: params.body.currency,
+    chargeTo: params.body.chargeTo,
+    residenceCode: params.body.residenceCode,
+    citizenCode: params.body.citizenCode,
+    category: params.body.category,
+    transactionType: params.body.transactionType,
+    accountNmValidation: params.body.accountNmValidation,
+    remark: params.body.remark,
+    childContent: params.body.childContent
   };
   const signature = generateSignature({
     body: { ...body, timestamp: params.config.timeStamp },
@@ -21,12 +35,12 @@ export async function balanceInquiry(params = { body, config }) {
     method: 'POST',
     apiKey: params.config.config.apiKey,
     accessToken: await params.config.client.getToken(),
-    url: `${params.config.client.getBaseUrl()}/bnidirect/api/Account/InquiryBalance`,
+    url: `${params.config.client.getBaseUrl()}/bnidirect/api/MassPayment/BulkPaymentMixed`,
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
     data: body,
     bniDirectKey:
-      'dc8f7943e027345677c7dade0441936c3bb3f8d697ef8f7b28ae5dfdeea78dd1'
+          'dc8f7943e027345677c7dade0441936c3bb3f8d697ef8f7b28ae5dfdeea78dd1'
   });
   return responseBNIDirect({ res: res });
-}
+} 
