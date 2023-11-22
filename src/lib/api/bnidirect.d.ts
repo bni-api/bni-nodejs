@@ -39,4 +39,90 @@ declare class BNIDIRECT {
     transactionInstructionDate: string;
     transactionPurposeCode: string;
   });
+
+  bniPopsCashAndCarry(params?: {
+    corporateId: string;
+    userId: string;
+    debitedAccountNo: string;
+    salesOrganizationCode: string;
+    distributionChannelCode: string;
+    productCode: string;
+    shipTo: string;
+    debitOrCreditNoteNo: string;
+    productInformationDetail: string[];
+  });
+
+  bniPopsProductAllocation(params?: {
+    corporateId: string;
+    userId: string;
+    debitedAccountNo: string;
+    salesOrganizationCode: string;
+    distributionChannelCode: string;
+    productCode: string;
+    shipTo: string;
+    scheduleAggreementNo: string;
+    debitOrCreditNoteNo: string;
+    productInformationDetail: string[];
+  });
+
+  bniPopsResubmitCashAndCarry(params?: {
+    corporateId: string;
+    userId: string;
+    transactionReferenceNo: string;
+    SONumber: string;
+  });
+
+  bniPopsResubmitProductAllocation(params?: {
+    corporateId: string;
+    userId: string;
+    transactionReferenceNo: string;
+    SONumber: string;
+  });
+
+  bulkGetStatus(params?: {
+    corporateId: string;
+    userId: string;
+    fileRefNo: string;
+    apiRefNo: string;
+  });
+
+  inquiryVirtualAccountTransaction(params?: {
+    corporateId: string;
+    userId: string;
+    virtualAccountNo: string;
+    fromDate: string;
+    toDate: string;
+  });
+
+  updateVirtualAccount(params?: {
+    corporateId: string;
+    userId: string;
+    companyCode: string;
+    virtualAccountNo: string;
+    virtualAccountName: string;
+    virtualAccountTypeCode: string;
+    billingAmount: string;
+    varAmount1: string;
+    varAmount2: string;
+    expiryDate: string;
+    expiryTime: string;
+    mobilePhoneNo: string;
+    statusCode: string;
+  });
+
+  createVirtualAccount(params?: {
+    corporateId: string;
+    userId: string;
+    companyCode: string;
+    virtualAccountNo: string;
+    virtualAccountName: string;
+    virtualAccountTypeCode: string;
+    billingAmount: string;
+    varAmount1: string;
+    varAmount2: string;
+    expiryDate: string;
+    expiryTime: string;
+    mobilePhoneNo: string;
+    statusCode: string;
+  });
 }
