@@ -1,12 +1,13 @@
 import { responseBNIDirect } from '../../util/response.js';
 import HttpClient from '../../net/httpClient.js';
 import { generateSignature, generateBniDirectKey } from '../../util/util.js';
-export async function callbackApi(params = { body, config }) {
+
+export async function bulkGetStatus(params = { body, config }) {
   const body = {
     corporateId: params.body.corporateId,
     userId: params.body.userId,
-    apiRefNo: params.body.apiRefNo,
-    status: params.body.status
+    fileRefNo: params.body.fileRefNo,
+    apiRefNo: params.body.apiRefNo
   };
   const signature = generateSignature({
     body: { ...body, timestamp: params.config.timeStamp },
@@ -18,15 +19,16 @@ export async function callbackApi(params = { body, config }) {
     bniDirectKey: params.config.config.bniDirectKey
   });
   const httpClient = new HttpClient();
-  const res = await httpClient.requestBniDirectV2({
+  let res = await httpClient.requestBniDirectV2({
     method: 'POST',
     apiKey: params.config.config.apiKey,
     accessToken: await params.config.client.getToken(),
-    url: `${params.config.client.getBaseUrl()}/bnidirect/api/Bulk/CallBack`,
+    url: `${params.config.client.getBaseUrl()}/bnidirect/api/Account/BulkGetStatus`,
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
     data: body,
-    bniDirectKey: bniDirectKey
+    bniDirectKey:
+      'dc8f7943e027345677c7dade0441936c3bb3f8d697ef8f7b28ae5dfdeea78dd1'
   });
   return responseBNIDirect({ res: res });
 }

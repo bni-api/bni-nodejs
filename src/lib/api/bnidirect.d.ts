@@ -9,10 +9,131 @@ declare class BNIDIRECT {
    * @param  {Object} options - should have these props:
    * accountNo
    */
+  bniPopsCashAndCarry(params?: {
+    corporateId: string;
+    userId: string;
+    debitedAccountNo: string;
+    salesOrganizationCode: string;
+    distributionChannelCode: string;
+    productCode: string;
+    shipTo: string;
+    debitOrCreditNoteNo: string;
+    productInformationDetail: string[];
+  });
+  bniPopsProductAllocation(params?: {
+    corporateId: string;
+    userId: string;
+    debitedAccountNo: string;
+    salesOrganizationCode: string;
+    distributionChannelCode: string;
+    productCode: string;
+    shipTo: string;
+    scheduleAggreementNo: string;
+    debitOrCreditNoteNo: string;
+    productInformationDetail: string[];
+  });
+  bniPopsResubmitCashAndCarry(params?: {
+    corporateId: string;
+    userId: string;
+    transactionReferenceNo: string;
+    SONumber: string;
+  });
+  bniPopsResubmitProductAllocation(params?: {
+    corporateId: string;
+    userId: string;
+    transactionReferenceNo: string;
+    SONumber: string;
+  });
+  createVirtualAccount(params?: {
+    corporateId: string;
+    userId: string;
+    companyCode: string;
+    virtualAccountNo: string;
+    virtualAccountName: string;
+    virtualAccountTypeCode: string;
+    billingAmount: string;
+    varAmount1: string;
+    varAmount2: string;
+    expiryDate: string;
+    expiryTime: string;
+    mobilePhoneNo: string;
+    statusCode: string;
+  });
+  updateVirtualAccount(params?: {
+    corporateId: string;
+    userId: string;
+    companyCode: string;
+    virtualAccountNo: string;
+    virtualAccountName: string;
+    virtualAccountTypeCode: string;
+    billingAmount: string;
+    varAmount1: string;
+    varAmount2: string;
+    expiryDate: string;
+    expiryTime: string;
+    mobilePhoneNo: string;
+    statusCode: string;
+  });
+  inquiryVirtualAccountTransaction(params?: {
+    corporateId: string;
+    userId: string;
+    virtualAccountNo: string;
+    fromDate: string;
+    toDate: string;
+  });
+  bulkGetStatus(params?: {
+    corporateId: string;
+    userId: string;
+    fileRefNo: string;
+    apiRefNo: string;
+  });
   balanceInquiry(params?: {
     corporateId: string;
     userId: string;
     accountList: Array<string>;
+  });
+  inquiryForexRate(params?: {
+    corporateId: string;
+    userId: string;
+    currencyList: string[];
+  });
+  bulkPaymentMixed(params?: {
+    corporateId: string;
+    userId: string;
+    apiRefNo: string;
+    instructionDate: string;
+    session: string;
+    serviceType: string;
+    debitAcctNo: string;
+    amount: string;
+    currency: string;
+    chargeTo: string;
+    residenceCode: string;
+    citizenCode: string;
+    category: string;
+    transactionType: string;
+    accountNmValidation: string;
+    remark: string;
+    childContent: string;
+  });
+  payrollMixed(params?: {
+    corporateId: string;
+    userId: string;
+    apiRefNo: string;
+    instructionDate: string;
+    session: string;
+    serviceType: string;
+    debitAcctNo: string;
+    amount: string;
+    currency: string;
+    chargeTo: string;
+    residenceCode: string;
+    citizenCode: string;
+    category: string;
+    transactionType: string;
+    accountNmValidation: string;
+    remark: string;
+    childContent: string;
   });
   domesticSingleBIFastTransfer(params?: {
     corporateId: string;
@@ -39,41 +160,6 @@ declare class BNIDIRECT {
     transactionInstructionDate: string;
     transactionPurposeCode: string;
   });
-  bulkPaymentMixed(params?: {
-    corporateId: string;
-    userId: string;
-    apiRefNo: string;
-    instructionDate: string;
-    session: string;
-    serviceType: string;
-    debitAcctNo: string;
-    amount: string;
-    currency: string;
-    chargeTo: string;
-    residenceCode: string;
-    citizenCode: string;
-    category: string;
-    transactionType: string;
-    accountNmValidation: string;
-    remark: string;
-    childContent: string;
-  });
-  callbackApi(params?: {
-    corporateId: string;
-    userId: string;
-    apiRefNo: string;
-    status: string;
-  });
-  inquiryChildAccount(params?: {
-    corporateId: string;
-    userId: string;
-    accountNo: string;
-  });
-  inquiryForexRate(params?: {
-    corporateId: string;
-    userId: string;
-    currencyList: string[];
-  });
   inquiryBIFastBeneficiaryName(params?: {
     corporateId: string;
     userId: string;
@@ -81,24 +167,5 @@ declare class BNIDIRECT {
     beneficiaryAccountNo: string;
     proxyId: string;
     beneficiaryBankCode: string;
-  });
-  payrollMixed(params?: {
-    corporateId: string;
-    userId: string;
-    apiRefNo: string;
-    instructionDate: string;
-    session: string;
-    serviceType: string;
-    debitAcctNo: string;
-    amount: string;
-    currency: string;
-    chargeTo: string;
-    residenceCode: string;
-    citizenCode: string;
-    category: string;
-    transactionType: string;
-    accountNmValidation: string;
-    remark: string;
-    childContent: string;
   });
 }
