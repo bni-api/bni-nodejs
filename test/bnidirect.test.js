@@ -3,38 +3,38 @@ import { strictEqual } from 'assert';
 import { constants } from './constant.js';
 
 describe('bnidirect.js', () => {
-  // describe('balanceInquiry', () => {
-  //   it('should return requestStatus 0', async () => {
-  //     return balanceInquiry().then((res) =>
-  //       strictEqual(res.requestStatus, '0')
-  //     );
-  //   });
-  // });
-  // describe('domesticSingleBIFastTransfer.js', () => {
-  //   it('should return requestStatus 0', async () => {
-  //     return domesticSingleBIFastTransfer().then((res) =>
-  //       strictEqual(res.requestStatus, '0')
-  //     );
-  //   });
-  // });
+  describe('balanceInquiry', () => {
+    it('should return requestStatus 0', async () => {
+      return balanceInquiry().then((res) =>
+        strictEqual(res.requestStatus, '0')
+      );
+    });
+  });
+  describe('domesticSingleBIFastTransfer.js', () => {
+    it('should return requestStatus 0', async () => {
+      return domesticSingleBIFastTransfer().then((res) =>
+        strictEqual(res.requestStatus, '0')
+      );
+    });
+  });
 
-  // describe('payrollMixed.js', () => {
-  //   it('should return requestStatus 0', async () => {
-  //     return payrollMixed().then((res) => strictEqual(res.requestStatus, '0'));
-  //   });
-  // });
+  describe('payrollMixed.js', () => {
+    it('should return requestStatus 0', async () => {
+      return payrollMixed().then((res) => strictEqual(res.requestStatus, '0'));
+    });
+  });
 
-  // describe('callbackApi.js', () => {
-  //   it('should return requestStatus 0', async () => {
-  //     return callbackApi().then((res) => strictEqual(res.requestStatus, '0'));
-  //   });
-  // });
+  describe('callbackApi.js', () => {
+    it('should return requestStatus 0', async () => {
+      return callbackApi().then((res) => strictEqual(res.requestStatus, '0'));
+    });
+  });
 
-  // describe('inquiryForexRate.js', () => {
-  //   it('should return requestStatus 0', async () => {
-  //     return inquiryForexRate().then((res) => strictEqual(res.requestStatus, '0'));
-  //   });
-  // });
+  describe('inquiryForexRate.js', () => {
+    it('should return requestStatus 0', async () => {
+      return inquiryForexRate().then((res) => strictEqual(res.requestStatus, '0'));
+    });
+  });
 
   describe('bulkPaymentMixed.js', () => {
     it('should return requestStatus 0', async () => {
@@ -42,17 +42,17 @@ describe('bnidirect.js', () => {
     });
   });
 
-  // describe('inquiryChildAccount.js', () => {
-  //   it('should return requestStatus 0', async () => {
-  //     return inquiryChildAccount().then((res) => strictEqual(res.requestStatus, '0'));
-  //   });
-  // });
+  describe('inquiryChildAccount.js', () => {
+    it('should return requestStatus 0', async () => {
+      return inquiryChildAccount().then((res) => strictEqual(res.requestStatus, '0'));
+    });
+  });
   
-  // describe('inquiryBIFastBeneficiaryName.js', () => {
-  //   it('should return requestStatus 0', async () => {
-  //     return inquiryBIFastBeneficiaryName().then((res) => strictEqual(res.requestStatus, '0'));
-  //   });
-  // });
+  describe('inquiryBIFastBeneficiaryName.js', () => {
+    it('should return requestStatus 0', async () => {
+      return inquiryBIFastBeneficiaryName().then((res) => strictEqual(res.requestStatus, '0'));
+    });
+  });
 });
 
 const client = new BNIClient({
@@ -69,8 +69,8 @@ const bniDirect = new BniDirect(client);
 
 const balanceInquiry = async () => {
   const res = await bniDirect.balanceInquiry({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     accountList: ['116952891', '4447']
   });
   return res;
@@ -78,8 +78,8 @@ const balanceInquiry = async () => {
 
 const domesticSingleBIFastTransfer = async () => {
   const res = await bniDirect.domesticSingleBIFastTransfer({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     debitedAccountNo: '1000599764',
     amountCurrency: 'IDR',
     amount: '500000',
@@ -107,8 +107,8 @@ const domesticSingleBIFastTransfer = async () => {
 
 const payrollMixed = async () => {
   const res = await bniDirect.payrollMixed({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     apiRefNo: 'TRX029SEPT23009912',
     instructionDate: '20230929',
     session: '',
@@ -132,8 +132,8 @@ const payrollMixed = async () => {
 
 const callbackApi = async () => {
   const res = await bniDirect.callbackApi({
-    corporateId: 'COMPANYMB',
-    userId: 'SWAMAKER',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     apiRefNo: '2324dab653f',
     status: 'Executed Successfully'
   });
@@ -142,8 +142,8 @@ const callbackApi = async () => {
 
 const inquiryForexRate = async () => {
   const res = await bniDirect.inquiryForexRate({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     currencyList: [
       'IDR',
       'USD'
@@ -154,8 +154,8 @@ const inquiryForexRate = async () => {
 
 const bulkPaymentMixed = async () => {
   const res = await bniDirect.bulkPaymentMixed({
-    'corporateId': 'BNI_SIT',
-    'userId': 'WTI_MAKER1',
+    'corporateId': 'companymb',
+    'userId': 'jenomaker',
     'apiRefNo': 'TRX029SEPT23009971301',
     'instructionDate': '20230929',
     'session': '',
@@ -177,8 +177,8 @@ const bulkPaymentMixed = async () => {
 
 const inquiryChildAccount = async () => {
   const res = await bniDirect.inquiryChildAccount({
-    'corporateId': 'BNI_SIT',
-    'userId': 'WTI_MAKER1',
+    'corporateId': 'companymb',
+    'userId': 'jenomaker',
     'accountNo': '1000599684'
   }
   );
@@ -187,8 +187,8 @@ const inquiryChildAccount = async () => {
 
 const inquiryBIFastBeneficiaryName = async () => {
   const res = await bniDirect.inquiryBIFastBeneficiaryName({
-    'corporateId': 'BNI_SIT',
-    'userId': 'WTI_MAKER1',
+    'corporateId': 'companymb',
+    'userId': 'jenomaker',
     'usedProxy': 'N',
     'beneficiaryAccountNo': '9832132281',
     'proxyId': '',

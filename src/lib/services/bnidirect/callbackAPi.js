@@ -22,12 +22,11 @@ export async function callbackApi(params = { body, config }) {
     method: 'POST',
     apiKey: params.config.config.apiKey,
     accessToken: await params.config.client.getToken(),
-    url: `${params.config.client.getBaseUrl()}/bnidirect/bulk/CallBack`,
+    url: `${params.config.client.getBaseUrl()}/bnidirect/api/Bulk/CallBack`,
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
     data: body,
-    bniDirectKey:
-      'dc8f7943e027345677c7dade0441936c3bb3f8d697ef8f7b28ae5dfdeea78dd1'
+    bniDirectKey: bniDirectKey
   });
   return responseBNIDirect({ res: res });
 }
