@@ -7,7 +7,7 @@ const UAT_BASE_URL = 'https://newapidev.bni.co.id:8065';
 const PRODUCTION_BASE_URL = 'https://api.bni.co.id';
 // TUNNELING API HOSTNAME
 const SANDBOX_TUNNELING_BASE_URL = 'https://sb-dev-in.dglapm.id';
-const DEV_TUNNELING_BASE_URL = 'https://dev-in.dglapm.id';
+const DEV_TUNNELING_BASE_URL = 'http://localhost:8066';
 
 class BNIClient {
 
