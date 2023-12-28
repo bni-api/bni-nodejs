@@ -3,7 +3,9 @@ import HttpClient from '../../net/httpClient.js';
 import { generateSignature, generateBniDirectKey } from '../../util/util.js';
 export async function balanceInquiry(params = { body, config }) {
   const body = {
-    ...params.body
+    corporateId: params.body.corporateId,
+    userId: params.body.userId,
+    accountList: params.body.accountList
   };
   const signature = generateSignature({
     body: { ...body, timestamp: params.config.timeStamp },
@@ -23,8 +25,7 @@ export async function balanceInquiry(params = { body, config }) {
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
     data: body,
-    bniDirectKey:
-      'dc8f7943e027345677c7dade0441936c3bb3f8d697ef8f7b28ae5dfdeea78dd1'
+    bniDirectKey: bniDirectKey
   });
   return responseBNIDirect({ res: res });
 }

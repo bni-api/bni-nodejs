@@ -125,4 +125,67 @@ declare class BNIDIRECT {
     mobilePhoneNo: string;
     statusCode: string;
   });
+
+  bulkPaymentMixed(params?: {
+    corporateId: string;
+    userId: string;
+    apiRefNo: string;
+    instructionDate: string;
+    session: string;
+    serviceType: string;
+    debitAcctNo: string;
+    amount: string;
+    currency: string;
+    chargeTo: string;
+    residenceCode: string;
+    citizenCode: string;
+    category: string;
+    transactionType: string;
+    accountNmValidation: string;
+    remark: string;
+    childContent: string;
+  });
+  callbackApi(params?: {
+    corporateId: string;
+    userId: string;
+    apiRefNo: string;
+    status: string;
+  });
+  inquiryChildAccount(params?: {
+    corporateId: string;
+    userId: string;
+    accountNo: string;
+  });
+  inquiryForexRate(params?: {
+    corporateId: string;
+    userId: string;
+    currencyList: string[];
+  });
+  inquiryBIFastBeneficiaryName(params?: {
+    corporateId: string;
+    userId: string;
+    usedProxy: string;
+    beneficiaryAccountNo: string;
+    proxyId: string;
+    beneficiaryBankCode: string;
+  });
+  payrollMixed(params?: {
+    corporateId: string;
+    userId: string;
+    apiRefNo: string;
+    instructionDate: string;
+    session: string;
+    serviceType: string;
+    debitAcctNo: string;
+    amount: string;
+    currency: string;
+    chargeTo: string;
+    residenceCode: string;
+    citizenCode: string;
+    category: string;
+    transactionType: string;
+    accountNmValidation: string;
+    remark: string;
+    childContent: string;
+  });
 }

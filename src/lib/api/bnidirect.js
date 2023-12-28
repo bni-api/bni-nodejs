@@ -1,12 +1,19 @@
+import { callbackApi } from '../services/bnidirect/callbackAPi.js';
 import { balanceInquiry } from '../services/bnidirect/balanceInquiry.js';
 import { domesticSingleBIFastTransfer } from '../services/bnidirect/domesticSingleBIFastTransfer.js';
 import { bniPopsCashAndCarry } from '../services/bnidirect/bniPopsCashAndCarry.js';
 import { bniPopsProductAllocation } from '../services/bnidirect/bniPopsProductAllocation.js';
+import { bniPopsResubmitCashAndCarry } from '../services/bnidirect/bniPopsResubmitCashAndCarry.js';
 import { bniPopsResubmitProductAllocation } from '../services/bnidirect/bniPopsResubmitProductAllocation.js';
 import { bulkGetStatus } from '../services/bnidirect/bulkGetStatus.js';
 import { inquiryVirtualAccountTransaction } from '../services/bnidirect/inquiryVirtualAccountTransaction.js';
 import { updateVirtualAccount } from '../services/bnidirect/updateVirtualAccount.js';
 import { createVirtualAccount } from '../services/bnidirect/createVirtualAccount.js';
+import { payrollMixed } from '../services/bnidirect/payrollMixed.js';
+import { inquiryForexRate } from '../services/bnidirect/inquiryForexRate.js';
+import { bulkPaymentMixed } from '../services/bnidirect/bulkPaymentMixed.js';
+import { inquiryChildAccount } from '../services/bnidirect/inquiryChildAccount.js';
+import { inquiryBIFastBeneficiaryName } from '../services/bnidirect/inquiryBIFastBeneficiaryName.js';
 
 class BNIDIRECT {
   constructor(client) {
@@ -55,9 +62,32 @@ class BNIDIRECT {
     });
     return res;
   }
+  
+  async payrollMixed(params) {
+    const res = payrollMixed({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
 
   async bniPopsProductAllocation(params) {
     const res = bniPopsProductAllocation({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async callbackApi(params) {
+    const res = callbackApi({
       body: params,
       config: {
         client: this.client,
@@ -79,9 +109,31 @@ class BNIDIRECT {
     });
     return res;
   }
+  async inquiryForexRate(params) {
+    const res = inquiryForexRate({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
 
   async bniPopsResubmitProductAllocation(params) {
     const res = bniPopsResubmitProductAllocation({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async bulkPaymentMixed(params) {
+    const res = bulkPaymentMixed({
       body: params,
       config: {
         client: this.client,
@@ -127,9 +179,31 @@ class BNIDIRECT {
     });
     return res;
   }
+  async inquiryChildAccount(params) {
+    const res = inquiryChildAccount({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
 
   async createVirtualAccount(params) {
     const res = createVirtualAccount({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async inquiryBIFastBeneficiaryName(params) {
+    const res = inquiryBIFastBeneficiaryName({
       body: params,
       config: {
         client: this.client,

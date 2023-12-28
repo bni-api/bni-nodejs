@@ -33,8 +33,7 @@ export async function bniPopsProductAllocation(params = { body, config }) {
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
     data: body,
-    bniDirectKey:
-      'a39a04f8801b490da63db5b5e71b95ea6e0d8b6782df26b52c48c35bc19c22f2'
+    bniDirectKey: bniDirectKey
   });
   return responseBNIDirect({ res: res });
 }

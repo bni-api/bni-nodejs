@@ -1,18 +1,11 @@
 import { responseBNIDirect } from '../../util/response.js';
 import HttpClient from '../../net/httpClient.js';
 import { generateSignature, generateBniDirectKey } from '../../util/util.js';
-
-export async function bniPopsCashAndCarry(params = { body, config }) {
+export async function inquiryChildAccount(params = { body, config }) {
   const body = {
     corporateId: params.body.corporateId,
     userId: params.body.userId,
-    debitAccountNo: params.body.debitAccountNo,
-    salesOrganizationCode: params.body.salesOrganizationCode,
-    distributionChannelCode: params.body.distributionChannelCode,
-    productCode: params.body.productCode,
-    shipTo: params.body.shipTo,
-    debitOrCreditNoteNo: params.body.debitOrCreditNoteNo,
-    productInformationDetail: params.body.productInformationDetail
+    accountNo: params.body.accountNo
   };
   const signature = generateSignature({
     body: { ...body, timestamp: params.config.timeStamp },
@@ -24,15 +17,15 @@ export async function bniPopsCashAndCarry(params = { body, config }) {
     bniDirectKey: params.config.config.bniDirectKey
   });
   const httpClient = new HttpClient();
-  let res = await httpClient.requestBniDirectV2({
+  const res = await httpClient.requestBniDirectV2({
     method: 'POST',
     apiKey: params.config.config.apiKey,
     accessToken: await params.config.client.getToken(),
-    url: `${params.config.client.getBaseUrl()}/bnidirect/api/BNIPOPS/CashandCarry/Payment`,
+    url: `${params.config.client.getBaseUrl()}/bnidirect/api/InHouse/InquiryChildAccount`,
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
     data: body,
     bniDirectKey: bniDirectKey
   });
   return responseBNIDirect({ res: res });
-}
+} 
