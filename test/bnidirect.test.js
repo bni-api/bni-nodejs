@@ -127,8 +127,8 @@ const domesticSingleBIFastTransfer = async () => {
 
 const bniPopsCashAndCarry = async () => {
   const res = await bniDirect.bniPopsCashAndCarry({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     debitAccountNo: '108098391',
     salesOrganizationCode: '1001',
     distributionChannelCode: '10',
@@ -150,8 +150,8 @@ const bniPopsCashAndCarry = async () => {
 
 const bniPopsProductAllocation = async () => {
   const res = await bniDirect.bniPopsProductAllocation({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     debitAccountNo: '115208364',
     salesOrganizationCode: '1002',
     distributionChannelCode: '10',
@@ -174,8 +174,8 @@ const bniPopsProductAllocation = async () => {
 
 const bniPopsResubmitCashAndCarry = async () => {
   const res = await bniDirect.bniPopsResubmitCashAndCarry({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     transactionReferenceNo: '201809181708919534',
     SONumber: ''
   });
@@ -184,8 +184,8 @@ const bniPopsResubmitCashAndCarry = async () => {
 
 const bniPopsResubmitProductAllocation = async () => {
   const res = await bniDirect.bniPopsResubmitProductAllocation({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     transactionReferenceNo: '201809181708919534',
     SONumber: ''
   });
@@ -194,8 +194,8 @@ const bniPopsResubmitProductAllocation = async () => {
 
 const bulkGetStatus = async () => {
   const res = await bniDirect.bulkGetStatus({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     fileRefNo: '',
     apiRefNo: '34ab87f29e88c23a'
   });
@@ -204,8 +204,8 @@ const bulkGetStatus = async () => {
 
 const inquiryVirtualAccountTransaction = async () => {
   const res = await bniDirect.inquiryVirtualAccountTransaction({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     virtualAccountNo: '8310000011112323',
     fromDate: '20161015',
     toDate: '20201015'
@@ -215,8 +215,8 @@ const inquiryVirtualAccountTransaction = async () => {
 
 const updateVirtualAccount = async () => {
   const res = await bniDirect.updateVirtualAccount({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     companyCode: '8310',
     virtualAccountNo: '8310888800009999',
     virtualAccountName: 'SHORT NAME',
@@ -234,8 +234,8 @@ const updateVirtualAccount = async () => {
 
 const createVirtualAccount = async () => {
   const res = await bniDirect.createVirtualAccount({
-    corporateId: 'BNI_SIT',
-    userId: 'WTI_MAKER1',
+    corporateId: 'companymb',
+    userId: 'jenomaker',
     companyCode: '98800011',
     virtualAccountNo: '16623254',
     virtualAccountName: 'Agus KEREN1',
