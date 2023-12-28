@@ -1,11 +1,11 @@
 import { responseBNIDirect } from '../../util/response.js';
 import HttpClient from '../../net/httpClient.js';
 import { generateSignature, generateBniDirectKey } from '../../util/util.js';
-export async function balanceInquiry(params = { body, config }) {
+export async function inquiryChildAccount(params = { body, config }) {
   const body = {
     corporateId: params.body.corporateId,
     userId: params.body.userId,
-    accountList: params.body.accountList
+    accountNo: params.body.accountNo
   };
   const signature = generateSignature({
     body: { ...body, timestamp: params.config.timeStamp },
@@ -21,11 +21,11 @@ export async function balanceInquiry(params = { body, config }) {
     method: 'POST',
     apiKey: params.config.config.apiKey,
     accessToken: await params.config.client.getToken(),
-    url: `${params.config.client.getBaseUrl()}/bnidirect/api/Account/InquiryBalance`,
+    url: `${params.config.client.getBaseUrl()}/bnidirect/api/InHouse/InquiryChildAccount`,
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
     data: body,
     bniDirectKey: bniDirectKey
   });
   return responseBNIDirect({ res: res });
-}
+} 

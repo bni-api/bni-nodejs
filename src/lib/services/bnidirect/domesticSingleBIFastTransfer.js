@@ -1,10 +1,31 @@
 import { responseBNIDirect } from '../../util/response.js';
 import HttpClient from '../../net/httpClient.js';
 import { generateSignature, generateBniDirectKey } from '../../util/util.js';
-
 export async function domesticSingleBIFastTransfer(params = { body, config }) {
   const body = {
-    ...params.body
+    corporateId: params.body.corporateId,
+    userId: params.body.userId,
+    debitedAccountNo: params.body.debitedAccountNo,
+    amountCurrency: params.body.amountCurrency,
+    amount: params.body.amount,
+    exchangeRateCode: params.body.exchangeRateCode,
+    treasuryReferenceNo: params.body.treasuryReferenceNo,
+    chargeTo: params.body.chargeTo,
+    remark1: params.body.remark1,
+    remark2: params.body.remark2,
+    remark3: params.body.remark3,
+    remitterReferenceNo: params.body.remitterReferenceNo,
+    finalizePaymentFlag: params.body.finalizePaymentFlag,
+    beneficiaryReferenceNo: params.body.beneficiaryReferenceNo,
+    usedProxy: params.body.usedProxy,
+    beneficiaryAccountNo: params.body.beneficiaryAccountNo,
+    proxyId: params.body.proxyId,
+    beneficiaryBankCode: params.body.beneficiaryBankCode,
+    beneficiaryBankName: params.body.beneficiaryBankName,
+    notificationFlag: params.body.notificationFlag,
+    beneficiaryEmail: params.body.beneficiaryEmail,
+    transactionInstructionDate: params.body.transactionInstructionDate,
+    transactionPurposeCode: params.body.transactionPurposeCode
   };
   const signature = generateSignature({
     body: { ...body, timestamp: params.config.timeStamp },
@@ -24,8 +45,7 @@ export async function domesticSingleBIFastTransfer(params = { body, config }) {
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
     data: body,
-    bniDirectKey:
-      'dc8f7943e027345677c7dade0441936c3bb3f8d697ef8f7b28ae5dfdeea78dd1'
+    bniDirectKey: bniDirectKey
   });
   return responseBNIDirect({ res: res });
 }

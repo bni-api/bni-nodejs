@@ -1,3 +1,4 @@
+import { callbackApi } from '../services/bnidirect/callbackAPi.js';
 import { balanceInquiry } from '../services/bnidirect/balanceInquiry.js';
 import { domesticSingleBIFastTransfer } from '../services/bnidirect/domesticSingleBIFastTransfer.js';
 import { createMpnG2BillingId } from '../services/bnidirect/createMpnG2BillingId.js';
@@ -7,6 +8,11 @@ import { inquiryLlgRtgsOnlineBeneficiaryName } from '../services/bnidirect/inqui
 import { inquiryAccountStatement } from '../services/bnidirect/inquiryAccountStatement.js';
 import { inquiryBilling } from '../services/bnidirect/inquiryBilling.js';
 import { inquiryBniPopsCashAndCarry } from '.../services/bnidirect/inquiryBniPopsCashAndCarry.js';
+import { payrollMixed } from '../services/bnidirect/payrollMixed.js';
+import { inquiryForexRate } from '../services/bnidirect/inquiryForexRate.js';
+import { bulkPaymentMixed } from '../services/bnidirect/bulkPaymentMixed.js';
+import { inquiryChildAccount } from '../services/bnidirect/inquiryChildAccount.js';
+import { inquiryBIFastBeneficiaryName } from '../services/bnidirect/inquiryBIFastBeneficiaryName.js';
 
 class BNIDIRECT {
   constructor(client) {
@@ -55,9 +61,31 @@ class BNIDIRECT {
     });
     return res;
   }
+  async payrollMixed(params) {
+    const res = payrollMixed({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
 
   async inquiryNpwp(params){
     const res = inquiryNpwp({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async callbackApi(params) {
+    const res = callbackApi({
       body: params,
       config: {
         client: this.client,
@@ -79,9 +107,31 @@ class BNIDIRECT {
     });
     return res;
   }
+  async inquiryForexRate(params) {
+    const res = inquiryForexRate({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
 
   async inquiryLlgRtgsOnlineBeneficiaryName(params){
     const res = inquiryLlgRtgsOnlineBeneficiaryName({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async bulkPaymentMixed(params) {
+    const res = bulkPaymentMixed({
       body: params,
       config: {
         client: this.client,
@@ -103,9 +153,31 @@ class BNIDIRECT {
     });
     return res;
   }
+  async inquiryChildAccount(params) {
+    const res = inquiryChildAccount({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
 
   async inquiryBilling(params){
     const res = inquiryBilling({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async inquiryBIFastBeneficiaryName(params) {
+    const res = inquiryBIFastBeneficiaryName({
       body: params,
       config: {
         client: this.client,
