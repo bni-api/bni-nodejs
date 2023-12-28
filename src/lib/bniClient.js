@@ -9,6 +9,7 @@ const UAT_BASE_URL = 'https://newapidev.bni.co.id:8065';
 const PRODUCTION_BASE_URL = 'https://api.bni.co.id';
 // TUNNELING API HOSTNAME
 const SANDBOX_TUNNELING_BASE_URL = 'https://sb-dev-in.dglapm.id';
+const SANDBOX_DEV_URL = 'https://localhost:8065'; // pakai bitvise
 const DEV_TUNNELING_BASE_URL = 'https://dev-in.dglapm.id';
 
 class BNIClient {
@@ -47,6 +48,8 @@ class BNIClient {
       return PRODUCTION_BASE_URL;
     else if (this.config.env === 'uat')
       return UAT_BASE_URL;
+    else if (this.config.env === 'sandbox-dev')
+      return SANDBOX_DEV_URL;
   }
 
   async getToken() {

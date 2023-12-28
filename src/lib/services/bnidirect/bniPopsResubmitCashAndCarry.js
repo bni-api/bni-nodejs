@@ -28,7 +28,7 @@ export async function bniPopsResubmitCashAndCarry(params = { body, config }) {
     timestamp: params.config.timeStamp,
     data: body,
     bniDirectKey:
-      'dc8f7943e027345677c7dade0441936c3bb3f8d697ef8f7b28ae5dfdeea78dd1'
+      'a39a04f8801b490da63db5b5e71b95ea6e0d8b6782df26b52c48c35bc19c22f2'
   });
   return responseBNIDirect({ res: res });
 }
