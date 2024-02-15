@@ -4,7 +4,7 @@ import snapBI from './lib/api/snapBI.js';
 import RDN from './lib/api/rdn.js';
 import RDL from './lib/api/rdl.js';
 import RDF from './lib/api/rdf.js';
-import FSCM from 'lib/api/fscm.js';
+import FSCM from './lib/api/fscm.js';
 
 export const BNIClient = bniClient;
 export const OneGatePayment = oneGatePayment;

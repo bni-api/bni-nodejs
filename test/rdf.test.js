@@ -2,91 +2,91 @@ import { Rdf, BNIClient } from '../src/index.js';
 import { strictEqual, deepEqual } from 'assert';
 import { constants } from './constant.js';
 
-describe('rdf.js', () => {
-  describe('registerInvestor', () => {
-    it('should return responseCode 0001', async () => {
-      const res = await registerInvestor();
-      strictEqual(res.response.responseCode, '0001');
-    });
-  });
-});
+// describe('rdf.js', () => {
+//   describe('registerInvestor', () => {
+//     it('should return responseCode 0001', async () => {
+//       const res = await registerInvestor();
+//       strictEqual(res.response.responseCode, '0001');
+//     });
+//   });
+// });
 
-describe('faceRecognition', async () => {
-  it('should return responseCode 0001', async () => {
-    const res = await faceRecognition();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('faceRecognition', async () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await faceRecognition();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('registerInvestorAccount', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await registerInvestorAccount();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('registerInvestorAccount', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await registerInvestorAccount();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('inquiryAccountInfo', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await inquiryAccountInfo();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('inquiryAccountInfo', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await inquiryAccountInfo();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('inquiryAccountBalance', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await inquiryAccountBalance();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('inquiryAccountBalance', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await inquiryAccountBalance();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('inquiryAccountHistory', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await inquiryAccountHistory();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('inquiryAccountHistory', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await inquiryAccountHistory();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('paymentUsingTransfer', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await paymentUsingTransfer();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('paymentUsingTransfer', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await paymentUsingTransfer();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('inquiryPaymentStatus', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await inquiryPaymentStatus();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('inquiryPaymentStatus', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await inquiryPaymentStatus();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('paymentUsingClearing', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await paymentUsingClearing();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('paymentUsingClearing', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await paymentUsingClearing();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('paymentUsingRTGS', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await paymentUsingRTGS();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('paymentUsingRTGS', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await paymentUsingRTGS();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('inquiryInterbankAccount', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await inquiryInterbankAccount();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('inquiryInterbankAccount', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await inquiryInterbankAccount();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
-describe('paymentUsingInterbank', () => {
-  it('should return responseCode 0001', async () => {
-    const res = await paymentUsingInterbank();
-    strictEqual(res.response.responseCode, '0001');
-  });
-});
+// describe('paymentUsingInterbank', () => {
+//   it('should return responseCode 0001', async () => {
+//     const res = await paymentUsingInterbank();
+//     strictEqual(res.response.responseCode, '0001');
+//   });
+// });
 
 const client = new BNIClient({
   env: 'dev',

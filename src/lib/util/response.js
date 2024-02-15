@@ -57,11 +57,10 @@ export const responseRDN = (params = { res }) => {
   }
   return params.res;
 };
-
 export const responseFSCM = (params = { res }) => {
   const haveResponseCode = params.res.error_code;
   if (haveResponseCode && params.res.error_code !== '0000') {
-    throw new Error(`${params.res.error_msg}`);
+    throw new Error(`${params.res.error_code} : ${params.res.error_msg}, ${params.res.message}`);
   }
   return params.res;
 };

@@ -1,4 +1,11 @@
 import { sendInvoice } from '../services/fscm/sendInvoice.js';
+import { inquiry } from '../services/fscm/inquiry.js';
+import { checkTransactionPlafond } from '../services/fscm/checkTransactionPlafond.js';
+import { checkLimit } from '../services/fscm/checkLimit.js';
+import { checkStopSupply } from '../services/fscm/checkStopSupply.js';
+import { deleteInvoice } from '../services/fscm/deleteInvoice.js';
+import { praNota } from '../services/fscm/praNota.js';
+import { deletePraNota } from '../services/fscm/deletePraNota.js';
 
 class FSCM {
   constructor(client) {
@@ -25,7 +32,7 @@ class FSCM {
   }
 
   async inquiry(params) {
-    const res = domesticSingleBIFastTransfer({
+    const res = inquiry({
       body: params,
       config: {
         client: this.client,
@@ -37,7 +44,7 @@ class FSCM {
   }
 
   async checkTransactionPlafond(params) {
-    const res = bniPopsCashAndCarry({
+    const res = checkTransactionPlafond({
       body: params,
       config: {
         client: this.client,
@@ -49,7 +56,7 @@ class FSCM {
   }
   
   async checkLimit(params) {
-    const res = payrollMixed({
+    const res = checkLimit({
       body: params,
       config: {
         client: this.client,
@@ -61,7 +68,7 @@ class FSCM {
   }
 
   async checkStopSupply(params) {
-    const res = bniPopsProductAllocation({
+    const res = checkStopSupply({
       body: params,
       config: {
         client: this.client,
@@ -73,7 +80,7 @@ class FSCM {
   }
 
   async deleteInvoice(params) {
-    const res = callbackApi({
+    const res = deleteInvoice({
       body: params,
       config: {
         client: this.client,
@@ -85,7 +92,7 @@ class FSCM {
   }
 
   async praNota(params) {
-    const res = bniPopsResubmitCashAndCarry({
+    const res = praNota({
       body: params,
       config: {
         client: this.client,
@@ -97,7 +104,7 @@ class FSCM {
   }
 
   async deletePraNota(params) {
-    const res = inquiryForexRate({
+    const res = deletePraNota({
       body: params,
       config: {
         client: this.client,

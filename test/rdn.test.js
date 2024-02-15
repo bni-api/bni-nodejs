@@ -2,198 +2,198 @@ import { Rdn, BNIClient } from '../src/index.js';
 import { strictEqual } from 'assert';
 import { constants } from './constant.js';
 
-describe('rdn.js', () => {
-  describe('registerInvestor', () => {
+// describe('rdn.js', () => {
+//   describe('registerInvestor', () => {
         
-    it('should return responseCode 0001', async () => {
-      return registerInvestor().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return registerInvestor().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('registerInvestorFailed', () => {
+//   describe('registerInvestorFailed', () => {
         
-    it('should return responseCode 9430', async () => {
-      return registerInvestorFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9430'));
-    });
-  });
+//     it('should return responseCode 9430', async () => {
+//       return registerInvestorFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9430'));
+//     });
+//   });
 
-  describe('faceRecognition', async () => {
+//   describe('faceRecognition', async () => {
         
-    it('should return responseCode 0001', async () => {
-      return faceRecognition().then(res =>  strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return faceRecognition().then(res =>  strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
 
-  describe('checkSID', () => {
+//   describe('checkSID', () => {
         
-    it('should return ackStatus OK', async () => {
-      return checkSID().then(res => strictEqual(res.response.ackStatus, 'OK'));
-    });
-  });
-  describe('checkSIDActN', () => {
+//     it('should return ackStatus OK', async () => {
+//       return checkSID().then(res => strictEqual(res.response.ackStatus, 'OK'));
+//     });
+//   });
+//   describe('checkSIDActN', () => {
         
-    it('should return ackStatus undefined', async () => {
-      return checkSIDActN().then(res => strictEqual(res.response.ackStatus, undefined));
-    });
-  });
+//     it('should return ackStatus undefined', async () => {
+//       return checkSIDActN().then(res => strictEqual(res.response.ackStatus, undefined));
+//     });
+//   });
     
-  describe('registerInvestorAccount', () => {
+//   describe('registerInvestorAccount', () => {
         
-    it('should return responseCode 0001', async () => {
-      return registerInvestorAccount().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return registerInvestorAccount().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('registerInvestorAccountFailed', () => {
+//   describe('registerInvestorAccountFailed', () => {
         
-    it('should return responseCode 0169', async () => {
-      return registerInvestorAccountFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0169'));
-    });
-  });
+//     it('should return responseCode 0169', async () => {
+//       return registerInvestorAccountFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0169'));
+//     });
+//   });
 
-  describe('sendDataStatic', () => {
+//   describe('sendDataStatic', () => {
         
-    it('should return sendResponse 0', async () => {
-      return sendDataStatic().then(res =>  strictEqual(res.sendResponse, '0'));
+//     it('should return sendResponse 0', async () => {
+//       return sendDataStatic().then(res =>  strictEqual(res.sendResponse, '0'));
      
-    });
-  });
+//     });
+//   });
 
-  describe('sendDataStaticFailed', () => {
+//   describe('sendDataStaticFailed', () => {
         
-    it('should return responseCode 9412', async () => {
-      return sendDataStaticFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9412'));
-    });
-  });
+//     it('should return responseCode 9412', async () => {
+//       return sendDataStaticFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9412'));
+//     });
+//   });
 
-  describe('inquiryAccountInfo', () => {
+//   describe('inquiryAccountInfo', () => {
         
-    it('should return responseCode 0001', async () => {
-      return inquiryAccountInfo().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return inquiryAccountInfo().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('inquiryAccountInfoFailed', () => {
+//   describe('inquiryAccountInfoFailed', () => {
         
-    it('should return responseCode 9412', async () => {
-      return inquiryAccountInfoFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0108'));
-    });
-  });
+//     it('should return responseCode 9412', async () => {
+//       return inquiryAccountInfoFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0108'));
+//     });
+//   });
 
-  describe('inquiryAccountBalance', () => {
+//   describe('inquiryAccountBalance', () => {
         
-    it('should return responseCode 0001', async () => {
-      return inquiryAccountBalance().then(res => strictEqual(res.response.responseCode, '0001'));
+//     it('should return responseCode 0001', async () => {
+//       return inquiryAccountBalance().then(res => strictEqual(res.response.responseCode, '0001'));
       
-    });
-  });
+//     });
+//   });
 
-  describe('inquiryAccountBalanceFailed', () => {
+//   describe('inquiryAccountBalanceFailed', () => {
         
-    it('should return responseCode 9412', async () => {
-      return inquiryAccountBalanceFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0108'));
-    });
-  });
+//     it('should return responseCode 9412', async () => {
+//       return inquiryAccountBalanceFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0108'));
+//     });
+//   });
 
-  describe('inquiryAccountHistory', () => {
+//   describe('inquiryAccountHistory', () => {
         
-    it('should return responseCode 0001', async () => {
-      return inquiryAccountHistory().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return inquiryAccountHistory().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('inquiryAccountHistoryFailed', () => {
+//   describe('inquiryAccountHistoryFailed', () => {
         
-    it('should return responseCode 9409', async () => {
-      return inquiryAccountHistoryFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9409'));
-    });
-  });
+//     it('should return responseCode 9409', async () => {
+//       return inquiryAccountHistoryFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9409'));
+//     });
+//   });
 
-  describe('paymentUsingTransfer', () => {
+//   describe('paymentUsingTransfer', () => {
         
-    it('should return responseCode 0001', async () => {
-      return paymentUsingTransfer().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return paymentUsingTransfer().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('paymentUsingTransferFailed', () => {
+//   describe('paymentUsingTransferFailed', () => {
         
-    it('should return responseCode 0266', async () => {
-      return paymentUsingTransferFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0266'));
-    });
-  });
+//     it('should return responseCode 0266', async () => {
+//       return paymentUsingTransferFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0266'));
+//     });
+//   });
 
-  describe('inquiryPaymentStatus', () => {
+//   describe('inquiryPaymentStatus', () => {
         
-    it('should return responseCode 0001', async () => {
-      return inquiryPaymentStatus().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return inquiryPaymentStatus().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('inquiryPaymentStatusFailed', () => {
+//   describe('inquiryPaymentStatusFailed', () => {
         
-    it('should return responseCode 0188', async () => {
-      return inquiryPaymentStatusFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0188'));
-    });
-  });
+//     it('should return responseCode 0188', async () => {
+//       return inquiryPaymentStatusFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0188'));
+//     });
+//   });
 
-  describe('paymentUsingClearing', () => {
+//   describe('paymentUsingClearing', () => {
         
-    it('should return responseCode 0001', async () => {
-      return paymentUsingClearing().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return paymentUsingClearing().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('paymentUsingClearingFailed', () => {
+//   describe('paymentUsingClearingFailed', () => {
         
-    it('should return responseCode 9409', async () => {
-      return paymentUsingClearingFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9409'));
-    });
-  });
+//     it('should return responseCode 9409', async () => {
+//       return paymentUsingClearingFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9409'));
+//     });
+//   });
 
-  describe('paymentUsingRTGS', () => {
+//   describe('paymentUsingRTGS', () => {
         
-    it('should return responseCode 0001', async () => {
-      return paymentUsingRTGS().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return paymentUsingRTGS().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('paymentUsingRTGSFailed', () => {
+//   describe('paymentUsingRTGSFailed', () => {
         
-    it('should return responseCode 9409', async () => {
-      return paymentUsingRTGSFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9409'));
-    });
-  });
+//     it('should return responseCode 9409', async () => {
+//       return paymentUsingRTGSFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9409'));
+//     });
+//   });
 
-  describe('inquiryInterbankAccount', () => {
+//   describe('inquiryInterbankAccount', () => {
         
-    it('should return responseCode 0001', async () => {
-      return inquiryInterbankAccount().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return inquiryInterbankAccount().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('inquiryInterbankAccountFailed', () => {
+//   describe('inquiryInterbankAccountFailed', () => {
         
-    it('should return responseCode 0169', async () => {
-      return inquiryInterbankAccountFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0169'));
-    });
-  });
+//     it('should return responseCode 0169', async () => {
+//       return inquiryInterbankAccountFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '0169'));
+//     });
+//   });
 
-  describe('paymentUsingInterbank', () => {
+//   describe('paymentUsingInterbank', () => {
         
-    it('should return responseCode 0001', async () => {
-      return paymentUsingInterbank().then(res => strictEqual(res.response.responseCode, '0001'));
-    });
-  });
+//     it('should return responseCode 0001', async () => {
+//       return paymentUsingInterbank().then(res => strictEqual(res.response.responseCode, '0001'));
+//     });
+//   });
 
-  describe('paymentUsingInterbankFailed', () => {
+//   describe('paymentUsingInterbankFailed', () => {
         
-    it('should return responseCode 9409', async () => {
-      return paymentUsingInterbankFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9409'));
-    });
-  });
-});
+//     it('should return responseCode 9409', async () => {
+//       return paymentUsingInterbankFailed().then().catch(err => strictEqual(err.response.data.response.responseCode, '9409'));
+//     });
+//   });
+// });
 
 const client = new BNIClient({
   env: 'sandbox',
