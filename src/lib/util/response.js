@@ -57,3 +57,10 @@ export const responseRDN = (params = { res }) => {
   }
   return params.res;
 };
+export const responseDigiloan = (params = { res }) => {
+  const haveResponseCode = params.res.statusCode;
+  if (haveResponseCode && params.res.statusCode !== 0) {
+    throw new Error(`${params.res.statusCode} : ${params.res.statusDescription}`);
+  }
+  return params.res;
+};
