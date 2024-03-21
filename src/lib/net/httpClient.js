@@ -127,7 +127,7 @@ class HttpClient {
     options = { method, apiKey, accessToken, url, data, additionalHeader: {} }
   ) {
     const header = {
-      'content-type': 'application/json',
+      'Content-Type': 'application/json',
       'user-agent': HEADER_USER_AGENT,
       Authorization: `Bearer ${options.accessToken}`
     };
@@ -136,7 +136,7 @@ class HttpClient {
       ...header,
       ...options.additionalHeader
     };
-
+    
     return new Promise(async (resolve, reject) => {
       try {
         const res = await this.httpClient({
@@ -145,7 +145,7 @@ class HttpClient {
           url: options.url,
           data: options.data
         });
-
+        
         resolve(res.data);
       } catch (err) {
         reject(err);

@@ -58,7 +58,6 @@ export const generateTokenSignature = (
   params = { privateKeyPath, clientId, timeStamp }
 ) => {
   const privateKey = readFileSync(params.privateKeyPath);
-
   const data = Buffer.from(params.clientId + '|' + params.timeStamp);
   const signature = sign('RSA-SHA256', data, privateKey).toString('base64');
   return signature;
