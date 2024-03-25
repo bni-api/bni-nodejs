@@ -177,7 +177,7 @@ const holdAmountRelease = await ogp.holdAmountRelease({
 });
 ```
 
-### 2.2.B Snap BI
+### 2.2.B Snap BI Transfer Credit
 
 Create `Snap BI` class object
 
@@ -196,8 +196,11 @@ const client = new BNIClient({
 });
 
 const snap = new SnapBI(client, {
-  privateKeyPath: "{your-rsa-private-key-path}",
-  channelId: "{your-channel-id}",
+  privateKeyPath: "{your-rsa-private-key-path}", // Mandatory
+  channelId: "{your-channel-id}", // Mandatory
+  ipAddress: "{your-ip-address}", // Optional
+  latitude: "{your-latitude}", // Optional
+  ipAddress: "{your-longitude}", // Optional
 });
 ```
 
@@ -213,25 +216,13 @@ const balanceInquiry = await snap.balanceInquiry({
 });
 ```
 
-#### Bank Statement
-
-```javascript
-// return as Promise of Object
-const bankStatement = await snap.bankStatement({
-  partnerReferenceNo: "202010290000000000002", // optional
-  accountNo: "0115476117",
-  fromDateTime: "2010-01-01T12:08:56+07:00", // optional
-  toDateTime: "2011-01-01T12:08:56+07:00", // optional
-});
-```
-
 #### Internal Account Inquiry
 
 ```javascript
 // return as Promise of Object
 const internalAccountInquiry = await snap.internalAccountInquiry({
-  partnerReferenceNo: "2020102900000000000001", // optional
-  beneficiaryAccountNo: "0115476151",
+  partnerReferenceNo: "2023062601000000000509", // optional
+  beneficiaryAccountNo: "317125693",
 });
 ```
 
@@ -240,18 +231,18 @@ const internalAccountInquiry = await snap.internalAccountInquiry({
 ```javascript
 // return as Promise of Object
 const transactionStatusInquiry = await snap.transactionStatusInquiry({
-  originalPartnerReferenceNo: "20211213100434", // optional
-  originalReferenceNo: "20211220141520", // transaction reference number
-  originalExternalId: "20211220141520", // optional
-  serviceCode: "36", // SNAP BI service code
-  transactionDate: "2021-12-20",
+  originalPartnerReferenceNo: "202310271020300006", // optional
+  originalReferenceNo: "", // transaction reference number
+  originalExternalId: "", // optional
+  serviceCode: "22", // SNAP BI service code
+  transactionDate: "",
   amount: {
-    value: "12500",
+    value: "110000010",
     currency: "IDR",
   },
   additionalInfo: {
-    deviceId: "123456", // optinal
-    channel: "mobilephone", // optinal
+    deviceId: "09864ADCASA", // optinal
+    channel: "API", // optinal
   },
 });
 ```
@@ -261,19 +252,19 @@ const transactionStatusInquiry = await snap.transactionStatusInquiry({
 ```javascript
 // return as Promise of Object
 const **transferIntraBank** = await snap.transferIntraBank({
-  partnerReferenceNo: '202201911020300006', // transaction reference number
+  partnerReferenceNo: '20220426170737356898', // transaction reference number
   amount: {
-    value: '12500',
+    value: '55000.00',
     currency: 'IDR'
   },
-  beneficiaryAccountNo: '0115476117',
-  beneficiaryEmail: 'mail@example.com', // optional
+  beneficiaryAccountNo: '0115476151',
+  beneficiaryEmail: '', // optional
   currency: 'IDR', // optional
-  customerReference: '14045', // optional
+  customerReference: '20220426170737356898', // optional
   feeType: 'OUR', // OUR: fee will be paid by sender (default), BEN: fee will be paid by beneficary, SHA: fee divided
-  remark: '', // optional
-  sourceAccountNo: '0115476151',
-  transactionDate: '2021-12-13',
+  remark: '20220426170737356898', // optional
+  sourceAccountNo: '0115476117',
+  transactionDate: '2022-04-26T17:07:36+07:00',
   additionalInfo: {
     deviceId: '123456', // optinal
     channel: 'mobilephone' // optinal
@@ -286,33 +277,33 @@ const **transferIntraBank** = await snap.transferIntraBank({
 ```javascript
 // return as Promise of Object
 const transferRTGS = await snap.transferRTGS({
-  partnerReferenceNo: "202201911020300011", // transaction reference number
+  partnerReferenceNo: "20220513095840015788857", // transaction reference number
   amount: {
-    value: "150005001",
+    value: "100000001.00",
     currency: "IDR",
   },
-  beneficiaryAccountName: "SAN",
+  beneficiaryAccountName: "PTZomatoMediaIndonesia",
   beneficiaryAccountNo: '"3333333333',
-  beneficiaryAccountAddress: "Jakarta Barat", // optional
+  beneficiaryAccountAddress: "JlGatotSubrotoNoKav18RW1KuninganBarKecMampangPrptKotaJakartaSelatanDaerahKhususIbukotaJakarta12710", // optional
   beneficiaryBankCode: "CENAIDJA",
-  beneficiaryBankName: "PT. BANK CENTRAL ASIA Tbk.", // optional
+  beneficiaryBankName: "PTBANKCENTRALASIATbk", // optional
   beneficiaryCustomerResidence: "1",
-  beneficiaryCustomerType: "1",
-  beneficiaryEmail: "mail@example.com", // optional
+  beneficiaryCustomerType: "2",
+  beneficiaryEmail: "", // optional
   currency: "IDR", // optional
-  customerReference: "202201911020300006",
+  customerReference: "20220513095840015788857",
   feeType: "OUR", // OUR: fee will be paid by sender (default), BEN: fee will be paid by beneficary, SHA: fee divided
-  kodePos: "12550", // optional
-  recieverPhone: "08123456789", // optional
-  remark: "", // optional
-  senderCustomerResidence: "1", // optional
-  senderCustomerType: "1", // optional
-  senderPhone: "08123456789", // optional
+  kodePos: "-", // optional
+  recieverPhone: "-", // optional
+  remark: "DANA20220513095840015788857PTZomatoMediaIndonesia", // optional
+  senderCustomerResidence: "-", // optional
+  senderCustomerType: "-", // optional
+  senderPhone: "", // optional
   sourceAccountNo: "0115476151",
-  transactionDate: "2022-01-25",
+  transactionDate: "2020-06-17T01:03:04+07:00",
   additionalInfo: {
-    deviceId: "123456", // optinal
-    channel: "mobilephone", // optinal
+    deviceId: "", // optinal
+    channel: "", // optinal
   },
 });
 ```
@@ -322,33 +313,33 @@ const transferRTGS = await snap.transferRTGS({
 ```javascript
 // return as Promise of Object
 const transferSKNBI = await snap.transferSKNBI({
-  partnerReferenceNo: "202201911020300012", // transaction reference number
+  partnerReferenceNo: "20220523150428586179325", // transaction reference number
   amount: {
-    value: "150005001",
+    value: "10000001.00",
     currency: "IDR",
   },
-  beneficiaryAccountName: "SAN",
-  beneficiaryAccountNo: "3333333333",
-  beneficiaryAddress: "Jakarta Barat", // optional
-  beneficiaryBankCode: "0140397",
-  beneficiaryBankName: "PT. BANK CENTRAL ASIA Tbk.", // optional
+  beneficiaryAccountName: "PTZomatoMediaIndonesia",
+  beneficiaryAccountNo: "0115476117",
+  beneficiaryAddress: "JlGatotSubrotoNoKav18RW1KuninganBarKecMampangPrptKotaJakartaSelatanDaerahKhususIbukotaJakarta12710", // optional
+  beneficiaryBankCode: "CENAIDJAXXX",
+  beneficiaryBankName: "PTBANKCENTRALASIATbk", // optional
   beneficiaryCustomerResidence: "1",
-  beneficiaryCustomerType: "1",
-  beneficiaryEmail: "mail@example.com", // optional
+  beneficiaryCustomerType: "2",
+  beneficiaryEmail: "", // optional
   currency: "IDR", // optional
-  customerReference: "202201911020300006",
+  customerReference: "20220523150428586179325",
   feeType: "OUR", // OUR: fee will be paid by sender (default), BEN: fee will be paid by beneficary, SHA: fee divided
-  kodePos: "12550", // optional
-  recieverPhone: "08123456789", // optional
-  remark: "", // optional
-  senderCustomerResidence: "1", // optional
-  senderCustomerType: "1", // optional
-  senderPhone: "08123456789", // optional
+  kodePos: "", // optional
+  recieverPhone: "", // optional
+  remark: "DANA20220523150428586179325PTZomatoMediaIndonesia", // optional
+  senderCustomerResidence: "", // optional
+  senderCustomerType: "", // optional
+  senderPhone: "", // optional
   sourceAccountNo: "0115476151",
-  transactionDate: "2022-01-25",
+  transactionDate: "2020-06-17T01:03:04+07:00",
   additionalInfo: {
-    deviceId: "123456", // optinal
-    channel: "mobilephone", // optinal
+    deviceId: "", // optinal
+    channel: "", // optinal
   },
 });
 ```
@@ -358,12 +349,12 @@ const transferSKNBI = await snap.transferSKNBI({
 ```javascript
 // return as Promise of Object
 const externalAccountInquiry = await snap.externalAccountInquiry({
-  beneficiaryBankCode: "002",
-  beneficiaryAccountNo: "888801000157508",
-  partnerReferenceNo: "2020102900000000000001", // optional
+  beneficiaryBankCode: "CENAIDJAXXX",
+  beneficiaryAccountNo: "123456789",
+  partnerReferenceNo: "20240226163135663", // optional
   additionalInfo: {
-    deviceId: "123456", // optinal
-    channel: "mobilephone", // optinal
+    deviceId: "09864ADCASA", // optinal
+    channel: "API", // optinal
   },
 });
 ```
@@ -373,25 +364,25 @@ const externalAccountInquiry = await snap.externalAccountInquiry({
 ```javascript
 // return as Promise of Object
 const transferInterBank = await snap.transferInterBank({
-  partnerReferenceNo: "2020102900000000000001", // transaction reference number
+  partnerReferenceNo: "20240226163731861", // transaction reference number
   amount: {
-    value: "12345678",
+    value: "20000",
     currency: "IDR",
   },
-  beneficiaryAccountName: "Yories Yolanda",
-  beneficiaryAccountNo: "888801000003301",
+  beneficiaryAccountName: "SRI ANGGRAINI",
+  beneficiaryAccountNo: "0000000986",
   beneficiaryAddress: "Palembang", // optional
-  beneficiaryBankCode: "002",
-  beneficiaryBankName: "Bank BRI", // optional
+  beneficiaryBankCode: "014",
+  beneficiaryBankName: "Bank BCA", // optional
   beneficiaryEmail: "mail@example.com", // optional
   currency: "IDR", // optional
-  customerReference: "10052019", // optional
-  sourceAccountNo: "888801000157508",
-  transactionDate: "2019-07-03T12:08:56+07:00",
+  customerReference: "20231219085", // optional
+  sourceAccountNo: "1000161562",
+  transactionDate: "2024-01-04T08:37:08+07:00",
   feeType: "OUR", // OUR: fee will be paid by sender (default), BEN: fee will be paid by beneficary, SHA: fee divided
   additionalInfo: {
-    deviceId: "123456", // optinal
-    channel: "mobilephone", // optinal
+    deviceId: "09864ADCASA", // optinal
+    channel: "API", // optinal
   },
 });
 ```

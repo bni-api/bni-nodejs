@@ -22,12 +22,6 @@ declare class SnapBI {
         partnerReferenceNo: string;
         accountNo: any;
     }): Promise<any>;
-    bankStatement(params?: {
-        partnerReferenceNo: string;
-        accountNo: any;
-        fromDateTime: string;
-        toDateTime: string;
-    }): Promise<any>;
     internalAccountInquiry(params?: {
         partnerReferenceNo: string;
         beneficiaryAccountNo: any;
@@ -55,10 +49,10 @@ declare class SnapBI {
         };
         beneficiaryAccountNo: any;
         beneficiaryEmail: string;
-        currency: string;
         customerReference: string;
-        feeType: string;
+        currency: string;
         remark: string;
+        feeType: string;
         sourceAccountNo: any;
         transactionDate: string;
         additionalInfo: {
@@ -83,7 +77,7 @@ declare class SnapBI {
         currency: string;
         customerReference: any;
         feeType: string;
-        kodePos: string;
+        kodepos: string;
         recieverPhone: string;
         remark: string;
         senderCustomerResidence: string;
