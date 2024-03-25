@@ -200,7 +200,7 @@ const snap = new SnapBI(client, {
   channelId: "{your-channel-id}", // Mandatory
   ipAddress: "{your-ip-address}", // Optional
   latitude: "{your-latitude}", // Optional
-  ipAddress: "{your-longitude}", // Optional
+  longitude: "{your-longitude}", // Optional
 });
 ```
 
