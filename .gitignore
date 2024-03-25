@@ -3,3 +3,4 @@ node_modules
 test/constant.js
 *.key
 dist
+package-lock.json
