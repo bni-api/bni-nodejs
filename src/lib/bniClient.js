@@ -5,9 +5,6 @@ const SANDBOX_BASE_URL = 'https://sandbox.bni.co.id';
 const DEV_BASE_URL = 'https://newapidev.bni.co.id:8066';
 const UAT_BASE_URL = 'https://newapidev.bni.co.id:8065';
 const PRODUCTION_BASE_URL = 'https://api.bni.co.id';
-// TUNNELING API HOSTNAME
-const SANDBOX_TUNNELING_BASE_URL = 'https://10.45.249.88:8065';
-const DEV_TUNNELING_BASE_URL = 'https://10.45.249.86:8066';
 
 class BNIClient {
 
@@ -35,12 +32,8 @@ class BNIClient {
   getBaseUrl() {
     if (this.config.env === 'dev')
       return DEV_BASE_URL;
-    else if (this.config.env === 'dev-2')
-      return DEV_TUNNELING_BASE_URL;
     else if (this.config.env === 'sandbox')
       return SANDBOX_BASE_URL;
-    else if (this.config.env === 'sandbox-2')
-      return SANDBOX_TUNNELING_BASE_URL;
     else if (this.config.env === 'prod')
       return PRODUCTION_BASE_URL;
     else if (this.config.env === 'uat')
