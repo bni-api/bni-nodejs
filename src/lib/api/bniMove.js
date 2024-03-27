@@ -1,6 +1,7 @@
-import { prescreening } from '../services/digiloan/prescreening.js';
+import { prescreening } from '../services/bniMove/prescreening.js';
+import { saveImage } from '../services/bniMove/saveImage.js';
 
-class DIGILOAN {
+class BNIMove {
   constructor(client) {
     this.client = client;
     this.config = client.getConfig();
@@ -23,6 +24,18 @@ class DIGILOAN {
     });
     return res;
   }
+
+  async saveImage(params) {
+    const res = saveImage({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
 }
 
-export default DIGILOAN;
+export default BNIMove;

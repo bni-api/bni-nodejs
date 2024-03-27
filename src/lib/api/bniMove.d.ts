@@ -1,5 +1,5 @@
-export default DIGILOAN;
-declare class DIGILOAN {
+export default BNIMove;
+declare class BNIMove {
   constructor(client: any);
   client: any;
   config: any;
@@ -27,9 +27,17 @@ declare class DIGILOAN {
     jenisPinjaman: any;
     maximumKredit: number;
     jenisKelamin: number;
-    tanggalLahirKtp: any;
+    tanggalLahir: any;
     subSektorEkonomi: any;
     deskripsi: string;
-    alamatEmail: string;
+    email: string;
+  });
+  saveImage(params?: {
+    Id: string;
+    deskripsi: string;
+    jenisDokumen: string;
+    namaFile: string;
+    extensionFile: string;
+    dataBase64: string;
   });
 }

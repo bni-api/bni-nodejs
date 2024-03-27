@@ -1,4 +1,4 @@
-import { responseDigiloan } from 'lib/util/response.js';
+import { responseBniMove } from '../../util/response.js';
 import HttpClient from '../../net/httpClient.js';
 import { generateSignature } from '../../util/util.js';
 
@@ -21,10 +21,10 @@ export async function prescreening(params = { body, config }) {
     jenisPinjaman: params.body.jenisPinjaman,
     maximumKredit: params.body.maximumKredit,
     jenisKelamin: params.body.jenisKelamin,
-    tanggalLahirKtp: params.body.tanggalLahirKtp,
+    tanggalLahir: params.body.tanggalLahir,
     subSektorEkonomi: params.body.subSektorEkonomi,
     deskripsi: params.body.deskripsi,
-    alamatEmail: params.body.alamatEmail ?? ''
+    email: params.body.email ?? ''
   };
 
   const signature = generateSignature({
@@ -33,16 +33,15 @@ export async function prescreening(params = { body, config }) {
   });
 
   const httpClient = new HttpClient();
-  
-  const res = await httpClient.requestDigiloanV2({
+
+  const res = await httpClient.requestV2New({
     method: 'POST',
     apiKey: params.config.config.apiKey,
     accessToken: await params.config.client.getToken(),
     url: `${params.config.client.getBaseUrl()}/digiloan/prescreening`,
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
-    data: body,
-    userId: params.config.config.userId
+    data: body
   });
-  return responseDigiloan({ res: res });
-} 
+  return responseBniMove({ res: res });
+}

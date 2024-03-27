@@ -1,7 +1,8 @@
 export const responseOGP = (params = { res, resObj }) => {
   if (params.res[params.resObj].parameters.responseCode != '0001') {
     throw new Error(
-      `${params.res[params.resObj].parameters.responseCode} : ${params.res[params.objApi].parameters.responseMessage
+      `${params.res[params.resObj].parameters.responseCode} : ${
+        params.res[params.objApi].parameters.responseMessage
       }`
     );
   }
@@ -57,10 +58,12 @@ export const responseRDN = (params = { res }) => {
   }
   return params.res;
 };
-export const responseDigiloan = (params = { res }) => {
-  const haveResponseCode = params.res.statusCode;
-  if (haveResponseCode && params.res.statusCode !== 0) {
-    throw new Error(`${params.res.statusCode} : ${params.res.statusDescription}`);
+export const responseBniMove = (params = { res }) => {
+  const haveResponseCode = params.res && params.res.statusCode;
+  if (haveResponseCode !== 0) {
+    throw new Error(
+      `${params.res.statusCode} =====> ${params.res.statusDescription}`
+    );
   }
   return params.res;
 };

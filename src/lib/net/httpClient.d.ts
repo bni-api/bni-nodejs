@@ -1,6 +1,6 @@
 export default HttpClient;
 declare class HttpClient {
-  httpClient: import("axios").AxiosInstance;
+  httpClient: import('axios').AxiosInstance;
   /**
    * Initiate with options
    * @param  {Object} options - should have these props:
@@ -29,6 +29,7 @@ declare class HttpClient {
    */
   request(options?: Object): Object;
   requestV2(options?: Object): Object;
+  requestV2New(options?: Object): Object;
   requestSnapBI(options?: {
     method: any;
     apiKey: any;
@@ -37,5 +38,4 @@ declare class HttpClient {
     data: any;
     additionalHeader: {};
   }): Promise<any>;
-  requestV2(options?: Object): Object;
 }

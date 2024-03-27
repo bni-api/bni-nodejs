@@ -8,9 +8,9 @@ class SnapBI {
     options = {
       privateKeyPath,
       channelId,
-      ipAddress: '',
-      latitude: '',
-      longitude: ''
+      ipAddress,
+      latitude,
+      longitude
     }
   ) {
     this.client = client;
@@ -69,52 +69,6 @@ class SnapBI {
       }
     });
 
-    return responseSnapBI({ res });
-  }
-
-  async bankStatement(
-    params = {
-      partnerReferenceNo: '',
-      accountNo,
-      fromDateTime: '',
-      toDateTime: ''
-    }
-  ) {
-    const token = await this.getTokenSnapBI();
-    const body = {
-      partnerReferenceNo: params.partnerReferenceNo ?? '',
-      accountNo: params.accountNo,
-      fromDateTime: params.fromDateTime ?? '',
-      toDateTime: params.toDateTime ?? ''
-    };
-    const timeStamp = getTimeStamp();
-    const signature = generateSignatureServiceSnapBI({
-      body: body,
-      method: 'POST',
-      url: '/snap-service/v1/bank-statement',
-      accessToken: token,
-      timeStamp: timeStamp,
-      apiSecret: this.config.apiSecret
-    });
-
-    const res = await this.httpClient.requestSnapBI({
-      method: 'POST',
-      apiKey: this.config.apiKey,
-      accessToken: token,
-      url: `${this.client.getBaseUrl()}/snap-service/v1/bank-statement`,
-      data: body,
-      additionalHeader: {
-        'X-SIGNATURE': signature,
-        'X-TIMESTAMP': timeStamp,
-        'X-PARTNER-ID': this.config.apiKey,
-        'X-IP-Address': this.configSnap.ipAddress ?? '',
-        'X-DEVICE-ID': 'bni-nodejs/0.1.0',
-        'X-EXTERNAL-ID': randomNumber(),
-        'CHANNEL-ID': this.configSnap.channelId,
-        'X-LATITUDE': this.configSnap.latitude ?? '',
-        'X-LONGITUDE': this.configSnap.longitude ?? ''
-      }
-    });
     return responseSnapBI({ res });
   }
 
