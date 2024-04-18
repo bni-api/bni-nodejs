@@ -29,7 +29,6 @@ declare class HttpClient {
    */
   request(options?: Object): Object;
   requestV2(options?: Object): Object;
-  requestV2New(options?: Object): Object;
   requestSnapBI(options?: {
     method: any;
     apiKey: any;

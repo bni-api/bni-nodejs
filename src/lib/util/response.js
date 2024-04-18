@@ -32,28 +32,28 @@ export const responseSnapBI = (params = { res }) => {
 };
 
 export const responseRDL = (params = { res }) => {
-  const haveResponseCode = params.res.response.responseCode;
-  if (haveResponseCode && params.res.response.responseCode !== '0001') {
+  const haveResponseCode = params.res.response && params.res.response.responseCode;
+  if (params.res.response.responseCode && haveResponseCode !== '0001') {
     throw new Error(
-      `${params.res.responseCode} : ${params.res.responseMessage}, ${params.res.errorMessage}`
+      `${params.res.response.responseCode} =====> ${params.res.response.responseMessage}, ${params.res.response.errorMessage}`
     );
   }
   return params.res;
 };
 export const responseRDF = (params = { res }) => {
-  const haveResponseCode = params.res.response.responseCode;
-  if (haveResponseCode && params.res.response.responseCode !== '0001') {
+  const haveResponseCode = params.res.response && params.res.response.responseCode;
+  if (params.res.response.responseCode && haveResponseCode !== '0001') {
     throw new Error(
-      `${params.res.responseCode} : ${params.res.responseMessage}, ${params.res.errorMessage}`
+      `${params.res.response.responseCode} =====> ${params.res.response.responseMessage}, ${params.res.response.errorMessage}`
     );
   }
   return params.res;
 };
 export const responseRDN = (params = { res }) => {
   const haveResponseCode = params.res.response && params.res.response.responseCode;
-  if (haveResponseCode && params.res.response.responseCode !== '0001') {
+  if (params.res.response.responseCode && haveResponseCode !== '0001') {
     throw new Error(
-      `${params.res.responseCode} : ${params.res.responseMessage}, ${params.res.errorMessage}`
+      `${params.res.response.responseCode} =====> ${params.res.response.responseMessage}, ${params.res.response.errorMessage}`
     );
   }
   return params.res;

@@ -19,7 +19,7 @@ export async function saveImage(params = { body, config }) {
 
   const httpClient = new HttpClient();
 
-  const res = await httpClient.requestV2New({
+  const res = await httpClient.requestV2({
     method: 'POST',
     apiKey: params.config.config.apiKey,
     accessToken: await params.config.client.getToken(),

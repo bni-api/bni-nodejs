@@ -1,3 +1,4 @@
+import { getTimeStampBniMove } from '../util/util.js';
 import { prescreening } from '../services/bniMove/prescreening.js';
 import { saveImage } from '../services/bniMove/saveImage.js';
 
@@ -5,7 +6,7 @@ class BNIMove {
   constructor(client) {
     this.client = client;
     this.config = client.getConfig();
-    this.timeStamp = new Date().toISOString();
+    this.timeStamp = getTimeStampBniMove();
   }
   /**
    * Initiate with options
