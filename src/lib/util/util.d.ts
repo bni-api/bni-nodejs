@@ -1,6 +1,7 @@
 export function generateSignature(params?: { body: any; apiSecret: any }): any;
 export function generateClientId(appName: any): string;
 export function getTimeStamp(): string;
+export function getTimeStampBniMove(): string;
 export function generateTokenSignature(params?: {
   privateKeyPath: any;
   clientId: any;
