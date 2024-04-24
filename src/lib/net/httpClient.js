@@ -172,10 +172,12 @@ class HttpClient {
         });
         resolve(res.data);
       } catch (err) {
+        resolve(err.response.data);
         reject(err);
       }
     });
   }
+
 }
 
 export default HttpClient;

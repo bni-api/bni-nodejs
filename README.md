@@ -1224,6 +1224,73 @@ const paymentUsingInterbank = async () => {
   return res;
 };
 ```
+
+### 2.2.F BNI Move Digiloan
+
+Create `BNI Move` class object
+```javascript
+
+import { BNIClient, BNIMove } from 'bni-nodejs';
+// const { BNIClient, BNIMove } = require('bni-nodejs'); // legacy way
+
+// Create Client instance
+const client = new BNIClient({
+  env: 'sandbox', // dev, sandbox or prod
+  clientId: '{your-client-id}',
+  clientSecret: '{your-client-secret}',
+  apiKey: '{your-api-key}',
+  apiSecret: '{your-api-secret}'
+  appName: '{your-app-name}' // optional
+});
+
+const bniMove = new BNIMove(client);
+```
+Available methods for `BNI Move` class
+#### Prescreening
+```javascript
+// return as Promise of Object
+const prescreening = async () => {
+  const res = await bniMove.prescreening({
+    kodeMitra: 'BNI',
+    npp: '', // optional
+    namaLengkapKtp: 'Muhammad Haikal Madani',
+    noKtp: '3174052209980002',
+    noHandphone: '085921658045',
+    alamatUsaha: 'jakarta',
+    provinsiUsaha: '06',
+    kotaUsaha: '143',
+    kecamatanUsaha: '1074',
+    kelurahanUsaha: '4254',
+    kodePosUsaha: '11450',
+    sektorEkonomi: '2',
+    totalPenjualan: 50000000,
+    jangkaWaktu: '12',
+    jenisPinjaman: '1',
+    maximumKredit: 50000000,
+    jenisKelamin: '1',
+    tanggalLahir: '1998-10-07',
+    subSektorEkonomi: '050111',
+    deskripsi: 'Usaha Ternak Perikanan',
+    email: 'muhammadhaikalmadani@mail.com' // optional
+  });
+  return res;
+};
+```
+#### Save Image
+```javascript
+// return as Promise of Object
+const saveImage = async () => {
+  const res = await bniMove.saveImage({
+    Id: 'MJO2024022000004',
+    deskripsi: 'Foto Identitas KTP',
+    jenisDokumen: 'A03',
+    namaFile: 'Foto KTP',
+    extensionFile: 'png',
+    dataBase64: '{image-file-base64}'
+  });
+  return res;
+};
+```
 ## Get help
 
 - [Digital Services](https://digitalservices.bni.co.id/en/)
