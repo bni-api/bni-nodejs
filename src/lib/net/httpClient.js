@@ -2,7 +2,7 @@ import axios from 'axios';
 import { stringify } from 'qs';
 import { getTimeStamp, generateTokenSignature } from '../util/util.js';
 
-const CURRENT_VERSION = '0.1.12';
+const CURRENT_VERSION = '0.1.16';
 const HEADER_USER_AGENT = `bni-nodejs/${CURRENT_VERSION}`;
 
 class HttpClient {
@@ -178,6 +178,49 @@ class HttpClient {
     });
   }
 
+  requestOtr(options = { RequestId, timestamp, ChannelId, method, url, queryParams, data }) {
+    const headers = {
+      'content-type': 'application/json',
+      'user-agent': HEADER_USER_AGENT,
+      'RequestId': options.RequestId,
+      'RequestDateTime': options.timestamp,
+      'ChannelId': options.ChannelId
+    };
+    return new Promise(async (resolve, reject) => {
+      try {
+        if (options.queryParams && !options.data) {
+          console.log('masuk atas');
+          const res = await this.httpClient({
+            method: options.method,
+            headers: headers,
+            url: options.url,
+            params: options.queryParams
+          });
+          resolve(res.data);
+        } else if (!options.queryParams && options.data) {
+          console.log('masuk tengah');
+          const res = await this.httpClient({
+            method: options.method,
+            headers: headers,
+            url: options.url,
+            data: options.data
+          });
+          resolve(res.data);
+        } else {
+          console.log('masuk bawah');
+          const res = await this.httpClient({
+            method: options.method,
+            headers: headers,
+            url: options.url
+          });
+          resolve(res.data);
+        }
+      } catch (err) {
+        resolve(err.response.data);
+        reject(err);
+      }
+    });
+  }
 }
 
 export default HttpClient;
