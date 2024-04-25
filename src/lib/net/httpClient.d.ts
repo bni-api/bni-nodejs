@@ -29,6 +29,7 @@ declare class HttpClient {
    */
   request(options?: Object): Object;
   requestV2(options?: Object): Object;
+  requestOtr(options?: Object): Promise<any>;
   requestSnapBI(options?: {
     method: any;
     apiKey: any;

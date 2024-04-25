@@ -2,7 +2,7 @@ import axios from 'axios';
 import { stringify } from 'qs';
 import { getTimeStamp, generateTokenSignature } from '../util/util.js';
 
-const CURRENT_VERSION = '0.1.12';
+const CURRENT_VERSION = '0.1.16';
 const HEADER_USER_AGENT = `bni-nodejs/${CURRENT_VERSION}`;
 
 class HttpClient {
@@ -178,6 +178,37 @@ class HttpClient {
     });
   }
 
+  requestOtr(options = { RequestId, timestamp, ChannelId, method, url, queryParams, data }) {
+    const headers = {
+      'content-type': 'application/json',
+      'user-agent': HEADER_USER_AGENT,
+      'RequestId': options.RequestId,
+      'RequestDateTime': options.timestamp,
+      'ChannelId': options.ChannelId
+    };
+
+    const config = {
+      method: options.method,
+      headers: headers,
+      url: options.url
+    };
+
+    if (options.queryParams) {
+      config.params = options.queryParams;
+    }
+    if (options.data) {
+      config.data = options.data;
+    }
+    
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await this.httpClient(config);
+        resolve(res.data);
+      } catch (err) {
+        reject(err.response ? err.response.data : err);
+      }
+    });
+  }
 }
 
 export default HttpClient;

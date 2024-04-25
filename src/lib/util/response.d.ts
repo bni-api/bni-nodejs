@@ -8,3 +8,4 @@ export function responseRDF(params?: { res: any }): any;
 export function responseRDN(params?: { res: any }): any;
 export function responseFSCM(params?: { res: any }): any;
 export function responseBniMove(params?: { res: any }): any;
+export function responseOtr(params?: { res: any }): any;

@@ -67,3 +67,14 @@ export const responseBniMove = (params = { res }) => {
   }
   return params.res;
 };
+export const responseOtr = (params = { res }) => {
+  console.log('masuk response');
+  // console.log(params.res);
+  // const haveResponseCode = params.res && params.res.statusCode;
+  // if (haveResponseCode !== 0) {
+  //   throw new Error(
+  //     `${params.res.statusCode} =====> ${params.res.statusDescription}`
+  //   );
+  // }
+  return params.res;
+};
