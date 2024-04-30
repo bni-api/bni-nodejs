@@ -109,3 +109,18 @@ export const generateUUID = () => {
   }
   return uuid;
 };
+export const generateOtrUUID = () => {
+  const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+  const sections = [8, 4, 4, 4, 12];
+
+  let uuid = '';
+  sections.forEach((section, index) => {
+    if (index !== 0) uuid += '-';
+    for (let i = 0; i < section; i++) {
+      const randIndex = Math.floor(Math.random() * chars.length);
+      uuid += chars[randIndex];
+    }
+  });
+
+  return uuid;
+};

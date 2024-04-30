@@ -5,6 +5,7 @@ import RDN from './lib/api/rdn.js';
 import RDL from './lib/api/rdl.js';
 import RDF from './lib/api/rdf.js';
 import bniMove from './lib/api/bniMove.js';
+import otr from './lib/api/otr.js';
 
 export const BNIClient = bniClient;
 export const OneGatePayment = oneGatePayment;
@@ -13,3 +14,4 @@ export const Rdn = RDN;
 export const Rdl = RDL;
 export const Rdf = RDF;
 export const BNIMove = bniMove;
+export const OTR = otr;
