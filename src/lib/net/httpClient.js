@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { stringify } from 'qs';
-import { getTimeStamp, generateTokenSignature } from '../util/util.js';
+import axios from "axios";
+import { stringify } from "qs";
+import { getTimeStamp, generateTokenSignature } from "../util/util.js";
 
-const CURRENT_VERSION = '0.1.12';
+const CURRENT_VERSION = "0.1.12";
 const HEADER_USER_AGENT = `bni-nodejs/${CURRENT_VERSION}`;
 
 class HttpClient {
@@ -21,8 +21,8 @@ class HttpClient {
 
   tokenRequest(options = { url, username, password }) {
     const headers = {
-      'content-type': 'application/x-www-form-urlencoded',
-      'user-agent': HEADER_USER_AGENT
+      "content-type": "application/x-www-form-urlencoded",
+      "user-agent": HEADER_USER_AGENT,
     };
 
     return new Promise(async (resolve, reject) => {
@@ -30,16 +30,16 @@ class HttpClient {
 
       try {
         const res = await this.httpClient({
-          method: 'POST',
+          method: "POST",
           headers: headers,
           url: options.url,
           auth: {
             username: options.username,
-            password: options.password
+            password: options.password,
           },
           data: stringify({
-            grant_type: 'client_credentials'
-          })
+            grant_type: "client_credentials",
+          }),
         });
 
         resolve(res.data);
@@ -61,31 +61,31 @@ class HttpClient {
   tokenRequestSnapBI(options = { url, clientId, privateKeyPath }) {
     const timeStamp = getTimeStamp();
     const headers = {
-      'Content-Type': 'application/json',
-      'X-SIGNATURE': generateTokenSignature({
+      "Content-Type": "application/json",
+      "X-SIGNATURE": generateTokenSignature({
         privateKeyPath: options.privateKeyPath,
         clientId: options.clientId,
-        timeStamp: timeStamp
+        timeStamp: timeStamp,
       }),
-      'X-TIMESTAMP': timeStamp,
-      'X-CLIENT-KEY': options.clientId
+      "X-TIMESTAMP": timeStamp,
+      "X-CLIENT-KEY": options.clientId,
     };
 
     return new Promise(async (resolve, reject) => {
       try {
         const res = await this.httpClient({
-          method: 'POST',
+          method: "POST",
           headers: headers,
           url: options.url,
           data: {
-            grantType: 'client_credentials',
-            additionalInfo: {}
-          }
+            grantType: "client_credentials",
+            additionalInfo: {},
+          },
         });
 
         resolve(res.data);
       } catch (err) {
-        reject(err.data);
+        reject(err);
       }
     });
   }
@@ -101,9 +101,9 @@ class HttpClient {
 
   request(options = { method, apiKey, accessToken, url, data }) {
     const headers = {
-      'content-type': 'application/json',
-      'user-agent': HEADER_USER_AGENT,
-      'x-api-key': options.apiKey
+      "content-type": "application/json",
+      "user-agent": HEADER_USER_AGENT,
+      "x-api-key": options.apiKey,
     };
 
     return new Promise(async (resolve, reject) => {
@@ -113,7 +113,7 @@ class HttpClient {
           headers: headers,
           url: options.url,
           params: { access_token: options.accessToken },
-          data: options.data
+          data: options.data,
         });
 
         resolve(res.data);
@@ -123,29 +123,27 @@ class HttpClient {
     });
   }
 
-  requestSnapBI(
-    options = { method, apiKey, accessToken, url, data, additionalHeader: {} }
-  ) {
+  requestSnapBI(options = { method, apiKey, accessToken, url, data, additionalHeader: {} }) {
     const header = {
-      'Content-Type': 'application/json',
-      'user-agent': HEADER_USER_AGENT,
-      Authorization: `Bearer ${options.accessToken}`
+      "Content-Type": "application/json",
+      "user-agent": HEADER_USER_AGENT,
+      Authorization: `Bearer ${options.accessToken}`,
     };
 
     const headers = {
       ...header,
-      ...options.additionalHeader
+      ...options.additionalHeader,
     };
-    
+
     return new Promise(async (resolve, reject) => {
       try {
         const res = await this.httpClient({
           method: options.method,
           headers: headers,
           url: options.url,
-          data: options.data
+          data: options.data,
         });
-        
+
         resolve(res.data);
       } catch (err) {
         reject(err);
@@ -155,11 +153,11 @@ class HttpClient {
 
   requestV2(options = { method, apiKey, accessToken, url, data, signature, timestamp }) {
     const headers = {
-      'content-type': 'application/json',
-      'user-agent': HEADER_USER_AGENT,
-      'x-api-key': options.apiKey,
-      'x-signature': options.signature,
-      'x-timestamp': options.timestamp
+      "content-type": "application/json",
+      "user-agent": HEADER_USER_AGENT,
+      "x-api-key": options.apiKey,
+      "x-signature": options.signature,
+      "x-timestamp": options.timestamp,
     };
     return new Promise(async (resolve, reject) => {
       try {
@@ -168,7 +166,7 @@ class HttpClient {
           headers: headers,
           url: options.url,
           params: { access_token: options.accessToken },
-          data: options.data
+          data: options.data,
         });
         resolve(res.data);
       } catch (err) {

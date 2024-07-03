@@ -1,13 +1,13 @@
 {
   "name": "bni-nodejs",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Official BNI API SDK for Node.js",
   "type": "module",
   "main": "dist/cjs/index.js",
   "module": "dist/mjs/index.js",
   "exports": {
     ".": {
-      "import": "./dist/mjs/index.js",
+      "import": "./src/index.js",
       "require": "./dist/cjs/index.js"
     }
   },
