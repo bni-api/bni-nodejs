@@ -1,7 +1,9 @@
 export const responseOGP = (params = { res, resObj }) => {
   if (params.res[params.resObj].parameters.responseCode != '0001') {
     throw new Error(
-      `${params.res[params.resObj].parameters.responseCode} : ${params.res[params.objApi].parameters.responseMessage}`
+      `${params.res[params.resObj].parameters.responseCode} : ${
+        params.res[params.objApi].parameters.responseMessage
+      }`
     );
   }
 
@@ -24,6 +26,43 @@ export const responseSnapBI = (params = { res }) => {
   if (!statusCodeSuccess.includes(params.res.responseCode)) {
     throw new Error(
       `${params.res.responseCode} : ${params.res.responseMessage}`
+    );
+  }
+  return params.res;
+};
+
+export const responseRDL = (params = { res }) => {
+  const haveResponseCode = params.res.response && params.res.response.responseCode;
+  if (params.res.response.responseCode && haveResponseCode !== '0001') {
+    throw new Error(
+      `${params.res.response.responseCode} =====> ${params.res.response.responseMessage}, ${params.res.response.errorMessage}`
+    );
+  }
+  return params.res;
+};
+export const responseRDF = (params = { res }) => {
+  const haveResponseCode = params.res.response && params.res.response.responseCode;
+  if (params.res.response.responseCode && haveResponseCode !== '0001') {
+    throw new Error(
+      `${params.res.response.responseCode} =====> ${params.res.response.responseMessage}, ${params.res.response.errorMessage}`
+    );
+  }
+  return params.res;
+};
+export const responseRDN = (params = { res }) => {
+  const haveResponseCode = params.res.response && params.res.response.responseCode;
+  if (params.res.response.responseCode && haveResponseCode !== '0001') {
+    throw new Error(
+      `${params.res.response.responseCode} =====> ${params.res.response.responseMessage}, ${params.res.response.errorMessage}`
+    );
+  }
+  return params.res;
+};
+export const responseBniMove = (params = { res }) => {
+  const haveResponseCode = params.res && params.res.statusCode;
+  if (haveResponseCode !== 0) {
+    throw new Error(
+      `${params.res.statusCode} =====> ${params.res.statusDescription}`
     );
   }
   return params.res;

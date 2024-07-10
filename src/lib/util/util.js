@@ -7,24 +7,31 @@ const escape = (string) => {
 };
 
 const changeTimezone = (date, timeZone) => {
-  const invdate = new Date(date.toLocaleString('en-US', {
-    timeZone: timeZone
-  }));
+  const invdate = new Date(
+    date.toLocaleString('en-US', {
+      timeZone: timeZone
+    })
+  );
 
   const diff = date.getTime() - invdate.getTime();
   return new Date(date.getTime() - diff); // needs to substract
 };
 
 export const generateSignature = (params = { body, apiSecret }) => {
-
   // generate JWT header
-  const header = escape(Buffer.from('{"alg":"HS256","typ":"JWT"}').toString('base64'));
+  const header = escape(
+    Buffer.from('{"alg":"HS256","typ":"JWT"}').toString('base64')
+  );
 
   // generate JWT payload
-  const payload = escape(Buffer.from(JSON.stringify(params.body)).toString('base64'));
+  const payload = escape(
+    Buffer.from(JSON.stringify(params.body)).toString('base64')
+  );
 
   // generate JWT signature
-  const jwtSignature = createHmac('SHA256', params.apiSecret).update(`${header}.${payload}`).digest('base64');
+  const jwtSignature = createHmac('SHA256', params.apiSecret)
+    .update(`${header}.${payload}`)
+    .digest('base64');
 
   // return generated JWT token
   return escape(`${header}.${payload}.${jwtSignature}`);
@@ -47,16 +54,34 @@ export const getTimeStamp = () => {
 
   return `${map.yyyy}-${map.mm}-${map.dd}T${map.hh}:${map.ii}:${map.ss}${map.timezone}`;
 };
-export const generateTokenSignature = (params = { privateKeyPath, clientId, timeStamp }) => {
+export const getTimeStampBniMove = () => {
+  const date = changeTimezone(new Date(), 'Asia/Jakarta');
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+  const timezoneOffset = -date.getTimezoneOffset();
+  const timezoneOffsetHours = Math.floor(timezoneOffset / 60);
+  const timezoneOffsetMinutes = timezoneOffset % 60;
 
+  const formattedTimestamp = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}${timezoneOffset >= 0 ? '+' : '-'}${String(Math.abs(timezoneOffsetHours)).padStart(2, '0')}:${String(Math.abs(timezoneOffsetMinutes)).padStart(2, '0')}`;
+  
+  return formattedTimestamp;
+};
+export const generateTokenSignature = (
+  params = { privateKeyPath, clientId, timeStamp }
+) => {
   const privateKey = readFileSync(params.privateKeyPath);
-
   const data = Buffer.from(params.clientId + '|' + params.timeStamp);
   const signature = sign('RSA-SHA256', data, privateKey).toString('base64');
   return signature;
 };
-export const generateSignatureServiceSnapBI = (params = { body, method, url, accessToken, timeStamp, apiSecret }) => {
-
+export const generateSignatureServiceSnapBI = (
+  params = { body, method, url, accessToken, timeStamp, apiSecret }
+) => {
   const minify = JSON.stringify(params.body);
   const sha = createHash('sha256').update(minify).digest('');
   const bufferText = Buffer.from(sha, 'utf8');
@@ -74,4 +99,13 @@ export const randomNumber = () => {
   const randomNumber = Math.floor(100000000 + Math.random() * 900000);
   const unixTimeStamp = Math.floor(Date.now() / 1000);
   return `${randomNumber}${unixTimeStamp}`;
+};
+export const generateUUID = () => {
+  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let uuid = '';
+  for (let i = 0; i < 16; i++) {
+    const randIndex = Math.floor(Math.random() * chars.length);
+    uuid += chars[randIndex];
+  }
+  return uuid;
 };
