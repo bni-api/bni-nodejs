@@ -25,7 +25,7 @@ export const responseSnapBI = (params = { res }) => {
   ];
   if (!statusCodeSuccess.includes(params.res.responseCode)) {
     throw new Error(
-      `${params.res.responseCode} : ${params.res.responseMessage}`
+      `${params.res.responseCode} - ${params.res.responseMessage}`
     );
   }
   return params.res;

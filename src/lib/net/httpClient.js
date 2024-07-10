@@ -118,7 +118,7 @@ class HttpClient {
 
         resolve(res.data);
       } catch (err) {
-        reject(err);
+        resolve(err.response.data);
       }
     });
   }
@@ -146,7 +146,7 @@ class HttpClient {
 
         resolve(res.data);
       } catch (err) {
-        reject(err);
+        resolve(err.response.data);
       }
     });
   }
@@ -171,7 +171,6 @@ class HttpClient {
         resolve(res.data);
       } catch (err) {
         resolve(err.response.data);
-        reject(err);
       }
     });
   }

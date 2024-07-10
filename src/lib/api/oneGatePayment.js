@@ -233,77 +233,78 @@ class OneGatePayment {
     return responseOGP({ res: res, resObj: 'getInterbankPaymentResponse' });
   }
 
-  async holdAmount(
-    params = {
-      customerReferenceNumber,
-      amount,
-      accountNo,
-      detail: ''
-    }
-  ) {
-    // TODO holdAmount
-    const body = {
-      clientId: generateClientId(this.config.appName),
-      customerReferenceNumber: params.customerReferenceNumber,
-      amount: params.amount,
-      accountNo: params.accountNo,
-      detail: params.detail ?? ''
-    };
+  // request WDC to comment this services
+  // async holdAmount(
+  //   params = {
+  //     customerReferenceNumber,
+  //     amount,
+  //     accountNo,
+  //     detail: ''
+  //   }
+  // ) {
+  //   // TODO holdAmount
+  //   const body = {
+  //     clientId: generateClientId(this.config.appName),
+  //     customerReferenceNumber: params.customerReferenceNumber,
+  //     amount: params.amount,
+  //     accountNo: params.accountNo,
+  //     detail: params.detail ?? ''
+  //   };
 
-    const signature = {
-      signature: generateSignature({ body: body, apiSecret: this.config.apiSecret })
-    };
+  //   const signature = {
+  //     signature: generateSignature({ body: body, apiSecret: this.config.apiSecret })
+  //   };
 
-    const res = await this.httpClient.request({
-      method: 'POST',
-      apiKey: this.config.apiKey,
-      accessToken: await this.client.getToken(),
-      url: `${this.client.getBaseUrl()}/H2H/v2/holdamount`,
-      data: {
-        ...body,
-        ...signature
-      }
-    });
+  //   const res = await this.httpClient.request({
+  //     method: 'POST',
+  //     apiKey: this.config.apiKey,
+  //     accessToken: await this.client.getToken(),
+  //     url: `${this.client.getBaseUrl()}/H2H/v2/holdamount`,
+  //     data: {
+  //       ...body,
+  //       ...signature
+  //     }
+  //   });
 
-    return responseOGP({ res: res, resObj: 'holdAmountResponse' });
-  }
+  //   return responseOGP({ res: res, resObj: 'holdAmountResponse' });
+  // }
 
-  async holdAmountRelease(
-    params = {
-      customerReferenceNumber,
-      amount,
-      accountNo,
-      bankReference,
-      holdTransactionDate
-    }
-  ) {
-    // TODO holdAmountRelease
-    const body = {
-      clientId: generateClientId(this.config.appName),
-      customerReferenceNumber: params.customerReferenceNumber,
-      amount: params.amount,
-      accountNo: params.accountNo,
-      bankReference: params.bankReference,
-      holdTransactionDate: params.holdTransactionDate
-    };
+  // async holdAmountRelease(
+  //   params = {
+  //     customerReferenceNumber,
+  //     amount,
+  //     accountNo,
+  //     bankReference,
+  //     holdTransactionDate
+  //   }
+  // ) {
+  //   // TODO holdAmountRelease
+  //   const body = {
+  //     clientId: generateClientId(this.config.appName),
+  //     customerReferenceNumber: params.customerReferenceNumber,
+  //     amount: params.amount,
+  //     accountNo: params.accountNo,
+  //     bankReference: params.bankReference,
+  //     holdTransactionDate: params.holdTransactionDate
+  //   };
 
-    const signature = {
-      signature: generateSignature({ body: body, apiSecret: this.config.apiSecret })
-    };
+  //   const signature = {
+  //     signature: generateSignature({ body: body, apiSecret: this.config.apiSecret })
+  //   };
 
-    const res = await this.httpClient.request({
-      method: 'POST',
-      apiKey: this.config.apiKey,
-      accessToken: await this.client.getToken(),
-      url: `${this.client.getBaseUrl()}/H2H/v2/holdamountrelease`,
-      data: {
-        ...body,
-        ...signature
-      }
-    });
+  //   const res = await this.httpClient.request({
+  //     method: 'POST',
+  //     apiKey: this.config.apiKey,
+  //     accessToken: await this.client.getToken(),
+  //     url: `${this.client.getBaseUrl()}/H2H/v2/holdamountrelease`,
+  //     data: {
+  //       ...body,
+  //       ...signature
+  //     }
+  //   });
 
-    return responseOGP({ res: res, resObj: 'holdAmountReleaseResponse' });
-  }
+  //   return responseOGP({ res: res, resObj: 'holdAmountReleaseResponse' });
+  // }
 }
 
 export default OneGatePayment;

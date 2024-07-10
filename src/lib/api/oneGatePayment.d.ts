@@ -50,18 +50,19 @@ declare class OneGatePayment {
         accountNum: any;
         retrievalReffNum: any;
     }): Promise<any>;
-    holdAmount(params?: {
-        customerReferenceNumber: any;
-        amount: any;
-        accountNo: any;
-        detail: string;
-    }): Promise<any>;
-    holdAmountRelease(params?: {
-        customerReferenceNumber: any;
-        amount: any;
-        accountNo: any;
-        bankReference: any;
-        holdTransactionDate: any;
-    }): Promise<any>;
+    // request WDC to comment this services
+    // holdAmount(params?: {
+    //     customerReferenceNumber: any;
+    //     amount: any;
+    //     accountNo: any;
+    //     detail: string;
+    // }): Promise<any>;
+    // holdAmountRelease(params?: {
+    //     customerReferenceNumber: any;
+    //     amount: any;
+    //     accountNo: any;
+    //     bankReference: any;
+    //     holdTransactionDate: any;
+    // }): Promise<any>;
 }
 import HttpClient from "../net/httpClient.js";
