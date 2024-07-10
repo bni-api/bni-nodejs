@@ -1,5 +1,5 @@
 BNI API SDK - Node.js &middot; ![Static Badge](https://img.shields.io/badge/license-MIT-blue?link=https%3A%2F%2Fgithub.com%2Fbni-api%2Fbni-nodejs%2Fblob%2Fmain%2FREADME.md) ![Static Badge](https://img.shields.io/badge/npm-v0.1.4-blue?link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fbni-nodejs)
-===============
+
 This is the Official Node JS API client / library for BNI API. 
 
 Please visit [Digital Services](https://digitalservices.bni.co.id/en/) for more information about our product and visit our documentation page at [API Documentation](https://digitalservices.bni.co.id/documentation/public/en) for more technical details.
