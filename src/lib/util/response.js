@@ -65,5 +65,7 @@ export const responseBniMove = (params = { res }) => {
       `${params.res.statusCode} =====> ${params.res.statusDescription}`
     );
   }
+}
+export const responseEcollection = (params = { res, resObj }) => {
   return params.res;
 };

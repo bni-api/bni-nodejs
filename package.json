@@ -33,6 +33,7 @@
   "devDependencies": {
     "eslint": "^8.27.0",
     "mocha": "^10.1.0",
+    "sinon": "^15.2.0",
     "typescript": "^4.8.4"
   },
   "engines": {
