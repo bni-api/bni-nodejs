@@ -403,8 +403,8 @@ const transferInterBank = await snap.transferInterBank({
 Create `Rdl` class object
 
 ```javascript
-import { Rdl, BNIClient } from "bni-nodejs";
-// const { BNIClient, OneGatePayment } = require('bni-nodejs'); // legacy way
+import { BNIClient, Rdl } from "bni-nodejs";
+// const { BNIClient, Rdl } = require('bni-nodejs'); // legacy way
 
 // Create Client instance
 const client = new BNIClient({
@@ -945,7 +945,7 @@ Create `RDN` class object
 ```javascript
 
 import { BNIClient, Rdn } from 'bni-nodejs';
-// const { BNIClient, Rdf } = require('bni-nodejs'); // legacy way
+// const { BNIClient, Rdn } = require('bni-nodejs'); // legacy way
 
 // Create Client instance
 const client = new BNIClient({

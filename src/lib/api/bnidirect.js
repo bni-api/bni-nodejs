@@ -1,3 +1,10 @@
+import { createMpnG2BillingId } from '../services/bnidirect/createMpnG2BillingId.js';
+import { inquiryNpwp } from '../services/bnidirect/inquiryNpwp.js';
+import { inquiryInHouseAndVaBeneficiaryName } from '../services/bnidirect/inquiryInHouseAndVaBeneficiaryName.js';
+import { inquiryLlgRtgsOnlineBeneficiaryName } from '../services/bnidirect/inquiryLlgRtgsOnlineBeneficiaryName.js';
+import { inquiryAccountStatement } from '../services/bnidirect/inquiryAccountStatement.js';
+import { inquiryBilling } from '../services/bnidirect/inquiryBilling.js';
+import { inquiryBniPopsCashAndCarry } from '../services/bnidirect/inquiryBniPopsCashAndCarry.js';
 import { InquiryBniPOPSProductAllocation } from '../services/bnidirect/InquiryBniPOPSProductAllocation.js';
 import { getPaymentStatus } from '../services/bnidirect/getPaymentStatus.js';
 import { inhouseTransfer } from '../services/bnidirect/inhouseTransfer.js';
@@ -20,6 +27,10 @@ import { bulkPaymentMixed } from '../services/bnidirect/bulkPaymentMixed.js';
 import { payrollMixed } from '../services/bnidirect/payrollMixed.js';
 import { domesticSingleBIFastTransfer } from '../services/bnidirect/domesticSingleBIFastTransfer.js';
 import { inquiryBIFastBeneficiaryName } from '../services/bnidirect/inquiryBIFastBeneficiaryName.js';
+import { singleBulkPayment } from '../services/bnidirect/singleBulkPayment.js';
+import { singleBulkPaymentSubmit } from '../services/bnidirect/singleBulkPaymentSubmit.js';
+import { singlePayroll } from '../services/bnidirect/singlePayroll.js';
+import { singlePayrollSubmit } from '../services/bnidirect/singlePayrollSubmit.js';
 
 class BNIDIRECT {
   constructor(client) {
@@ -32,6 +43,83 @@ class BNIDIRECT {
    * @param  {Object} options - should have these props:
    * accountNo
    */
+  async createMpnG2BillingId(params) {
+    const res = createMpnG2BillingId({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async inquiryNpwp(params){
+    const res = inquiryNpwp({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async inquiryInHouseAndVaBeneficiaryName(params){
+    const res = inquiryInHouseAndVaBeneficiaryName({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async inquiryLlgRtgsOnlineBeneficiaryName(params){
+    const res = inquiryLlgRtgsOnlineBeneficiaryName({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async inquiryAccountStatement(params){
+    const res = inquiryAccountStatement({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async inquiryBilling(params){
+    const res = inquiryBilling({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async inquiryBniPopsCashAndCarry(params){
+    const res = inquiryBniPopsCashAndCarry({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
   async InquiryBniPOPSProductAllocation(params) {
     const res = InquiryBniPOPSProductAllocation({
       body: params,
@@ -265,6 +353,50 @@ class BNIDIRECT {
   }
   async inquiryBIFastBeneficiaryName(params) {
     const res = inquiryBIFastBeneficiaryName({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async singleBulkPayment(params) {
+    const res = singleBulkPayment({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async singlePayroll(params) {
+    const res = singlePayroll({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async singleBulkPaymentSubmit(params) {
+    const res = singleBulkPaymentSubmit({
+      body: params,
+      config: {
+        client: this.client,
+        config: this.config,
+        timeStamp: this.timeStamp
+      }
+    });
+    return res;
+  }
+  async singlePayrollSubmit(params) {
+    const res = singlePayrollSubmit({
       body: params,
       config: {
         client: this.client,

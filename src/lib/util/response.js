@@ -61,6 +61,7 @@ export const responseRDN = (params = { res }) => {
 };
 
 export const responseBNIDirect = (params = { res }) => {
+  console.log(params.res);
   const haveResponseCode = params.res.requestStatus;
   if (haveResponseCode && params.res.requestStatus !== '0') {
     throw new Error(`${params.res.errorReason}`);

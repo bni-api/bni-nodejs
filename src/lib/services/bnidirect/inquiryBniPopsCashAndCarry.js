@@ -2,21 +2,17 @@ import { responseBNIDirect } from '../../util/response.js';
 import HttpClient from '../../net/httpClient.js';
 import { generateSignature, generateBniDirectKey } from '../../util/util.js';
 
-export async function createVirtualAccount(params = { body, config }) {
+export async function inquiryBniPopsCashAndCarry(params = { body, config }) {
   const body = {
     corporateId: params.body.corporateId,
     userId: params.body.userId,
-    companyCode: params.body.companyCode,
-    virtualAccountNo: params.body.virtualAccountNo,
-    virtualAccountName: params.body.virtualAccountName,
-    virtualAccountTypeCode: params.body.virtualAccountTypeCode,
-    billingAmount: params.body.billingAmount,
-    varAmount1: params.body.varAmount1,
-    varAmount2: params.body.varAmount2,
-    expiryDate: params.body.expiryDate,
-    expiryTime: params.body.expiryTime,
-    mobilePhoneNo: params.body.mobilePhoneNo,
-    statusCode: params.body.statusCode
+    debitAccountNo: params.body.debitAccountNo,
+    salesOrganizationCode: params.body.salesOrganizationCode,
+    distributionChannelCode: params.body.distributionChannelCode,
+    productCode: params.body.productCode,
+    shipTo: params.body.shipTo,
+    debitOrCreditNoteNo: params.body.debitOrCreditNoteNo,
+    productInformationDetail: params.body.productInformationDetail
   };
   const signature = generateSignature({
     body: { ...body, timestamp: params.config.timeStamp },
@@ -32,12 +28,12 @@ export async function createVirtualAccount(params = { body, config }) {
     method: 'POST',
     apiKey: params.config.config.apiKey,
     accessToken: await params.config.client.getToken(),
-    url: `${params.config.client.getBaseUrl()}/bnidirect/api/VirtualAccount/Create`,
+    url: `${params.config.client.getBaseUrl()}/bnidirect/api/BNIPOPS/CashandCarry/Inquiry`,
     signature: signature.split('.')[2],
     timestamp: params.config.timeStamp,
     data: body,
     bniDirectKey:
-      'a39a04f8801b490da63db5b5e71b95ea6e0d8b6782df26b52c48c35bc19c22f2'
+      'dc8f7943e027345677c7dade0441936c3bb3f8d697ef8f7b28ae5dfdeea78dd1'
   });
   return responseBNIDirect({ res: res });
 }

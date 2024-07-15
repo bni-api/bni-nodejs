@@ -9,17 +9,110 @@ declare class BNIDIRECT {
    * @param  {Object} options - should have these props:
    * accountNo
    */
+  createMpnG2BillingId(params?: {
+    corporateId: string;
+    userId: string;
+    npwp: string;
+    taxPayerName: string;
+    taxPayerAddress1: string;
+    taxPayerAddress2: string;
+    taxPayerAddress3: string;
+    taxPayerCity: string;
+    NOP: string;
+    MAPCode: string;
+    depositTypeCode: string;
+    wajibPungutNPWP: string;
+    wajibPungutName: string;
+    wajibPungutAddress1: string;
+    wajibPungutAddress2: string;
+    wajibPungutAddress3: string;
+    participantId: string;
+    assessmentTaxNumber: string;
+    amountCurrency: string;
+    amount: string;
+    monthFrom: string;
+    monthTo: string;
+    year: string;
+    confirmNumber: string;
+    traceId: string;
+    kelurahan: string;
+    kecamatan: string;
+    provinsi: string;
+    kota: string;
+  });
+  inquiryNpwp(params?: {
+    corporateId: string;
+    userId: string;
+    npwp: string;
+    NOP: string;
+    MAPCode: string;
+    depositTypeCode: string;
+    currency: string;
+  });
+  iniquiryInhouseAndVaBeneficiaryName(params?: {
+    corporateId: string;
+    userId: string;
+    accountNo: string;
+  });
+  inquiryLlgRtgsOnlineBeneficiaryName(params?: {
+    corporateId: string;
+    userId: string;
+    beneficiaryAccountNo: string;
+    beneficiaryBankCode: string;
+  });
+  inquiryAccountStatement(params?: {
+    corporateId: string;
+    userId: string;
+    fromDate: string;
+    toDate: string;
+    transactionType: string;
+    accountList: Array<String>;
+  });
+  inquiryBilling(params?: {
+    corporateId: string;
+    userId: string;
+    debitedAccountNo: string;
+    institution: string;
+    customerInformation1: string;
+    customerInformation2: string;
+    customerInformation3: string;
+    customerInformation4: string;
+    customerInformation5: string;
+  })
+  inquiryBniPopsCashAndCarry(params?: {
+    corporateId: string;
+    userId: string;
+    debitAccountNo: string;
+    salesOrganizationCode: string;
+    distributionChannelCode: string;
+    productCode: string;
+    shipTo: string;
+    debitOrCreditNoteNo: string;
+    productInformationDetail: Array<{
+      materialCode: string;
+      trip: string;
+      quantity: string;
+      deliveryDate: string;
+      transportir: string;
+    }>;
+  });
   InquiryBniPOPSProductAllocation(params?: {
-      corporateId:string;
-      userId:string;
-      debitAccountNo:string;
-      salesOrganizationCode:string;
-      distributionChannelCode:string;
-      productCode:string;
-      shipTo:string;
-      scheduleAggreementNo:string;
-      debitOrCreditNoteNo:string;
-      productInformationDetail:string[];
+      corporateId: string;
+      userId: string;
+      debitAccountNo: string;
+      salesOrganizationCode: string;
+      distributionChannelCode: string;
+      productCode: string;
+      shipTo: string;
+      scheduleAggreementNo: string;
+      debitOrCreditNoteNo: string;
+      productInformationDetail: Array<{
+        materialCode: string;
+        trip: string;
+        quantity: string;
+        deliveryDate: string;
+        transportir: string;
+      }>;
   });
   getPaymentStatus(params?: { 
       corporateId:string;
@@ -199,7 +292,13 @@ declare class BNIDIRECT {
     productCode: string;
     shipTo: string;
     debitOrCreditNoteNo: string;
-    productInformationDetail: string[];
+    productInformationDetail: Array<{
+      materialCode: string;
+      trip: string;
+      quantity: string;
+      deliveryDate: string;
+      transportir: string;
+    }>;
   });
   bniPopsProductAllocation(params?: {
     corporateId: string;
@@ -211,7 +310,13 @@ declare class BNIDIRECT {
     shipTo: string;
     scheduleAggreementNo: string;
     debitOrCreditNoteNo: string;
-    productInformationDetail: string[];
+    productInformationDetail: Array<{
+      materialCode: string;
+      trip: string;
+      quantity: string;
+      deliveryDate: string;
+      transportir: string;
+    }>;
   });
   bniPopsResubmitCashAndCarry(params?: {
     corporateId: string;
@@ -276,7 +381,7 @@ declare class BNIDIRECT {
   inquiryForexRate(params?: {
     corporateId: string;
     userId: string;
-    currencyList: string[];
+    currencyList: Array<string>;
   });
   bulkPaymentMixed(params?: {
     corporateId: string;
@@ -301,19 +406,20 @@ declare class BNIDIRECT {
     corporateId: string;
     userId: string;
     apiRefNo: string;
+    serviceType: string;
     instructionDate: string;
     session: string;
-    serviceType: string;
     debitAcctNo: string;
-    amount: string;
-    currency: string;
+    totalAmount: string;
+    totalAmountCurrencyCode: string;
     chargeTo: string;
     residenceCode: string;
     citizenCode: string;
-    category: string;
+    remitterCategory: string;
     transactionType: string;
-    accountNmValidation: string;
     remark: string;
+    accountNmValidation: string;
+    totalRecord: string;
     childContent: string;
   });
   domesticSingleBIFastTransfer(params?: {
@@ -323,7 +429,7 @@ declare class BNIDIRECT {
     amountCurrency: string;
     amount: string;
     exchangeRateCode: string;
-    treasuryReferenceNo?: string;
+    treasuryReferenceNo: string;
     chargeTo: string;
     remark1: string;
     remark2: string;
@@ -333,11 +439,11 @@ declare class BNIDIRECT {
     beneficiaryReferenceNo: string;
     usedProxy: string;
     beneficiaryAccountNo: string;
-    proxyId?: string;
+    proxyId: string;
     beneficiaryBankCode: string;
     beneficiaryBankName: string;
     notificationFlag: string;
-    beneficiaryEmail?: string;
+    beneficiaryEmail: string;
     transactionInstructionDate: string;
     transactionPurposeCode: string;
   });
@@ -348,5 +454,137 @@ declare class BNIDIRECT {
     beneficiaryAccountNo: string;
     proxyId: string;
     beneficiaryBankCode: string;
+  });
+  singleBulkPayment(params?: {
+    corporateId: string;
+    userId: string;
+    apiRefNo: string;
+    instructionDate: string;
+    session: string;
+    serviceType: string;
+    isSTP: string;
+    transactionType: string;
+    remark: string;
+    accountNmValidation: string;
+    transactionDetail: Array<{
+      creditAcctNo: string;
+      creditAcctNm: string;
+      amount: string;
+      treasury: string;
+      remark1: string;
+      remark2: string;
+      remark3: string;
+      benAddr1: string;
+      benAddr2: string;
+      benAddr3: string;
+      benBankCode: string;
+      benBankNm: string;
+      benBranchNm: string;
+      benBankAddr1: string;
+      benBankAddr2: string;
+      benBankAddr3: string;
+      benBankCityNm: string;
+      benBankCountryNm: string;
+      benResidenceCd: string;
+      benCountryCd: string;
+      benEmail: string;
+      benPhone: string;
+      benFax: string;
+      correspondentBank: string;
+      purposeCode: string;
+      affiliate: string;
+      identical: string;
+      benCategory: string;
+      lldDescription: string;
+      orderPartyRefNo: string;
+      finalizePayment: string;
+      counterPartyRefNo: string;
+      extraDetail1: string;
+      extraDetail2: string;
+      extraDetail3: string;
+      extraDetail4: string;
+      extraDetail5: string;
+      typeCode: string;
+      mixedServiceCode: string;
+      mixedCurrency: string;
+      mixedDebitAcctNo: string;
+      mixedChargeTo: string;
+      mixedRemCountryCode: string;
+      mixedRemCitizenCode: string;
+      mixedRemCategory: string;
+      proxyId: string;
+      proxyFlag: string;
+    }>;
+  });
+  singlePayroll(params?: {
+    corporateId: string;
+    userId: string;
+    apiRefNo: string;
+    instructionDate: string;
+    session: string;
+    serviceType: string;
+    isSTP: string;
+    transactionType: string;
+    remark: string;
+    accountNmValidation: string;
+    transactionDetail: Array<{
+      creditAcctNo: string;
+      creditAcctNm: string;
+      amount: string;
+      treasury: string;
+      remark1: string;
+      remark2: string;
+      remark3: string;
+      benAddr1: string;
+      benAddr2: string;
+      benAddr3: string;
+      benBankCode: string;
+      benBankNm: string;
+      benBranchNm: string;
+      benBankAddr1: string;
+      benBankAddr2: string;
+      benBankAddr3: string;
+      benBankCityNm: string;
+      benBankCountryNm: string;
+      benResidenceCd: string;
+      benCountryCd: string;
+      benEmail: string;
+      benPhone: string;
+      benFax: string;
+      correspondentBank: string;
+      purposeCode: string;
+      affiliate: string;
+      identical: string;
+      benCategory: string;
+      lldDescription: string;
+      orderPartyRefNo: string;
+      finalizePayment: string;
+      counterPartyRefNo: string;
+      extraDetail1: string;
+      extraDetail2: string;
+      extraDetail3: string;
+      extraDetail4: string;
+      extraDetail5: string;
+      typeCode: string;
+      mixedServiceCode: string;
+      mixedCurrency: string;
+      mixedDebitAcctNo: string;
+      mixedChargeTo: string;
+      mixedRemCountryCode: string;
+      mixedRemCitizenCode: string;
+      mixedRemCategory: string;
+      proxyId: string;
+      proxyFlag: string;
+    }>;
+  });
+  singleBulkPaymentSubmit(params?: {
+    corporateId: string;
+    userId: string;
+    apiRefNo: string
+  });
+  singlePayrollSubmit(params?: {
+    corporateId: string;
+    userId: string;
+    apiRefNo: string
   });
 }
