@@ -48,3 +48,4 @@ declare class HttpClient {
     bniDirectKey: string;
   }): Promise<any>;
 }
+

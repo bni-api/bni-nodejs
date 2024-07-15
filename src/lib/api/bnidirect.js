@@ -6,19 +6,20 @@ import { transferRTGS } from '../services/bnidirect/transferRTGS.js';
 import { transferOnline } from '../services/bnidirect/transferOnline.js';
 import { transferInternational } from '../services/bnidirect/transferInternational.js';
 import { billingPayment } from '../services/bnidirect/billingPayment.js';
-import { balanceInquiry } from '../services/bnidirect/balanceInquiry.js';
-import { domesticSingleBIFastTransfer } from '../services/bnidirect/domesticSingleBIFastTransfer.js';
-import { payrollMixed } from '../services/bnidirect/payrollMixed.js';
-import { inquiryForexRate } from '../services/bnidirect/inquiryForexRate.js';
-import { bulkPaymentMixed } from '../services/bnidirect/bulkPaymentMixed.js';
-import { inquiryBIFastBeneficiaryName } from '../services/bnidirect/inquiryBIFastBeneficiaryName.js';
 import { bniPopsCashAndCarry } from '../services/bnidirect/bniPopsCashAndCarry.js';
 import { bniPopsProductAllocation } from '../services/bnidirect/bniPopsProductAllocation.js';
+import { bniPopsResubmitCashAndCarry } from '../services/bnidirect/bniPopsResubmitCashAndCarry.js';
 import { bniPopsResubmitProductAllocation } from '../services/bnidirect/bniPopsResubmitProductAllocation.js';
-import { bulkGetStatus } from '../services/bnidirect/bulkGetStatus.js';
-import { inquiryVirtualAccountTransaction } from '../services/bnidirect/inquiryVirtualAccountTransaction.js';
-import { updateVirtualAccount } from '../services/bnidirect/updateVirtualAccount.js';
 import { createVirtualAccount } from '../services/bnidirect/createVirtualAccount.js';
+import { updateVirtualAccount } from '../services/bnidirect/updateVirtualAccount.js';
+import { inquiryVirtualAccountTransaction } from '../services/bnidirect/inquiryVirtualAccountTransaction.js';
+import { bulkGetStatus } from '../services/bnidirect/bulkGetStatus.js';
+import { balanceInquiry } from '../services/bnidirect/balanceInquiry.js';
+import { inquiryForexRate } from '../services/bnidirect/inquiryForexRate.js';
+import { bulkPaymentMixed } from '../services/bnidirect/bulkPaymentMixed.js';
+import { payrollMixed } from '../services/bnidirect/payrollMixed.js';
+import { domesticSingleBIFastTransfer } from '../services/bnidirect/domesticSingleBIFastTransfer.js';
+import { inquiryBIFastBeneficiaryName } from '../services/bnidirect/inquiryBIFastBeneficiaryName.js';
 
 class BNIDIRECT {
   constructor(client) {
