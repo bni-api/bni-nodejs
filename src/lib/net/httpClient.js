@@ -2,7 +2,7 @@ import axios from "axios";
 import { stringify } from "qs";
 import { getTimeStamp, generateTokenSignature } from "../util/util.js";
 
-const CURRENT_VERSION = "0.1.18";
+const CURRENT_VERSION = "0.1.19";
 const HEADER_USER_AGENT = `bni-nodejs/${CURRENT_VERSION}`;
 
 class HttpClient {
