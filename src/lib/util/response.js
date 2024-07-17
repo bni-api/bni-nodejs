@@ -65,7 +65,13 @@ export const responseBniMove = (params = { res }) => {
       `${params.res.statusCode} =====> ${params.res.statusDescription}`
     );
   }
-}
+};
 export const responseEcollection = (params = { res, resObj }) => {
+  return params.res;
+};
+export const responseBNIDirect = (params = { res }) => {
+  if (params.res.errorReason && params.res.requestStatus !== '0' ) {
+    throw new Error(`${params.res.requestStatus} - ${params.res.errorReason}`);
+  }
   return params.res;
 };

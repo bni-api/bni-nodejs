@@ -182,17 +182,53 @@ class HttpClient {
     };
 
     try {
-        const res = await this.httpClient({
-            method: options.method,
-            headers,
-            url: options.url,
-            data: options.data,
-        });
+      const res = await this.httpClient({
+        method: options.method,
+        headers,
+        url: options.url,
+        data: options.data,
+      });
 
-        return res.data;
+      return res.data;
     } catch (err) {
-        throw err;
+      throw err;
     }
+  }
+
+  requestBniDirectV2(
+    options = {
+      method,
+      apiKey,
+      accessToken,
+      url,
+      data,
+      signature,
+      timestamp,
+      bniDirectKey
+    }
+  ) {
+    const headers = {
+      'content-type': 'application/json',
+      'user-agent': HEADER_USER_AGENT,
+      'x-api-key': options.apiKey,
+      'x-signature': options.signature,
+      'x-timestamp': options.timestamp,
+      'bnidirect-api-key': options.bniDirectKey,
+      Authorization: `Bearer ${options.accessToken}`
+    };
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await this.httpClient({
+          method: options.method,
+          headers: headers,
+          url: options.url,
+          data: options.data
+        });
+        resolve(res.data);
+      } catch (err) {
+        reject(err.response.data);
+      }
+    });
   }
 }
 

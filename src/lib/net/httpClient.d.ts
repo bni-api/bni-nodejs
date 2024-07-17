@@ -37,13 +37,23 @@ declare class HttpClient {
     data: any;
     additionalHeader: {};
   }): Promise<any>;
-    /**
-     * Initiate with options
-     * @param  {Object} options - should have these props:
-     * method, url, data
-     *
-     * @return {Object} promise with resolve or reject
-     *
-     */
-    requestEcollection(options?: Object): Object;
+  /**
+   * Initiate with options
+   * @param  {Object} options - should have these props:
+   * method, url, data
+   *
+   * @return {Object} promise with resolve or reject
+   *
+   */
+  requestEcollection(options?: Object): Object;
+  requestBniDirectV2(options?: {
+    method: string;
+    apiKey: string;
+    accessToken: string;
+    url: string;
+    data: any;
+    signature: string;
+    timestamp: any;
+    bniDirectKey: string;
+  }): Promise<any>;
 }

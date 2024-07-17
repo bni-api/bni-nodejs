@@ -18,3 +18,4 @@ export function generateSignatureServiceSnapBI(params?: {
 export function randomNumber(): string;
 export function generateUUID(): string;
 export function setBody(body: any, secretKey?: string): string;
+export function generateBniDirectKey(): string;

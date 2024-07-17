@@ -183,3 +183,9 @@ export const setBody = (body, secretKey) => {
   body.data = encryptData;
   return JSON.stringify(body)
 }
+
+export const generateBniDirectKey = ({ corpId, userId, bniDirectKey }) => {
+  const data = corpId + userId + bniDirectKey;
+  const sha256string = createHash('sha256').update(data).digest('hex');
+  return sha256string.toLowerCase();
+};

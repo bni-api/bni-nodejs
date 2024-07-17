@@ -12,3 +12,4 @@ export function responseEcollection(params?: {
     res: any;
     resObj: any;
 }): any;
+export function responseBNIDirect(params?: { res: any }): any;
