@@ -1,4 +1,4 @@
-BNI API SDK - Node.js &middot; ![Static Badge](https://img.shields.io/badge/license-MIT-blue?link=https%3A%2F%2Fgithub.com%2Fbni-api%2Fbni-nodejs%2Fblob%2Fmain%2FREADME.md) ![Static Badge](https://img.shields.io/badge/npm-v0.1.4-blue?link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fbni-nodejs)
+BNI API SDK - Node.js &middot; ![Static Badge](https://img.shields.io/badge/license-MIT-blue?link=https%3A%2F%2Fgithub.com%2Fbni-api%2Fbni-nodejs%2Fblob%2Fmain%2FREADME.md) ![Static Badge](https://img.shields.io/badge/npm-v10.2.3-blue?link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fbni-nodejs)
 
 This is the Official Node JS API client / library for BNI API. 
 
@@ -26,12 +26,14 @@ import { BNIClient } from "bni-nodejs";
 
 ### 2.1 Choose an API Product
 
-We have 2 API products you can use:
+We have 6 API products you can use:
 
 - [One Gate Payment](#22A-snap) - A solution for a company to integrate its application / system with banking transaction services. [documentation](https://digitalservices.bni.co.id/en/api-one-gate-payment)
 - [Snap BI](https://apidevportal.bi.go.id/snap/info) - Integrate with SNAP BI [documentation](https://apidevportal.bi.go.id/snap/api-services)
 - [RDL](#22A-snap) - A solution for a company to integrate its application / system with banking transaction services. [documentation](https://digitalservices.bni.co.id/documentation/3%7Cp2p-lending-register-investor)
-- Ecollection - Integrate with Ecollection
+- [RDN](#22A-snap) - A solution for Securities companies in opening digital accounts for investors and can facilitate book-entry transactions by integrating them with API. [documentation](https://digitalservices.bni.co.id/documentation/27%7Crdn-service-v2.1-register-investor-v2.1)
+- [RDF](#22A-snap) - A solution for fintech companies registered with OJK in opening digital accounts to facilitate fund transfer transactions by utilizing API technology. Benefits Providing convenience for Fintech companies in opening, managing and carrying out transactions on fintech fund accounts advantages - Real-time account bookkeeping process - Transfer to other banks via the Online Transfer feature (Bersama, Prima, Link) - Get recipient account information from the bank - Can carry out Inhouse transfer transactions, Clearing (SKN), RTGS. [documentation](https://digitalservices.bni.co.id/documentation/24%7Cfintech-account-service-v2.1-register-investor-v2.1)
+- [Ecollection](#22A-snap) - Integrate with Ecollection
 
 ### 2.2 Client Initialization and Configuration
 
@@ -228,7 +230,7 @@ const transactionStatusInquiry = await snap.transactionStatusInquiry({
 
 ```javascript
 // return as Promise of Object
-const **transferIntraBank** = await snap.transferIntraBank({
+const transferIntraBank = await snap.transferIntraBank({
   partnerReferenceNo: '20220426170737356898', // transaction reference number
   amount: {
     value: '55000.00',
@@ -387,7 +389,7 @@ const client = new BNIClient({
 const rdl = new Rdl(client);
 ```
 
-Available methods for `Rdl` class
+Available methods for `RDL` class
 
 #### Register Investor
 
@@ -673,7 +675,7 @@ Available methods for `Fintech Account Service (RDF)` class
 ```javascript
 // return as Promise of Object
 const registerInvestor = async () => {
-  const res = await rdl.registerInvestor({
+  const res = await rdf.registerInvestor({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS",
     uuidFaceRecog: "492F33851D634CFB", //RequestUuid successed value from Face Recognition API (KYC valid)
@@ -729,7 +731,7 @@ const registerInvestor = async () => {
 ```javascript
 // return as Promise of Object
 const faceRecognition = async () => {
-  const res = await rdl.faceRecognition({
+  const res = await rdf.faceRecognition({
     companyId: "SANDBOX",
     parentCompanyId: "STI_CHS", //optional
     firstName: "MOHAMMAD", //optional
@@ -1202,74 +1204,7 @@ const paymentUsingInterbank = async () => {
 };
 ```
 
-### 2.2.F BNI Move Digiloan
-
-Create `BNI Move` class object
-```javascript
-
-import { BNIClient, BNIMove } from 'bni-nodejs';
-// const { BNIClient, BNIMove } = require('bni-nodejs'); // legacy way
-
-// Create Client instance
-const client = new BNIClient({
-  env: 'sandbox', // dev, sandbox or prod
-  clientId: '{your-client-id}',
-  clientSecret: '{your-client-secret}',
-  apiKey: '{your-api-key}',
-  apiSecret: '{your-api-secret}'
-  appName: '{your-app-name}' // optional
-});
-
-const bniMove = new BNIMove(client);
-```
-Available methods for `BNI Move` class
-#### Prescreening
-```javascript
-// return as Promise of Object
-const prescreening = async () => {
-  const res = await bniMove.prescreening({
-    kodeMitra: 'BNI',
-    npp: '', // optional
-    namaLengkapKtp: 'Muhammad Haikal Madani',
-    noKtp: '3174052209980002',
-    noHandphone: '085921658045',
-    alamatUsaha: 'jakarta',
-    provinsiUsaha: '06',
-    kotaUsaha: '143',
-    kecamatanUsaha: '1074',
-    kelurahanUsaha: '4254',
-    kodePosUsaha: '11450',
-    sektorEkonomi: '2',
-    totalPenjualan: 50000000,
-    jangkaWaktu: '12',
-    jenisPinjaman: '1',
-    maximumKredit: 50000000,
-    jenisKelamin: '1',
-    tanggalLahir: '1998-10-07',
-    subSektorEkonomi: '050111',
-    deskripsi: 'Usaha Ternak Perikanan',
-    email: 'muhammadhaikalmadani@mail.com' // optional
-  });
-  return res;
-};
-```
-#### Save Image
-```javascript
-// return as Promise of Object
-const saveImage = async () => {
-  const res = await bniMove.saveImage({
-    Id: 'MJO2024022000004',
-    deskripsi: 'Foto Identitas KTP',
-    jenisDokumen: 'A03',
-    namaFile: 'Foto KTP',
-    extensionFile: 'png',
-    dataBase64: '{image-file-base64}'
-  });
-  return res;
-};
-```
-
-### 2.2.G Ecollection
+### 2.2.F Ecollection
 
 Create `Ecollection` class object
 ```javascript
@@ -1338,6 +1273,75 @@ const updateBilling = await ecollection.updateBilling({
     virtualAccount: "" //optional, if empty then autogenerated
 });
 ``` 
+
+### 2.2.G BNI Move Digiloan
+
+Create `BNI Move` class object
+```javascript
+
+import { BNIClient, BNIMove } from 'bni-nodejs';
+// const { BNIClient, BNIMove } = require('bni-nodejs'); // legacy way
+
+// Create Client instance
+const client = new BNIClient({
+  env: 'sandbox', // dev, sandbox or prod
+  clientId: '{your-client-id}',
+  clientSecret: '{your-client-secret}',
+  apiKey: '{your-api-key}',
+  apiSecret: '{your-api-secret}'
+  appName: '{your-app-name}' // optional
+});
+
+const bniMove = new BNIMove(client);
+```
+Available methods for `BNI Move` class
+#### Prescreening
+```javascript
+// return as Promise of Object
+const prescreening = async () => {
+  const res = await bniMove.prescreening({
+    kodeMitra: 'BNI',
+    npp: '', // optional
+    namaLengkapKtp: 'Muhammad Haikal Madani',
+    noKtp: '3174052209980002',
+    noHandphone: '085921658045',
+    alamatUsaha: 'jakarta',
+    provinsiUsaha: '06',
+    kotaUsaha: '143',
+    kecamatanUsaha: '1074',
+    kelurahanUsaha: '4254',
+    kodePosUsaha: '11450',
+    sektorEkonomi: '2',
+    totalPenjualan: 50000000,
+    jangkaWaktu: '12',
+    jenisPinjaman: '1',
+    maximumKredit: 50000000,
+    jenisKelamin: '1',
+    tanggalLahir: '1998-10-07',
+    subSektorEkonomi: '050111',
+    deskripsi: 'Usaha Ternak Perikanan',
+    email: 'muhammadhaikalmadani@mail.com' // optional
+  });
+  return res;
+};
+```
+#### Save Image
+```javascript
+// return as Promise of Object
+const saveImage = async () => {
+  const res = await bniMove.saveImage({
+    Id: 'MJO2024022000004',
+    deskripsi: 'Foto Identitas KTP',
+    jenisDokumen: 'A03',
+    namaFile: 'Foto KTP',
+    extensionFile: 'png',
+    dataBase64: '{image-file-base64}'
+  });
+  return res;
+};
+```
+
+
 
 ## Get help
 
