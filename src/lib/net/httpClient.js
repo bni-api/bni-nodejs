@@ -174,6 +174,26 @@ class HttpClient {
       }
     });
   }
+
+  async requestEcollection(options = { method, url, data }) {
+    const headers = {
+      'content-type': 'application/json',
+      'user-agent': HEADER_USER_AGENT,
+    };
+
+    try {
+        const res = await this.httpClient({
+            method: options.method,
+            headers,
+            url: options.url,
+            data: options.data,
+        });
+
+        return res.data;
+    } catch (err) {
+        throw err;
+    }
+  }
 }
 
 export default HttpClient;
