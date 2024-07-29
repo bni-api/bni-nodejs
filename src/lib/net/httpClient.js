@@ -2,7 +2,7 @@ import axios from "axios";
 import { stringify } from "qs";
 import { getTimeStamp, generateTokenSignature } from "../util/util.js";
 
-const CURRENT_VERSION = "0.1.19";
+const CURRENT_VERSION = "0.1.20";
 const HEADER_USER_AGENT = `bni-nodejs/${CURRENT_VERSION}`;
 
 class HttpClient {
@@ -44,7 +44,15 @@ class HttpClient {
 
         resolve(res.data);
       } catch (err) {
-        reject(err);
+        const errorWithCause = new Error(`An error occurred while getting the token: ${err.message}`);
+        errorWithCause.cause = {
+          errno: err.errno,
+          code: err.code,
+          syscall: err.syscall,
+          hostname: err.hostname,
+          data: err.response?.data // Adjust according to where the data is located in your error object
+        };
+        throw errorWithCause;
       }
     });
   }
@@ -85,7 +93,15 @@ class HttpClient {
 
         resolve(res.data);
       } catch (err) {
-        reject(err);
+        const errorWithCause = new Error(`An error occurred while getting the token: ${err.message}`);
+        errorWithCause.cause = {
+          errno: err.errno,
+          code: err.code,
+          syscall: err.syscall,
+          hostname: err.hostname,
+          data: err.response?.data // Adjust according to where the data is located in your error object
+        };
+        throw errorWithCause;
       }
     });
   }
@@ -118,7 +134,15 @@ class HttpClient {
 
         resolve(res.data);
       } catch (err) {
-        resolve(err.response.data);
+        const errorWithCause = new Error(`An error occurred while executing the API service: ${err.message}`);
+        errorWithCause.cause = {
+          errno: err.errno,
+          code: err.code,
+          syscall: err.syscall,
+          hostname: err.hostname,
+          data: err.response?.data // Adjust according to where the data is located in your error object
+        };
+        throw errorWithCause;
       }
     });
   }
@@ -146,7 +170,15 @@ class HttpClient {
 
         resolve(res.data);
       } catch (err) {
-        resolve(err.response.data);
+        const errorWithCause = new Error(`An error occurred while executing the API service: ${err.message}`);
+        errorWithCause.cause = {
+          errno: err.errno,
+          code: err.code,
+          syscall: err.syscall,
+          hostname: err.hostname,
+          data: err.response?.data // Adjust according to where the data is located in your error object
+        };
+        throw errorWithCause;
       }
     });
   }
@@ -170,7 +202,15 @@ class HttpClient {
         });
         resolve(res.data);
       } catch (err) {
-        resolve(err.response.data);
+        const errorWithCause = new Error(`An error occurred while executing the API service: ${err.message}`);
+        errorWithCause.cause = {
+          errno: err.errno,
+          code: err.code,
+          syscall: err.syscall,
+          hostname: err.hostname,
+          data: err.response?.data // Adjust according to where the data is located in your error object
+        };
+        throw errorWithCause;
       }
     });
   }
@@ -191,7 +231,15 @@ class HttpClient {
 
         return res.data;
     } catch (err) {
-        throw err;
+      const errorWithCause = new Error(`An error occurred while executing the API service: ${err.message}`);
+      errorWithCause.cause = {
+        errno: err.errno,
+        code: err.code,
+        syscall: err.syscall,
+        hostname: err.hostname,
+        data: err.response?.data // Adjust according to where the data is located in your error object
+      };
+      throw errorWithCause;
     }
   }
 }

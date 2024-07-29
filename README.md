@@ -28,12 +28,12 @@ import { BNIClient } from "bni-nodejs";
 
 We have 6 API products you can use:
 
-- [One Gate Payment](#22A-snap) - A solution for a company to integrate its application / system with banking transaction services. [documentation](https://digitalservices.bni.co.id/en/api-one-gate-payment)
-- [Snap BI](https://apidevportal.bi.go.id/snap/info) - Integrate with SNAP BI [documentation](https://apidevportal.bi.go.id/snap/api-services)
-- [RDL](#22A-snap) - A solution for a company to integrate its application / system with banking transaction services. [documentation](https://digitalservices.bni.co.id/documentation/3%7Cp2p-lending-register-investor)
-- [RDN](#22A-snap) - A solution for Securities companies in opening digital accounts for investors and can facilitate book-entry transactions by integrating them with API. [documentation](https://digitalservices.bni.co.id/documentation/27%7Crdn-service-v2.1-register-investor-v2.1)
-- [RDF](#22A-snap) - A solution for fintech companies registered with OJK in opening digital accounts to facilitate fund transfer transactions by utilizing API technology. Benefits Providing convenience for Fintech companies in opening, managing and carrying out transactions on fintech fund accounts advantages - Real-time account bookkeeping process - Transfer to other banks via the Online Transfer feature (Bersama, Prima, Link) - Get recipient account information from the bank - Can carry out Inhouse transfer transactions, Clearing (SKN), RTGS. [documentation](https://digitalservices.bni.co.id/documentation/24%7Cfintech-account-service-v2.1-register-investor-v2.1)
-- [Ecollection](#22A-snap) - Integrate with Ecollection
+- [One Gate Payment](https://digitalservices.bni.co.id/api-products-detail/one-gate-payment) - A solution for a company to integrate its application / system with banking transaction services. [documentation](https://digitalservices.bni.co.id/documentation/1|one-gate-payment-get-balance)
+- [Snap BI](https://digitalservices.bni.co.id/snap-documentation/introduction) - Integrate with SNAP BI [documentation](https://digitalservices.bni.co.id/snap-documentation/30|transfer-credit-balance-inquiry)
+- [RDL](https://digitalservices.bni.co.id/api-products-detail/p2plending-v2.1) - A solution for a company to integrate its application / system with banking transaction services. [documentation](https://digitalservices.bni.co.id/documentation/28|p2plending-v2.1-register-investor-v2.1)
+- [RDN](https://digitalservices.bni.co.id/api-products-detail/rdn-service-v2.1) - A solution for Securities companies in opening digital accounts for investors and can facilitate book-entry transactions by integrating them with API. [documentation](https://digitalservices.bni.co.id/documentation/27%7Crdn-service-v2.1-register-investor-v2.1)
+- [RDF](https://digitalservices.bni.co.id/api-products-detail/fintech-account-service-v2.1) - A solution for fintech companies registered with OJK in opening digital accounts to facilitate fund transfer transactions by utilizing API technology. Benefits Providing convenience for Fintech companies in opening, managing and carrying out transactions on fintech fund accounts advantages - Real-time account bookkeeping process - Transfer to other banks via the Online Transfer feature (Bersama, Prima, Link) - Get recipient account information from the bank - Can carry out Inhouse transfer transactions, Clearing (SKN), RTGS. [documentation](https://digitalservices.bni.co.id/documentation/24%7Cfintech-account-service-v2.1-register-investor-v2.1)
+- [Ecollection](https://digitalservices.bni.co.id/api-products-detail/e-collection) - Integrate with Ecollection. [documentation](https://digitalservices.bni.co.id/documentation/31|e-collection-create-billing)
 
 ### 2.2 Client Initialization and Configuration
 
@@ -373,8 +373,8 @@ const transferInterBank = await snap.transferInterBank({
 Create `Rdl` class object
 
 ```javascript
-import { Rdl, BNIClient } from "bni-nodejs";
-// const { BNIClient, OneGatePayment } = require('bni-nodejs'); // legacy way
+import { BNIClient, Rdl } from "bni-nodejs";
+// const { BNIClient, Rdl } = require('bni-nodejs'); // legacy way
 
 // Create Client instance
 const client = new BNIClient({
@@ -915,7 +915,7 @@ Create `RDN` class object
 ```javascript
 
 import { BNIClient, Rdn } from 'bni-nodejs';
-// const { BNIClient, Rdf } = require('bni-nodejs'); // legacy way
+// const { BNIClient, Rdn } = require('bni-nodejs'); // legacy way
 
 // Create Client instance
 const client = new BNIClient({
